@@ -1,0 +1,15 @@
+# dependencies
+/node_modules
+
+# Next.js generated files
+/.next
+/out
+
+# local tooling
+*.tsbuildinfo
+.DS_Store
+*.log
+
+# environment files
+.env*
+!.env.example
