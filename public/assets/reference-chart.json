@@ -1,0 +1,247 @@
+{
+  "planets": [
+    {
+      "id": 0,
+      "name": "Нар",
+      "longitude": 280.3689186698997,
+      "latitude": 0.0002273534758712041,
+      "speed": 1.0194341629435535,
+      "sign": 9,
+      "degree": 10.3689186698997,
+      "retrograde": false,
+      "ephemeris": "Swiss",
+      "house": 10,
+      "uncertain": false
+    },
+    {
+      "id": 1,
+      "name": "Сар",
+      "longitude": 223.32375144635085,
+      "latitude": 5.170740538574795,
+      "speed": 12.021303766986243,
+      "sign": 7,
+      "degree": 13.323751446350855,
+      "retrograde": false,
+      "ephemeris": "Swiss",
+      "house": 7,
+      "uncertain": false
+    },
+    {
+      "id": 2,
+      "name": "Буд",
+      "longitude": 271.88927704616657,
+      "latitude": -0.9948286189524794,
+      "speed": 1.5562581213025497,
+      "sign": 9,
+      "degree": 1.889277046166569,
+      "retrograde": false,
+      "ephemeris": "Swiss",
+      "house": 9,
+      "uncertain": false
+    },
+    {
+      "id": 3,
+      "name": "Сугар",
+      "longitude": 241.5657883828867,
+      "latitude": 2.066349047943721,
+      "speed": 1.2090430193895234,
+      "sign": 8,
+      "degree": 1.5657883828866943,
+      "retrograde": false,
+      "ephemeris": "Swiss",
+      "house": 8,
+      "uncertain": false
+    },
+    {
+      "id": 4,
+      "name": "Ангараг",
+      "longitude": 327.96330252578866,
+      "latitude": -1.0677854415484664,
+      "speed": 0.775673948583222,
+      "sign": 10,
+      "degree": 27.963302525788663,
+      "retrograde": false,
+      "ephemeris": "Swiss",
+      "house": 12,
+      "uncertain": false
+    },
+    {
+      "id": 5,
+      "name": "Бархасбадь",
+      "longitude": 25.253087178951848,
+      "latitude": -1.2621878488453628,
+      "speed": 0.0407611542278022,
+      "sign": 0,
+      "degree": 25.253087178951848,
+      "retrograde": false,
+      "ephemeris": "Swiss",
+      "house": 1,
+      "uncertain": false
+    },
+    {
+      "id": 6,
+      "name": "Санчир",
+      "longitude": 40.395663495199436,
+      "latitude": -2.4448547294933247,
+      "speed": -0.019945141884677005,
+      "sign": 1,
+      "degree": 10.395663495199436,
+      "retrograde": true,
+      "ephemeris": "Swiss",
+      "house": 1,
+      "uncertain": false
+    },
+    {
+      "id": 7,
+      "name": "Тэнгэрийн ван",
+      "longitude": 314.8091877223818,
+      "latitude": -0.658334861508466,
+      "speed": 0.05034345757853629,
+      "sign": 10,
+      "degree": 14.809187722381807,
+      "retrograde": false,
+      "ephemeris": "Swiss",
+      "house": 11,
+      "uncertain": false
+    },
+    {
+      "id": 8,
+      "name": "Далайн ван",
+      "longitude": 303.1930132253617,
+      "latitude": 0.23499184410408142,
+      "speed": 0.03557012769167718,
+      "sign": 10,
+      "degree": 3.1930132253617103,
+      "retrograde": false,
+      "ephemeris": "Swiss",
+      "house": 11,
+      "uncertain": false
+    },
+    {
+      "id": 9,
+      "name": "Дэлхий ван",
+      "longitude": 251.45477929526984,
+      "latitude": 10.855231705106005,
+      "speed": 0.035152929198594036,
+      "sign": 8,
+      "degree": 11.454779295269844,
+      "retrograde": false,
+      "ephemeris": "Swiss",
+      "house": 8,
+      "uncertain": false
+    }
+  ],
+  "houses": [
+    24.26618920267986,
+    61.14240133032305,
+    82.02081437225411,
+    99.61108780028457,
+    119.06190939817765,
+    147.70065683414066,
+    204.26618920267987,
+    241.14240133032305,
+    262.0208143722541,
+    279.61108780028457,
+    299.06190939817765,
+    327.70065683414066
+  ],
+  "ascendant": 24.26618920267986,
+  "midheaven": 279.61108780028457,
+  "aspects": [
+    {
+      "a": 0,
+      "b": 6,
+      "kind": "trine",
+      "angle": 120,
+      "separation": 120.02674482529972,
+      "orb": 0.026744825299715558,
+      "strength": 0.995542529116714
+    },
+    {
+      "a": 1,
+      "b": 7,
+      "kind": "square",
+      "angle": 90,
+      "separation": 91.48543627603095,
+      "orb": 1.4854362760309527,
+      "strength": 0.7524272873281745
+    },
+    {
+      "a": 1,
+      "b": 6,
+      "kind": "opposition",
+      "angle": 180,
+      "separation": 177.07191204884862,
+      "orb": 2.928087951151383,
+      "strength": 0.6339890061060771
+    },
+    {
+      "a": 3,
+      "b": 8,
+      "kind": "sextile",
+      "angle": 60,
+      "separation": 61.627224842475016,
+      "orb": 1.627224842475016,
+      "strength": 0.593193789381246
+    },
+    {
+      "a": 3,
+      "b": 4,
+      "kind": "square",
+      "angle": 90,
+      "separation": 86.39751414290197,
+      "orb": 3.6024858570980314,
+      "strength": 0.39958569048366144
+    },
+    {
+      "a": 4,
+      "b": 5,
+      "kind": "sextile",
+      "angle": 60,
+      "separation": 57.28978465316317,
+      "orb": 2.710215346836833,
+      "strength": 0.3224461632907918
+    },
+    {
+      "a": 6,
+      "b": 7,
+      "kind": "square",
+      "angle": 90,
+      "separation": 85.58647577281761,
+      "orb": 4.413524227182393,
+      "strength": 0.2644126288029346
+    },
+    {
+      "a": 0,
+      "b": 1,
+      "kind": "sextile",
+      "angle": 60,
+      "separation": 57.045167223548845,
+      "orb": 2.9548327764511555,
+      "strength": 0.2612918058872111
+    },
+    {
+      "a": 7,
+      "b": 9,
+      "kind": "sextile",
+      "angle": 60,
+      "separation": 63.35440842711196,
+      "orb": 3.354408427111963,
+      "strength": 0.16139789322200926
+    },
+    {
+      "a": 2,
+      "b": 4,
+      "kind": "sextile",
+      "angle": 60,
+      "separation": 56.074025479622094,
+      "orb": 3.925974520377906,
+      "strength": 0.018506369905523457
+    }
+  ],
+  "utc": "2000-01-01T12:00:00+00:00",
+  "ephemeris": "Swiss",
+  "house_system": "Placidus",
+  "notice": "",
+  "readings": []
+}

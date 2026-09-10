@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Od Toirog — Celestial Motion</title>
+  <style>
+    :root { color-scheme: dark; background: #090d12; color: #d6c8ab; font-family: system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100svh; display: grid; place-items: center; }
+    main { width: min(100%, calc((100svh - 78px) * 1586 / 992)); }
+    .artwork { position: relative; width: 100%; aspect-ratio: 1586 / 992; overflow: hidden; }
+    .artwork img, .artwork canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    .artwork canvas { opacity: 0; }
+    .artwork.ready canvas { opacity: 1; }
+    .controls { min-height: 64px; display: flex; align-items: center; gap: 16px; padding: 8px 18px; }
+    button { color: #dbc9a6; background: none; border: 1px solid #514a3c; border-radius: 4px; min-height: 40px; padding: 7px 13px; font: inherit; font-size: 13px; cursor: pointer; white-space: nowrap; }
+    button:hover { background: #1e2021; border-color: #ac956a; }
+    button:focus-visible, input:focus-visible { outline: 2px solid #e3c48f; outline-offset: 4px; }
+    button:disabled { opacity: .45; cursor: wait; }
+    .timeline { display: flex; align-items: center; gap: 13px; flex: 1; min-width: 60px; }
+    input[type=range] { accent-color: #b49a6a; width: 100%; min-width: 40px; height: 40px; margin: 0; cursor: pointer; }
+    output { min-width: 73px; font-size: 12px; color: #a99d86; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .error { margin: 0; padding: 6px 18px 14px; color: #d9c6a2; font-size: 13px; }
+    [hidden] { display: none !important; }
+    @media (max-width: 560px) {
+      main { width: 100%; }
+      .controls { gap: 9px; padding-inline: 12px; flex-wrap: wrap; }
+      button { min-height: 44px; }
+      .timeline { order: 2; flex-basis: 100%; }
+    }
+  body{display:block;background:transparent}main{width:100%}.controls{display:none}</style>
+</head>
+<body>
+<main aria-label="Od Toirog celestial animation">
+  <div class="artwork" id="artwork">
+    <img id="source" width="1586" height="992" alt="Gold celestial orbits and a moon above a dark engraved mountain landscape, with a solitary traveler on the path." src="animation-layer-1.webp">
+    <canvas id="scene" width="1586" height="992" aria-hidden="true"></canvas>
+  </div>
+  <div class="controls" aria-label="Animation playback">
+    <button id="play" type="button" disabled>Pause</button>
+    <button id="replay" type="button" disabled>Replay</button>
+    <div class="timeline">
+      <label class="sr-only" for="time">Animation time</label>
+      <input id="time" type="range" min="0" max="8" step="0.01" value="0" aria-valuetext="0 seconds of 8 seconds" disabled>
+      <output id="clock" for="time">0.0 / 8.0 s</output>
+    </div>
+    <button id="original" type="button" aria-pressed="false" disabled>Original</button>
+  </div>
+  <p class="sr-only" id="description">An eight-second seamless loop. The outer wheel turns up to three degrees clockwise and the secondary orbit two degrees counterclockwise, then both gently return. One existing star brightens and fades. The scenery, other stars, moon, and traveler stay still. Space pauses or resumes. The timeline lets you inspect the motion.</p>
+  <p id="error" class="error" role="status" hidden></p>
+  <noscript><p class="error">Enable JavaScript to play the animation. The original artwork is shown above.</p></noscript>
+</main>
+<script>
+/*
+  OD TOIROG — SELF-CONTAINED CELESTIAL ANIMATION
+  Original supplied PNG is embedded verbatim in the <img>; no network or packages.
+
+  The sparse light layers below were selected from the EXISTING printed strokes
+  and dots. No new astronomical lines, star shapes or particles are drawn.
+  The stationary plate loses only the light contribution of these selected
+  marks; the same contribution is re-added at its rotated position. Nothing in
+  the landscape is transformed. Fixed masks protect the moon, planets, scenery,
+  axial engraving and medallions. The source file itself is never changed.
+
+  Loop timing: a directional 0→3-degree move cannot also end on its original
+  frame. The default is a smooth 0→3→0 / 0→−2→0 drift over EIGHT seconds,
+  with zero velocity at the seam. The complete frame repeats every 8 seconds.
+  Maximum angles are reached at 4 seconds. There is no abrupt reset/crossfade.
+
+  To embed: use this document in an iframe, or retain the .artwork markup,
+  associated CSS, embedded data and this script. Remove .controls to hide
+  playback controls: all control bindings below are optional. For a static
+  poster use the unmodified #source image. Its native size is 1586 × 992.
+*/
+(() => {
+  'use strict';
+  const SETTINGS = Object.freeze({ seconds: 8, outerDegrees: 3, secondaryDegrees: -2, starLift: 0.27 });
+  const LAYER_DATA = {"wheel":"animation-layer-2.webp","orbit":"animation-layer-3.webp","star":"animation-layer-4.webp","mask":"animation-layer-5.webp"};
+  const W = 1586, H = 992;
+  const [CX, CY] = [1175, 438];
+  const source = document.getElementById('source');
+  const scene = document.getElementById('scene');
+  const artwork = document.getElementById('artwork');
+  const play = document.getElementById('play');
+  const replay = document.getElementById('replay');
+  const slider = document.getElementById('time');
+  const clock = document.getElementById('clock');
+  const original = document.getElementById('original');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  let ctx, stationary, wheel, orbit, star, foreground;
+  let ready = false, running = !reduced.matches, showingOriginal = false;
+  let seconds = 0, previous = null, raf = 0;
+
+  function canvas(width = W, height = H) {
+    const c = document.createElement('canvas'); c.width = width; c.height = height; return c;
+  }
+  async function loadImage(data) {
+    const image = new Image(); image.src = data; await image.decode(); return image;
+  }
+  function rotate(layer,degrees) {
+    ctx.save();ctx.translate(CX,CY);ctx.rotate(degrees*Math.PI/180);ctx.translate(-CX,-CY);ctx.drawImage(layer,0,0);ctx.restore();
+  }
+  function render(t) {
+    if(!ready)return;
+    ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;
+    const drift=(1-Math.cos(2*Math.PI*t/SETTINGS.seconds))/2;
+    if(showingOriginal || drift<1e-10)ctx.drawImage(source,0,0,W,H);
+    else {
+      // A periodic raised cosine has identical position and velocity at 0/8 s.
+      ctx.drawImage(stationary,0,0);
+      ctx.globalCompositeOperation='lighter';
+      rotate(wheel,SETTINGS.outerDegrees*drift);
+      rotate(orbit,SETTINGS.secondaryDegrees*drift);
+      ctx.globalAlpha=SETTINGS.starLift*Math.sin(Math.PI*t/SETTINGS.seconds)**4;
+      ctx.drawImage(star,0,0);
+      ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';ctx.drawImage(foreground,0,0);
+    }
+    if(slider) { slider.value=String(t);slider.setAttribute('aria-valuetext',`${t.toFixed(1)} seconds of 8 seconds`); }
+    if(clock)clock.textContent=`${t.toFixed(1)} / 8.0 s`;
+  }
+  function controls() {
+    if(play) { play.textContent=running?'Pause':'Play'; play.setAttribute('aria-label',running?'Pause animation':'Play animation'); }
+    if(original) { original.setAttribute('aria-pressed',String(showingOriginal));original.textContent=showingOriginal?'Animation':'Original'; }
+  }
+  function tick(now) {
+    raf=0;if(!running || document.hidden)return;
+    if(previous!==null)seconds=(seconds+(now-previous)/1000)%SETTINGS.seconds;
+    previous=now;render(seconds);raf=requestAnimationFrame(tick);
+  }
+  function schedule() {
+    previous=null;if(raf)cancelAnimationFrame(raf);raf=0;
+    if(ready && running && !document.hidden)raf=requestAnimationFrame(tick);
+    controls();
+  }
+  play?.addEventListener('click',()=>{running=!running;showingOriginal=false;render(seconds);schedule();});
+  replay?.addEventListener('click',()=>{seconds=0;showingOriginal=false;running=true;render(seconds);schedule();});
+  slider?.addEventListener('input',()=>{running=false;showingOriginal=false;seconds=Number(slider.value);render(seconds);schedule();});
+  original?.addEventListener('click',()=>{showingOriginal=!showingOriginal;render(seconds);controls();});
+  document.addEventListener('visibilitychange',schedule);
+  reduced.addEventListener('change',()=>{running=!reduced.matches;if(!running)seconds=0;render(seconds);schedule();});
+  document.addEventListener('keydown',event=>{
+    if(event.code!=='Space'||/INPUT|BUTTON|TEXTAREA|SELECT/.test(event.target.tagName)||!ready)return;
+    event.preventDefault();running=!running;showingOriginal=false;render(seconds);schedule();
+  });
+  async function init() {
+    try {
+      await source.decode();
+      ctx=scene.getContext('2d',{alpha:false});
+      if(!ctx)throw new Error('Canvas is not supported.');
+      ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+      stationary=canvas();const sc=stationary.getContext('2d',{willReadFrequently:true});
+      sc.drawImage(source,0,0,W,H);
+      const pixels=sc.getImageData(0,0,W,H);
+      // These sparse PNG layers contain only light selected from the source
+      // artwork. Subtracting their integer values recovers the stationary plate.
+      const assets=await Promise.all([
+        loadImage(LAYER_DATA.wheel),loadImage(LAYER_DATA.orbit),
+        loadImage(LAYER_DATA.star),loadImage(LAYER_DATA.mask)
+      ]);
+      [wheel,orbit,star]=assets;
+      const reader=canvas(),rc=reader.getContext('2d',{willReadFrequently:true});
+      for(const layer of [wheel,orbit]) {
+        rc.clearRect(0,0,W,H);rc.drawImage(layer,0,0);
+        const light=rc.getImageData(0,0,W,H).data;
+        for(let i=0;i<pixels.data.length;i+=4)for(let ch=0;ch<3;ch++) {
+          pixels.data[i+ch]=Math.max(0,pixels.data[i+ch]-light[i+ch]);
+        }
+      }
+      sc.putImageData(pixels,0,0);
+      foreground=canvas();const fc=foreground.getContext('2d');
+      fc.drawImage(source,0,0,W,H);fc.globalCompositeOperation='destination-in';fc.drawImage(assets[3],0,0);
+      ready=true;render(0);artwork.classList.add('ready');
+      for(const el of [play,replay,slider,original])if(el)el.disabled=false;
+      schedule();
+    } catch(error) {
+      const box=document.getElementById('error');
+      if(box){box.hidden=false;box.textContent='The animation could not start in this preview. Download this HTML file and open it in Chrome or Edge. Your original artwork is shown above.';}
+      console.error(error);
+    }
+  }
+  init();
+})();
+</script>
+</body>
+</html>

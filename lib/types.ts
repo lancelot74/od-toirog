@@ -1,0 +1,7 @@
+export type Place={name:string;country:string;latitude:number;longitude:number;timezone:string};
+export type Profile={id:string;user_id:string;name:string;birth_date:string;birth_time:string|null;birth_time_known:boolean;birth_city:string;birth_country:string;latitude:number;longitude:number;timezone:string;utc_birth_datetime:string;is_primary:boolean;time_fold:number};
+export type Planet={id:number;name:string;longitude:number;degree:number;sign:number;house:number|null;retrograde:boolean;uncertain:boolean};
+export type Aspect={a:number;b:number;kind:'conjunction'|'opposition'|'trine'|'square'|'sextile';angle:number;separation:number;orb:number;strength:number;importance?:number;duration_hours?:number|null};
+export type Reading={key:string;headline:string;summary:string;strengths:string[];challenges:string[];relationships:string[];source:string;status:string};
+export type Chart={planets:Planet[];houses:number[];ascendant:number|null;midheaven:number|null;aspects:Aspect[];utc:string;ephemeris:string;house_system:string;notice:string;readings:Reading[]};
+export type Daily={date:string;transits:Aspect[];readings:Reading[];chart:Chart;areas:Record<string,Reading[]>;model_version:string;prompt_version:string;knowledge_version:string;synthesis?:{headline:string;summary:string;love:string;work:string;emotion:string;communication:string;do:string[];avoid:string[];evidence_keys:string[]}};
