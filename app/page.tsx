@@ -3,6 +3,7 @@ import Link from "next/link";
 import { asset } from "@/lib/paths";
 import { HeroArt } from "@/components/hero-art";
 import { ChartPreview } from "@/components/chart-preview";
+import { ZodiacGallery } from "@/components/zodiac-gallery";
 
 export default function Home() {
   return <main>
@@ -14,6 +15,7 @@ export default function Home() {
     <section className="section preview-section"><p className="eyebrow">ӨНӨӨДРИЙН ТЭНГЭР</p><h2>Өдөр бүр шинэ өнцөг.</h2><p>Өнөөгийн гаригийн байрлалыг таны төрсөн үеийн зурагтай харьцуулна. Тайлбар бүрийн цаана байгаа холбоосыг “Яагаад?” хэсгээс харж болно.</p><Link href="/today" className="text-link">Өнөөдрийг унших →</Link></section>
     <section className="compatibility section"><Image src={asset('/assets/illustration/compatibility.webp')} alt="Хоёр тойргийн уулзвар — хослолын бэлгэдлийн зураг" width={1448} height={1086}/><div className="compat-copy"><p className="eyebrow">ХОЁР ЗУРГИЙН УУЛЗВАР</p><h2>Та хоёрын хооронд<br/>юу өрнөдөг вэ?</h2><p>Хослол нь “тохирно, тохирохгүй” гэсэн ганц хариулт биш. Сэтгэл, хайр, харилцааны ялгааг тус тусад нь судална.</p><Link href="/compatibility" className="button outline">Хосын зураг судлах</Link></div></section>
     <section className="story section" id="story"><Image src={asset('/assets/brand/primary-logo/od-toirog.webp')} alt="Оуроборосын тойрог доторх аялагч" width={500} height={500}/><div><p className="eyebrow">БЭЛГЭ ТЭМДГИЙН ТҮҮХ</p><h2>Аялал ба<br/>мөнхийн тойрог.</h2><p>Аялагч бол өөрийгөө нээхээр үл мэдэгдэх зүг рүү алхаж буй хүн. Оуроборос бол цаг хугацаа, өөрчлөлт, буцан ирэх хөдөлгөөн.</p><blockquote>Хүн илүү том тэнгэрийн тойрог дотор өөрийн замыг эхлүүлнэ.</blockquote></div></section>
+    <section className="section zodiac-feature"><p className="eyebrow">ТЭНГЭРИЙН ТОЛЬ · I—XII</p><h2>Арван хоёр орд,<br/>арван хоёр өөр хэмнэл.</h2><p>Бэлгэдэл бүрийн цаадах санаа, харилцаа, дотоод ертөнцийн сэдвийг судлаарай.</p><ZodiacGallery/><Link className="text-link" href="/zodiac">Ордын толь руу →</Link></section>
     <section className="final-cta"><span className="final-star">✦</span><h2>Таны төрсөн мөчийн<br/>тэнгэр ямар байсан бэ?</h2><Link className="button primary" href="/onboarding">Натал зургаа нээх</Link></section>
     <footer><Link className="brand" href="/">ОД ТОЙРОГ</Link><p>Зурхайн тайлал нь бэлгэдлийн уламжлал, өөрийгөө эргэцүүлэх арга бөгөөд баттай зөгнөл биш.</p><Link href="/learn">Мэдлэг</Link><Link href="/privacy">Нууцлал</Link></footer>
   </main>;

@@ -1,6 +1,6 @@
 # PRD implementation audit
 
-Updated 2026-09-10. **This is not a public-launch approval.** Code implementation, local verification, deployed integration, and human editorial/art approval are different states.
+Updated 2026-09-15. **This is not a public-launch approval.** Code implementation, local verification, deployed integration, and human editorial/art approval are different states.
 
 ## MVP checklist (PRD §79)
 
@@ -33,7 +33,7 @@ Updated 2026-09-10. **This is not a public-launch approval.** Code implementatio
 
 ## Verified locally
 
-Latest run: **18 Python tests, 8 browser tests, and the PostgreSQL RLS/versioning integration test passed.**
+Core implementation: **18 Python tests and the PostgreSQL RLS/versioning integration test passed.** The zodiac update passes **21 browser tests** (the 8 existing flows plus 13 zodiac guide/asset checks), including actual external SVG geometry rendering and desktop/mobile layouts.
 
 - Production static export, lint and TypeScript checks.
 - Python tests for reference positions, historical timezones, DST gap/fold, houses, unknown-time handling, aspect orbs, transit/synastry rules, unapproved/invalid knowledge, invalid model JSON/evidence, access denial, ownership filters and deletion identity.
@@ -52,7 +52,7 @@ Latest run: **18 Python tests, 8 browser tests, and the PostgreSQL RLS/versionin
 
 ## Other PRD requirements that are not yet fully satisfied
 
-- The approved twelve-zodiac/ten-planet illustration collection, light-use mark, and illustrated report cover have **not** been supplied. Prompts and filenames are in `ASSETS.md`. Glyphs currently serve functional UI.
+- The twelve zodiac paintings and the zodiac/planet SVG sprites are supplied and integrated, including twelve educational guide pages. Full planetary paintings, a light-use mark, and an illustrated report cover remain outstanding. Remaining art briefs are in `ASSETS.md`.
 - Full UI-string extraction into locale files is incomplete. Shared astrology terminology is centralized and all primary screens are Mongolian; the app currently ships one language only.
 - Complete LCP/accessibility/manual device audit and an extensive cross-software astronomy reference corpus remain launch QA work.
 - The initial privacy page still needs the operator's contact identity and chosen data-retention period.

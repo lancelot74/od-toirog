@@ -7,6 +7,7 @@ import "@fontsource/manrope/cyrillic-600.css";
 import "@fontsource/prata/cyrillic-400.css";
 import "./globals.css";
 import "./product.css";
+import "./zodiac.css";
 
 export const metadata: Metadata = {
   title: "Од Тойрог | Таны төрсөн мөчийн тэнгэр",

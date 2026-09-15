@@ -41,6 +41,11 @@ test('public pages, artwork, and narrow layouts work without console errors',asy
     await page.setViewportSize({width,height:900});
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
   }
+  // Scroll lazy-loaded gallery paintings into view before checking their pixels.
+  for(const image of await page.locator('img').all()){
+    await image.scrollIntoViewIfNeeded();
+    await image.evaluate(el=>el instanceof HTMLImageElement?el.decode():Promise.resolve());
+  }
   const images=await page.locator('img').evaluateAll(images=>images.every(img=>img instanceof HTMLImageElement&&img.complete&&img.naturalWidth>0));
   expect(images).toBeTruthy();
   await page.screenshot({path:'test-results/landing-desktop.png',fullPage:true});
@@ -79,8 +84,12 @@ test('private chart renders backend data and produces a real PNG',async({page})=
   await signedIn(page);
   await page.goto('/od-toirog/chart/');
   await expect(page.getByRole('heading',{level:1})).toContainText('Тест');
+  await expect(page.locator('.real-chart use[href*="zodiac.svg"]')).toHaveCount(12);
+  await expect(page.locator('.real-chart use[href*="planet.svg"]')).toHaveCount(2);
+  await expect(page.locator('.zodiac-portrait img')).toHaveAttribute('src',/capricorn-thumb\.webp$/);
   await page.getByRole('button',{name:/Сар Хилэнц/}).click();
   await expect(page.getByRole('heading',{name:'Сар',exact:true})).toBeVisible();
+  await expect(page.locator('.zodiac-portrait img')).toHaveAttribute('src',/scorpio-thumb\.webp$/);
   const download=page.waitForEvent('download');
   await page.getByRole('button',{name:'PNG татах'}).click();
   expect((await download).suggestedFilename()).toBe('od-toirog.png');

@@ -7,18 +7,21 @@
 - Original approved emblem retained; simple geometric navbar mark and favicon added.
 - A social/Open Graph composition assembled from the supplied artwork.
 - Product chart previews use real Swiss Ephemeris reference data and the actual SVG component.
+- All twelve supplied 2560×1600 zodiac scenes are imported as optimized 1600px WebP paintings and 640px thumbnails. `scripts/prepare_zodiac_assets.py` reproduces the import.
+- The supplied zodiac and planet SVG sprites replace typeface glyphs in the natal wheel, reading headers, Big Three and placement/aspect tables. Their geometry and gold/ivory colors are preserved.
+- `/zodiac` and `/zodiac/[slug]` provide illustrated Mongolian guides, linked from the landing page, education index and personal chart.
 
 `scripts/prepare_assets.py` reproduces the conversion from the named Windows Downloads files. Do not regenerate those approved scenes independently.
 
 ## Still needing supplied artwork and human approval
 
-The PRD also names twelve zodiac illustrations, ten planetary illustrations, a light-use brand variant and a report-cover illustration. These are launch-art deliverables, not prerequisites to correct chart calculations. The product currently uses precise glyphs. Generate these as one curated series using the shared art direction below; bring the resulting files back for integration.
+The twelve zodiac illustrations and both symbol sets have now been supplied and integrated. Full planetary illustrations, a light-use brand variant and a report-cover illustration remain optional follow-on art deliveries. The product uses the supplied planet SVGs for functional reading symbols. The original zodiac art brief below is retained as reference, not a request to regenerate the accepted collection.
 
 ### Shared art direction (prepend to every request)
 
 > Match the supplied Od Toirog hero and ouroboros/traveler emblem as the art reference. Matte night-black #0B0D10 and deep-indigo #0F1B2D paper; fine, controlled gold #D4AF37 copperplate engraving and restrained ivory #F6F3E6 highlights. Museum astronomical atlas, tactile linework, disciplined geometry, generous negative space. Consistent fine stroke weight, shallow engraving, subdued contrast, no glossy metallic 3D surfaces. No text, numbers, fake chart labels, neon purple, crystals, cartoon faces, horror, scattered particles, or extra symbols. Keep the same border, lighting and gold treatment across the series.
 
-### Zodiac set — 1024 × 1024, one symbol per image
+### Zodiac set — original brief (supplied collection integrated)
 
 > Center a single [SUBJECT] as a delicate engraved vignette inside one thin incomplete circular frame. Maintain equal visual scale and margins across the set. The subject occupies the central 55%; the remaining area stays quiet. No text.
 
