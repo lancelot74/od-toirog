@@ -6,7 +6,7 @@ test.beforeEach(async({page})=>{
 });
 
 for(const sign of zodiacGuides){
-  test(`${sign.slug}: supplied artwork, symbols, Mongolian guide and metadata`,async({page})=>{
+  test(`${sign.slug}: full unshaded artwork, planet symbols, guide and metadata`,async({page})=>{
     const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
     const response=await page.goto(`/od-toirog/zodiac/${sign.slug}/`,{waitUntil:'domcontentloaded'});
     expect(response?.status()).toBe(200);
@@ -16,10 +16,27 @@ for(const sign of zodiacGuides){
     await expect(image).toHaveAttribute('src',`/od-toirog/assets/zodiac/${sign.slug}.webp`);
     await image.evaluate(el=>(el as HTMLImageElement).decode());
     await expect(page.locator('meta[property="og:image"]').first()).toHaveAttribute('content',new RegExp(`${sign.slug}\\.webp$`));
-    const symbol=page.locator('.zodiac-hero use');
-    await expect(symbol).toHaveAttribute('href',`/od-toirog/assets/sprites/zodiac.svg#ot-${sign.slug}`);
-    // A matching href alone is insufficient: external <use> must render geometry.
-    await expect.poll(()=>symbol.evaluate(el=>(el as SVGGraphicsElement).getBBox().width)).toBeGreaterThan(0);
+    await expect(page.locator('use[href*="zodiac.svg"]')).toHaveCount(0);
+    for(const width of [320,768,1440]){
+      await page.setViewportSize({width,height:900});
+      const dimensions=await image.evaluate(el=>{
+        const img=el as HTMLImageElement,box=img.getBoundingClientRect();
+        return {display:box.width/box.height,original:img.naturalWidth/img.naturalHeight,filter:getComputedStyle(img).filter,opacity:getComputedStyle(img).opacity};
+      });
+      expect(dimensions.display).toBeCloseTo(dimensions.original,2);
+      expect(dimensions.filter).toBe('none');
+      expect(dimensions.opacity).toBe('1');
+      const layout=await page.locator('.zodiac-hero').evaluate(el=>{
+        const image=el.querySelector('img')!.getBoundingClientRect();
+        const paragraphs=Array.from(el.querySelectorAll<HTMLElement>('.zodiac-hero-copy > *'));
+        return {shade:getComputedStyle(el,'::after').content,textFits:paragraphs.every(p=>{
+          const box=p.getBoundingClientRect();
+          return p.scrollWidth<=p.clientWidth+1&&box.top>=image.top&&box.bottom<=image.bottom&&box.right<=image.left+image.width*.48;
+        })};
+      });
+      expect(['none','normal']).toContain(layout.shade);
+      expect(layout.textFits).toBe(true);
+    }
     const planet=page.locator('.zodiac-facts use').first();
     await expect.poll(()=>planet.evaluate(el=>(el as SVGGraphicsElement).getBBox().width)).toBeGreaterThan(0);
     await expect(page.locator('#relationships')).toContainText(sign.relationships);

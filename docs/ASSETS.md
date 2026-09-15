@@ -8,7 +8,8 @@
 - A social/Open Graph composition assembled from the supplied artwork.
 - Product chart previews use real Swiss Ephemeris reference data and the actual SVG component.
 - All twelve supplied 2560×1600 zodiac scenes are imported as optimized 1600px WebP paintings and 640px thumbnails. `scripts/prepare_zodiac_assets.py` reproduces the import.
-- The supplied zodiac and planet SVG sprites replace typeface glyphs in the natal wheel, reading headers, Big Three and placement/aspect tables. Their geometry and gold/ivory colors are preserved.
+- The supplied planet SVGs appear in the natal wheel, reading headers, Big Three and placement/aspect tables. Zodiac signs use written Mongolian names in ivory to distinguish them from the gold planet icons. The supplied zodiac sprite remains in the asset library.
+- Individual zodiac guides display the full original 8:5 painting without cropping or a dark overlay. The title scales with the artwork and sits over its intentionally empty left side.
 - `/zodiac` and `/zodiac/[slug]` provide illustrated Mongolian guides, linked from the landing page, education index and personal chart.
 
 `scripts/prepare_assets.py` reproduces the conversion from the named Windows Downloads files. Do not regenerate those approved scenes independently.

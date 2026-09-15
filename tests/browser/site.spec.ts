@@ -84,12 +84,16 @@ test('private chart renders backend data and produces a real PNG',async({page})=
   await signedIn(page);
   await page.goto('/od-toirog/chart/');
   await expect(page.getByRole('heading',{level:1})).toContainText('Тест');
-  await expect(page.locator('.real-chart use[href*="zodiac.svg"]')).toHaveCount(12);
+  await expect(page.locator('.real-chart use[href*="zodiac.svg"]')).toHaveCount(0);
+  await expect(page.locator('.real-chart .zodiac-chart-label')).toHaveCount(12);
+  await expect(page.locator('.real-chart .zodiac-chart-label').first()).toHaveText('Хонь');
+  await expect(page.locator('.real-chart .zodiac-chart-label').last()).toHaveText('Загас');
   await expect(page.locator('.real-chart use[href*="planet.svg"]')).toHaveCount(2);
   await expect(page.locator('.zodiac-portrait img')).toHaveAttribute('src',/capricorn-thumb\.webp$/);
   await page.getByRole('button',{name:/Сар Хилэнц/}).click();
   await expect(page.getByRole('heading',{name:'Сар',exact:true})).toBeVisible();
   await expect(page.locator('.zodiac-portrait img')).toHaveAttribute('src',/scorpio-thumb\.webp$/);
+  await page.locator('.real-chart').screenshot({path:'test-results/chart-zodiac-names.png'});
   const download=page.waitForEvent('download');
   await page.getByRole('button',{name:'PNG татах'}).click();
   expect((await download).suggestedFilename()).toBe('od-toirog.png');

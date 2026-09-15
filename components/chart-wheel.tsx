@@ -14,7 +14,12 @@ export function ChartWheel({chart,onSelect}:{chart:Chart;onSelect:(planet:Planet
   }
   return <svg viewBox="0 0 500 500" className="real-chart" role="group" aria-label="Төрсөн мөчийн натал зураг">
     <circle cx="250" cy="250" r="240" className="chart-line strong"/><circle cx="250" cy="250" r="205" className="chart-line"/><circle cx="250" cy="250" r="130" className="chart-line faint"/>
-    {zodiacSlugs.map((slug,i)=>{const a=at(i*30,205),b=at(i*30,240),label=at(i*30+15,224);return <g key={slug}><line x1={a.x} y1={a.y} x2={b.x} y2={b.y} className="chart-line"/><use href={symbolHref('zodiac',i)} x={label.x-13} y={label.y-13} width={26} height={26} aria-hidden="true"/><title>{mn.signs[i]}</title></g>;})}
+    {zodiacSlugs.map((slug,i)=>{
+      const longitude=i*30+15,a=at(i*30,205),b=at(i*30,240),label=at(longitude,224);
+      let rotation=((270-longitude+origin)%360+360)%360;
+      if(rotation>90&&rotation<270)rotation=(rotation+180)%360;
+      return <g key={slug}><line x1={a.x} y1={a.y} x2={b.x} y2={b.y} className="chart-line"/><text className="zodiac-chart-label" x={label.x} y={label.y} textAnchor="middle" dominantBaseline="central" transform={`rotate(${rotation} ${label.x} ${label.y})`}>{mn.signs[i]}</text></g>;
+    })}
     {chart.houses.map((lon,i)=>{const a=at(lon,130),b=at(lon,205),label=at(lon+8,195);return <g key={i}><line x1={a.x} y1={a.y} x2={b.x} y2={b.y} className="chart-line"/><text x={label.x} y={label.y} fontSize="9">{i+1}</text></g>;})}
     {chart.aspects.map(a=>{const first=chart.planets.find(p=>p.id===a.a)!,second=chart.planets.find(p=>p.id===a.b)!,x=at(first.longitude,130),y=at(second.longitude,130);return <line key={`${a.a}-${a.b}`} x1={x.x} y1={x.y} x2={y.x} y2={y.y} className={a.kind==='square'||a.kind==='opposition'?'aspect cool':'aspect'}><title>{mn.planets[a.a]} · {mn.planets[a.b]} · {mn.aspects[a.kind]}</title></line>;})}
     {placed.map(({p,r})=>{const a=at(p.longitude,r);return <g key={p.id} role="button" tabIndex={0} aria-label={`${p.name} ${mn.signs[p.sign]} ${p.degree.toFixed(2)}°`} onClick={()=>onSelect(p)} onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();onSelect(p);}}} className="body-select"><circle cx={a.x} cy={a.y} r="15" className="planet-dot"/><use href={symbolHref('planet',p.id)} x={a.x-14} y={a.y-14} width={28} height={28} aria-hidden="true" pointerEvents="none"/><title>{p.name} {p.degree.toFixed(2)}° {p.retrograde?'℞':''}</title></g>;})}

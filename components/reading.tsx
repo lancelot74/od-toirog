@@ -8,7 +8,7 @@ export function Reading({reading}:{reading:ReadingType}){
   const planet=/^(?:planet|transit|synastry|aspect)_(\d+)_/.exec(reading.key);
   const pair=/^(?:transit|synastry|aspect)_\d+_(\d+)_/.exec(reading.key);
   return <article className="reading-block">
-    {planet&&<div className="reading-symbols"><AstroSymbol kind="planet" index={Number(planet[1])} size={40}/>{placement&&<AstroSymbol kind="zodiac" index={Number(placement[2])} size={40}/>} {pair&&<AstroSymbol kind="planet" index={Number(pair[1])} size={40}/>}</div>}
+    {planet&&<div className="reading-symbols"><AstroSymbol kind="planet" index={Number(planet[1])} size={40}/>{placement&&<span className="reading-sign-name">Орд · <ZodiacLink index={Number(placement[2])}/></span>} {pair&&<AstroSymbol kind="planet" index={Number(pair[1])} size={40}/>}</div>}
     <p className="eyebrow">{reading.status==='approved'?'РЕДАКЦЫН ТАЙЛАЛ':'ТООЦООЛСОН БАРИМТ'}</p><h3>{reading.headline}</h3><p>{reading.summary}</p>
     {[['Давуу тал',reading.strengths],['Анхаарах зүйл',reading.challenges],['Харилцаа',reading.relationships]].map(([label,items])=>Array.isArray(items)&&items.length>0?<div key={String(label)}><h4>{String(label)}</h4><ul>{items.map(s=><li key={s}>{s}</li>)}</ul></div>:null)}
     {placement&&<p><ZodiacLink index={Number(placement[2])}/> · Ордын тухай</p>}
