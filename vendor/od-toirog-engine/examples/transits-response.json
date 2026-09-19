@@ -1,0 +1,539 @@
+{
+  "provenance": {
+    "engine_version": "0.1.0",
+    "astronomy_library": "skyfield 1.54",
+    "ephemeris": "JPL DE440s",
+    "ephemeris_sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
+    "time_data_sha256": "c7d7536d898dfa9f8cd43e8044ff51e108cc8289675a13fee9822010a1c4935c",
+    "timezone_database": "tzdata 2026.4 / IANA 2026d",
+    "coordinate_system": "apparent geocentric true ecliptic and equinox of date",
+    "observer": "earth_center",
+    "zodiac": "tropical",
+    "calendar": "proleptic_gregorian",
+    "speed_method": "centered difference of longitude at t +/- 300 SI seconds",
+    "rules_version": "od-toirog-editorial-0.1.0",
+    "rules_sha256": "8b84782de84da05ddb938895cb27148268354e476d8202bfbd2e399caaa2fb44",
+    "supported_utc_start": "1900-01-01T00:00:00Z",
+    "supported_utc_end_exclusive": "2100-01-01T00:00:00Z"
+  },
+  "natal": {
+    "birth": {
+      "local_date": "2000-01-01",
+      "local_time": "12:00:00",
+      "timezone": "Asia/Ulaanbaatar",
+      "fold": null,
+      "latitude": 47.9189,
+      "longitude": 106.9176
+    },
+    "utc": "2000-01-01T04:00:00Z",
+    "utc_offset_seconds": 28800,
+    "positions": [
+      {
+        "body": "sun",
+        "target_id": 10,
+        "target_kind": "body_center",
+        "longitude_deg": 280.02911689263397,
+        "latitude_deg": 0.0002291197311494773,
+        "distance_au": 0.9833303234274465,
+        "sign": "capricorn",
+        "degree_in_sign": 10.029116892633965,
+        "speed_deg_per_day": 1.0194001378886242,
+        "retrograde": false,
+        "motion": "direct"
+      },
+      {
+        "body": "moon",
+        "target_id": 301,
+        "target_kind": "body_center",
+        "longitude_deg": 219.30808429180388,
+        "latitude_deg": 5.217479400201523,
+        "distance_au": 0.002683411751029912,
+        "sign": "scorpio",
+        "degree_in_sign": 9.30808429180388,
+        "speed_deg_per_day": 12.074126859549324,
+        "retrograde": false,
+        "motion": "direct"
+      },
+      {
+        "body": "mercury",
+        "target_id": 199,
+        "target_kind": "body_center",
+        "longitude_deg": 271.3708239325177,
+        "latitude_deg": -0.9621561317769038,
+        "distance_au": 1.4138999643479353,
+        "sign": "capricorn",
+        "degree_in_sign": 1.3708239325176805,
+        "speed_deg_per_day": 1.5545027727102934,
+        "retrograde": false,
+        "motion": "direct"
+      },
+      {
+        "body": "venus",
+        "target_id": 299,
+        "target_kind": "body_center",
+        "longitude_deg": 241.16284260983326,
+        "latitude_deg": 2.075637796888732,
+        "distance_au": 1.1354162664068859,
+        "sign": "sagittarius",
+        "degree_in_sign": 1.1628426098332625,
+        "speed_deg_per_day": 1.2086597462757709,
+        "retrograde": false,
+        "motion": "direct"
+      },
+      {
+        "body": "mars",
+        "target_id": 4,
+        "target_kind": "system_barycenter",
+        "longitude_deg": 327.7047493712828,
+        "latitude_deg": -1.071940501011452,
+        "distance_au": 1.8478804673678457,
+        "sign": "aquarius",
+        "degree_in_sign": 27.704749371282787,
+        "speed_deg_per_day": 0.7756632450646066,
+        "retrograde": false,
+        "motion": "direct"
+      },
+      {
+        "body": "jupiter",
+        "target_id": 5,
+        "target_kind": "system_barycenter",
+        "longitude_deg": 25.239687943299728,
+        "latitude_deg": -1.2639140125934334,
+        "distance_au": 4.616004759656152,
+        "sign": "aries",
+        "degree_in_sign": 25.239687943299728,
+        "speed_deg_per_day": 0.03963396658855345,
+        "retrograde": false,
+        "motion": "direct"
+      },
+      {
+        "body": "saturn",
+        "target_id": 6,
+        "target_kind": "system_barycenter",
+        "longitude_deg": 40.40241290997853,
+        "latitude_deg": -2.4464355195899805,
+        "distance_au": 8.648009130566088,
+        "sign": "taurus",
+        "degree_in_sign": 10.40241290997853,
+        "speed_deg_per_day": -0.020553837531679164,
+        "retrograde": true,
+        "motion": "retrograde"
+      },
+      {
+        "body": "uranus",
+        "target_id": 7,
+        "target_kind": "system_barycenter",
+        "longitude_deg": 314.7924313632695,
+        "latitude_deg": -0.6584172252436489,
+        "distance_au": 20.72386438819894,
+        "sign": "aquarius",
+        "degree_in_sign": 14.792431363269486,
+        "speed_deg_per_day": 0.050194788594126294,
+        "retrograde": false,
+        "motion": "direct"
+      },
+      {
+        "body": "neptune",
+        "target_id": 8,
+        "target_kind": "system_barycenter",
+        "longitude_deg": 303.18116861006064,
+        "latitude_deg": 0.23506818423580914,
+        "distance_au": 31.022247663341332,
+        "sign": "aquarius",
+        "degree_in_sign": 3.181168610060638,
+        "speed_deg_per_day": 0.03549751077298424,
+        "retrograde": false,
+        "motion": "direct"
+      },
+      {
+        "body": "pluto",
+        "target_id": 9,
+        "target_kind": "system_barycenter",
+        "longitude_deg": 251.44304781667313,
+        "latitude_deg": 10.854749417584229,
+        "distance_au": 31.067000782866877,
+        "sign": "sagittarius",
+        "degree_in_sign": 11.443047816673129,
+        "speed_deg_per_day": 0.035235619743161806,
+        "retrograde": false,
+        "motion": "direct"
+      }
+    ],
+    "aspects": [
+      {
+        "id": "natal:sun:saturn:trine",
+        "left_body": "sun",
+        "right_body": "saturn",
+        "aspect": "trine",
+        "angle_deg": 120.0,
+        "separation_deg": 120.37329601734456,
+        "orb_deg": 0.37329601734455764,
+        "allowed_orb_deg": 6.0,
+        "geometric_strength": 0.8794388252341838
+      },
+      {
+        "id": "natal:sun:moon:sextile",
+        "left_body": "sun",
+        "right_body": "moon",
+        "aspect": "sextile",
+        "angle_deg": 60.0,
+        "separation_deg": 60.721032600830085,
+        "orb_deg": 0.7210326008300854,
+        "allowed_orb_deg": 4.0,
+        "geometric_strength": 0.6719767003011946
+      },
+      {
+        "id": "natal:moon:saturn:opposition",
+        "left_body": "moon",
+        "right_body": "saturn",
+        "aspect": "opposition",
+        "angle_deg": 180.0,
+        "separation_deg": 178.90567138182536,
+        "orb_deg": 1.094328618174643,
+        "allowed_orb_deg": 6.0,
+        "geometric_strength": 0.6684892140683419
+      },
+      {
+        "id": "natal:venus:neptune:sextile",
+        "left_body": "venus",
+        "right_body": "neptune",
+        "aspect": "sextile",
+        "angle_deg": 60.0,
+        "separation_deg": 62.018326000227376,
+        "orb_deg": 2.0183260002273755,
+        "allowed_orb_deg": 4.0,
+        "geometric_strength": 0.24543949008592697
+      },
+      {
+        "id": "natal:venus:mars:square",
+        "left_body": "venus",
+        "right_body": "mars",
+        "aspect": "square",
+        "angle_deg": 90.0,
+        "separation_deg": 86.54190676144952,
+        "orb_deg": 3.4580932385504752,
+        "allowed_orb_deg": 6.0,
+        "geometric_strength": 0.17948027733063365
+      },
+      {
+        "id": "natal:mars:jupiter:sextile",
+        "left_body": "mars",
+        "right_body": "jupiter",
+        "aspect": "sextile",
+        "angle_deg": 60.0,
+        "separation_deg": 57.53493857201693,
+        "orb_deg": 2.4650614279830734,
+        "allowed_orb_deg": 4.0,
+        "geometric_strength": 0.14725227624158513
+      },
+      {
+        "id": "natal:saturn:uranus:square",
+        "left_body": "saturn",
+        "right_body": "uranus",
+        "aspect": "square",
+        "angle_deg": 90.0,
+        "separation_deg": 85.60998154670904,
+        "orb_deg": 4.390018453290963,
+        "allowed_orb_deg": 6.0,
+        "geometric_strength": 0.07200112724287838
+      },
+      {
+        "id": "natal:uranus:pluto:sextile",
+        "left_body": "uranus",
+        "right_body": "pluto",
+        "aspect": "sextile",
+        "angle_deg": 60.0,
+        "separation_deg": 63.34938354659636,
+        "orb_deg": 3.349383546596357,
+        "allowed_orb_deg": 4.0,
+        "geometric_strength": 0.026456360589970918
+      },
+      {
+        "id": "natal:moon:uranus:square",
+        "left_body": "moon",
+        "right_body": "uranus",
+        "aspect": "square",
+        "angle_deg": 90.0,
+        "separation_deg": 95.4843470714656,
+        "orb_deg": 5.484347071465606,
+        "allowed_orb_deg": 6.0,
+        "geometric_strength": 0.00738605396405824
+      },
+      {
+        "id": "natal:mercury:mars:sextile",
+        "left_body": "mercury",
+        "right_body": "mars",
+        "aspect": "sextile",
+        "angle_deg": 60.0,
+        "separation_deg": 56.33392543876511,
+        "orb_deg": 3.6660745612348933,
+        "allowed_orb_deg": 4.0,
+        "geometric_strength": 0.006969137415904315
+      }
+    ],
+    "houses": null,
+    "ascendant": null,
+    "midheaven": null
+  },
+  "at_utc": "2026-09-17T00:00:00Z",
+  "transiting_positions": [
+    {
+      "body": "sun",
+      "target_id": 10,
+      "target_kind": "body_center",
+      "longitude_deg": 174.13581819487828,
+      "latitude_deg": -0.0001294362244603757,
+      "distance_au": 1.0052604092813884,
+      "sign": "virgo",
+      "degree_in_sign": 24.135818194878283,
+      "speed_deg_per_day": 0.9753919273744032,
+      "retrograde": false,
+      "motion": "direct"
+    },
+    {
+      "body": "moon",
+      "target_id": 301,
+      "target_kind": "body_center",
+      "longitude_deg": 243.68668908604283,
+      "latitude_deg": -5.2187708801640795,
+      "distance_au": 0.002683067667991561,
+      "sign": "sagittarius",
+      "degree_in_sign": 3.6866890860428327,
+      "speed_deg_per_day": 12.071700625446738,
+      "retrograde": false,
+      "motion": "direct"
+    },
+    {
+      "body": "mercury",
+      "target_id": 199,
+      "target_kind": "body_center",
+      "longitude_deg": 190.3215482950596,
+      "latitude_deg": -0.0004005721690566036,
+      "distance_au": 1.3198451774516862,
+      "sign": "libra",
+      "degree_in_sign": 10.321548295059614,
+      "speed_deg_per_day": 1.5767463832871726,
+      "retrograde": false,
+      "motion": "direct"
+    },
+    {
+      "body": "venus",
+      "target_id": 299,
+      "target_kind": "body_center",
+      "longitude_deg": 213.92961093266277,
+      "latitude_deg": -5.469005462431676,
+      "distance_au": 0.43641122924180037,
+      "sign": "scorpio",
+      "degree_in_sign": 3.9296109326627686,
+      "speed_deg_per_day": 0.5173835547325325,
+      "retrograde": false,
+      "motion": "direct"
+    },
+    {
+      "body": "mars",
+      "target_id": 4,
+      "target_kind": "system_barycenter",
+      "longitude_deg": 113.34458670315777,
+      "latitude_deg": 0.7828069297946542,
+      "distance_au": 1.7567959220715994,
+      "sign": "cancer",
+      "degree_in_sign": 23.344586703157773,
+      "speed_deg_per_day": 0.6086601241904646,
+      "retrograde": false,
+      "motion": "direct"
+    },
+    {
+      "body": "jupiter",
+      "target_id": 5,
+      "target_kind": "system_barycenter",
+      "longitude_deg": 136.95884796580074,
+      "latitude_deg": 0.5629027882326341,
+      "distance_au": 6.0683658912417595,
+      "sign": "leo",
+      "degree_in_sign": 16.958847965800743,
+      "speed_deg_per_day": 0.19625609735203398,
+      "retrograde": false,
+      "motion": "direct"
+    },
+    {
+      "body": "saturn",
+      "target_id": 6,
+      "target_kind": "system_barycenter",
+      "longitude_deg": 12.641481479612542,
+      "latitude_deg": -2.693683854468653,
+      "distance_au": 8.481150493780392,
+      "sign": "aries",
+      "degree_in_sign": 12.641481479612542,
+      "speed_deg_per_day": -0.07221017255733386,
+      "retrograde": true,
+      "motion": "retrograde"
+    },
+    {
+      "body": "uranus",
+      "target_id": 7,
+      "target_kind": "system_barycenter",
+      "longitude_deg": 65.68050190075793,
+      "latitude_deg": -0.1538577979039265,
+      "distance_au": 19.1020818672025,
+      "sign": "gemini",
+      "degree_in_sign": 5.680501900757932,
+      "speed_deg_per_day": -0.005256383823052602,
+      "retrograde": true,
+      "motion": "retrograde"
+    },
+    {
+      "body": "neptune",
+      "target_id": 8,
+      "target_kind": "system_barycenter",
+      "longitude_deg": 3.2488711077734993,
+      "latitude_deg": -1.4181831107837812,
+      "distance_au": 28.885657671604186,
+      "sign": "aries",
+      "degree_in_sign": 3.2488711077734993,
+      "speed_deg_per_day": -0.027289275506973354,
+      "retrograde": true,
+      "motion": "retrograde"
+    },
+    {
+      "body": "pluto",
+      "target_id": 9,
+      "target_kind": "system_barycenter",
+      "longitude_deg": 303.2618969372454,
+      "latitude_deg": -4.298823239199581,
+      "distance_au": 34.95937938200354,
+      "sign": "aquarius",
+      "degree_in_sign": 3.2618969372454103,
+      "speed_deg_per_day": -0.012779411691553832,
+      "retrograde": true,
+      "motion": "retrograde"
+    }
+  ],
+  "aspects": [
+    {
+      "id": "transit:neptune:neptune:sextile",
+      "left_body": "neptune",
+      "right_body": "neptune",
+      "aspect": "sextile",
+      "angle_deg": 60.0,
+      "separation_deg": 60.067702497712844,
+      "orb_deg": 0.06770249771284398,
+      "allowed_orb_deg": 2.0,
+      "geometric_strength": 0.9334434093362954
+    },
+    {
+      "id": "transit:pluto:neptune:conjunction",
+      "left_body": "pluto",
+      "right_body": "neptune",
+      "aspect": "conjunction",
+      "angle_deg": 0.0,
+      "separation_deg": 0.0807283271847723,
+      "orb_deg": 0.0807283271847723,
+      "allowed_orb_deg": 2.0,
+      "geometric_strength": 0.9209009385177406
+    },
+    {
+      "id": "transit:mercury:sun:square",
+      "left_body": "mercury",
+      "right_body": "sun",
+      "aspect": "square",
+      "angle_deg": 90.0,
+      "separation_deg": 89.70756859757435,
+      "orb_deg": 0.2924314024256489,
+      "allowed_orb_deg": 2.0,
+      "geometric_strength": 0.728947628855509
+    },
+    {
+      "id": "transit:venus:neptune:square",
+      "left_body": "venus",
+      "right_body": "neptune",
+      "aspect": "square",
+      "angle_deg": 90.0,
+      "separation_deg": 89.25155767739787,
+      "orb_deg": 0.7484423226021306,
+      "allowed_orb_deg": 2.0,
+      "geometric_strength": 0.3915991549633873
+    },
+    {
+      "id": "transit:moon:neptune:sextile",
+      "left_body": "moon",
+      "right_body": "neptune",
+      "aspect": "sextile",
+      "angle_deg": 60.0,
+      "separation_deg": 59.494479524017805,
+      "orb_deg": 0.5055204759821947,
+      "allowed_orb_deg": 1.0,
+      "geometric_strength": 0.24450999967287526
+    },
+    {
+      "id": "transit:mercury:pluto:sextile",
+      "left_body": "mercury",
+      "right_body": "pluto",
+      "aspect": "sextile",
+      "angle_deg": 60.0,
+      "separation_deg": 61.121499521613515,
+      "orb_deg": 1.121499521613515,
+      "allowed_orb_deg": 2.0,
+      "geometric_strength": 0.19294077263132073
+    },
+    {
+      "id": "transit:saturn:pluto:trine",
+      "left_body": "saturn",
+      "right_body": "pluto",
+      "aspect": "trine",
+      "angle_deg": 120.0,
+      "separation_deg": 121.19843366293941,
+      "orb_deg": 1.198433662939408,
+      "allowed_orb_deg": 2.0,
+      "geometric_strength": 0.16062714817718368
+    },
+    {
+      "id": "transit:neptune:mercury:square",
+      "left_body": "neptune",
+      "right_body": "mercury",
+      "aspect": "square",
+      "angle_deg": 90.0,
+      "separation_deg": 91.8780471752558,
+      "orb_deg": 1.8780471752558014,
+      "allowed_orb_deg": 2.0,
+      "geometric_strength": 0.0037181228657723014
+    },
+    {
+      "id": "transit:mars:jupiter:square",
+      "left_body": "mars",
+      "right_body": "jupiter",
+      "aspect": "square",
+      "angle_deg": 90.0,
+      "separation_deg": 88.10489875985803,
+      "orb_deg": 1.895101240141969,
+      "allowed_orb_deg": 2.0,
+      "geometric_strength": 0.002750937454938219
+    }
+  ],
+  "reading": [
+    {
+      "evidence_id": "transit:mercury:sun:square",
+      "title": "Transiting Mercury square natal Sun",
+      "text": "In this astrology framework, Mercury relates to communication and learning, and Sun to identity and self-expression. Pause before reacting and check what you actually need."
+    },
+    {
+      "evidence_id": "transit:venus:neptune:square",
+      "title": "Transiting Venus square natal Neptune",
+      "text": "In this astrology framework, Venus relates to affection and shared values, and Neptune to imagination and ideals. Pause before reacting and check what you actually need."
+    },
+    {
+      "evidence_id": "transit:moon:neptune:sextile",
+      "title": "Transiting Moon sextile natal Neptune",
+      "text": "In this astrology framework, Moon relates to comfort and emotional needs, and Neptune to imagination and ideals. Consider a small constructive step you can take today."
+    },
+    {
+      "evidence_id": "transit:mercury:pluto:sextile",
+      "title": "Transiting Mercury sextile natal Pluto",
+      "text": "In this astrology framework, Mercury relates to communication and learning, and Pluto to intensity and transformation. Consider a small constructive step you can take today."
+    },
+    {
+      "evidence_id": "transit:neptune:mercury:square",
+      "title": "Transiting Neptune square natal Mercury",
+      "text": "In this astrology framework, Neptune relates to imagination and ideals, and Mercury to communication and learning. Pause before reacting and check what you actually need."
+    }
+  ]
+}

@@ -7,6 +7,7 @@ Create a project. Run migrations in order in the SQL editor:
 1. `supabase/migrations/001_foundation.sql`
 2. `supabase/migrations/002_knowledge_seed.sql`
 3. `supabase/migrations/003_admin_history.sql`
+4. `supabase/migrations/004_calculation_methods.sql`
 
 These create private profiles, structured chart storage, versioned daily caches, compatibility reports, an editorial knowledge table, and operation logs. RLS is enabled on every table. Authenticated users can only CRUD their own profiles; calculated rows are written through the backend and are read-only to their owners. The seed interpretation is **draft**.
 
@@ -53,13 +54,17 @@ Use your actual hostname if different. PKCE callback handling runs in the browse
 
 ## 4. Backend and astronomy
 
-Run `python scripts/fetch_ephemeris.py` once to obtain the official planetary and Moon data, then set `EPHEMERIS_PATH`. Without these files Swiss Ephemeris uses its built-in Moshier calculation; the API explicitly reports the engine actually used. Check Swiss Ephemeris licensing for the deployment model before public distribution.
+**Default method: JPL DE440s v0.1.** Install dependencies from the repo root, then run `python scripts/fetch_jpl_ephemeris.py`. It verifies the local kernel or downloads the identical data for a fresh clone. `OD_TOIROG_EPHEMERIS` optionally selects an absolute path. There are no calculation-time downloads. JPL requires a known birth time and has no houses, Ascendant, or MC. The existing Swiss method remains an explicit alternative.
+
+Migration 004 retains old results and adds method/timezone/provenance-specific cache keys and an explicit DST-fold confirmation flag. Existing ambiguous-time profiles require confirmation in the edit screen before JPL calculation.
+
+For the **Swiss alternative**, run `python scripts/fetch_ephemeris.py` once to obtain the official planetary and Moon data, then set `EPHEMERIS_PATH`. Without these files Swiss Ephemeris uses its built-in Moshier calculation; the API explicitly reports the engine actually used. Check Swiss Ephemeris licensing for the deployment model before public distribution.
 
 The service uses tropical/geocentric positions, Placidus houses and IANA historical timezone rules. Coordinates determine the timezone server-side. Date range: 1900 to today. Open-Meteo/GeoNames supplies place search; results should be reviewed for Mongolian locality spelling and historic boundary edge cases.
 
 The provided backend runs one worker. Per-profile async locks prevent concurrent duplicate daily generation in that worker, with PostgreSQL enforcing unique daily cache records. Use a distributed job/lease mechanism before scaling generation across multiple backend processes; database uniqueness alone cannot prevent duplicate provider costs.
 
-Unknown time: explicitly use 12:00 local as a reference, omit Ascendant/MC/houses, mark Moon and sign-changing bodies uncertain, and exclude uncertain bodies from aspect interpretations. DST gaps reject input; repeated local times support first/second occurrence.
+Unknown time in the Swiss alternative: explicitly use 12:00 local as a reference, omit Ascendant/MC/houses, mark Moon and sign-changing bodies uncertain, and exclude uncertain bodies from aspect interpretations. DST gaps reject input; repeated local times require an explicit first/second occurrence. See `CALCULATION_METHOD.md` for JPL's separate conventions.
 
 ## 5. Editorial administration
 

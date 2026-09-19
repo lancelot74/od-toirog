@@ -1,0 +1,326 @@
+{
+  "checked_at": "2026-09-19T13:35:59.473984+00:00",
+  "count": 50,
+  "max_longitude_error_arcsec": 0.05980903304134699,
+  "max_latitude_error_arcsec": 0.04088224742747615,
+  "tolerance_arcsec": 2.0,
+  "provenance": {
+    "engine_version": "0.1.0",
+    "astronomy_library": "skyfield 1.54",
+    "ephemeris": "JPL DE440s",
+    "ephemeris_sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
+    "time_data_sha256": "c7d7536d898dfa9f8cd43e8044ff51e108cc8289675a13fee9822010a1c4935c",
+    "timezone_database": "tzdata 2026.4 / IANA 2026d",
+    "coordinate_system": "apparent geocentric true ecliptic and equinox of date",
+    "observer": "earth_center",
+    "zodiac": "tropical",
+    "calendar": "proleptic_gregorian",
+    "speed_method": "centered difference of longitude at t +/- 300 SI seconds",
+    "rules_version": "od-toirog-editorial-0.1.0",
+    "rules_sha256": "8b84782de84da05ddb938895cb27148268354e476d8202bfbd2e399caaa2fb44",
+    "supported_utc_start": "1900-01-01T00:00:00Z",
+    "supported_utc_end_exclusive": "2100-01-01T00:00:00Z"
+  },
+  "comparisons": [
+    {
+      "body": "sun",
+      "at": "1986-01-01T00:00:00+00:00",
+      "longitude_error_arcsec": 0.04735674488074437,
+      "latitude_error_arcsec": 0.03905566701829217
+    },
+    {
+      "body": "sun",
+      "at": "2000-01-01T12:00:00+00:00",
+      "longitude_error_arcsec": 0.04820856315745914,
+      "latitude_error_arcsec": 0.03851172892820521
+    },
+    {
+      "body": "sun",
+      "at": "2016-07-01T03:00:00+00:00",
+      "longitude_error_arcsec": 0.04707979225031522,
+      "latitude_error_arcsec": 0.03734146135993389
+    },
+    {
+      "body": "sun",
+      "at": "2024-04-08T18:00:00+00:00",
+      "longitude_error_arcsec": 0.04647551269272299,
+      "latitude_error_arcsec": 0.008532127518444337
+    },
+    {
+      "body": "sun",
+      "at": "2026-09-17T00:00:00+00:00",
+      "longitude_error_arcsec": 0.046781561843545205,
+      "latitude_error_arcsec": 0.024349591942647544
+    },
+    {
+      "body": "moon",
+      "at": "1986-01-01T00:00:00+00:00",
+      "longitude_error_arcsec": 0.04943633997527286,
+      "latitude_error_arcsec": 0.0344114983452215
+    },
+    {
+      "body": "moon",
+      "at": "2000-01-01T12:00:00+00:00",
+      "longitude_error_arcsec": 0.05162848227655559,
+      "latitude_error_arcsec": 0.008960991245032801
+    },
+    {
+      "body": "moon",
+      "at": "2016-07-01T03:00:00+00:00",
+      "longitude_error_arcsec": 0.04915639443652253,
+      "latitude_error_arcsec": 0.01584959965832411
+    },
+    {
+      "body": "moon",
+      "at": "2024-04-08T18:00:00+00:00",
+      "longitude_error_arcsec": 0.04515028223295303,
+      "latitude_error_arcsec": 0.00856061062857183
+    },
+    {
+      "body": "moon",
+      "at": "2026-09-17T00:00:00+00:00",
+      "longitude_error_arcsec": 0.042429754148543,
+      "latitude_error_arcsec": 0.02116859068514998
+    },
+    {
+      "body": "mercury",
+      "at": "1986-01-01T00:00:00+00:00",
+      "longitude_error_arcsec": 0.04769220824982767,
+      "latitude_error_arcsec": 0.032961229854922
+    },
+    {
+      "body": "mercury",
+      "at": "2000-01-01T12:00:00+00:00",
+      "longitude_error_arcsec": 0.04785005323810765,
+      "latitude_error_arcsec": 0.03596911949608206
+    },
+    {
+      "body": "mercury",
+      "at": "2016-07-01T03:00:00+00:00",
+      "longitude_error_arcsec": 0.04711786248208227,
+      "latitude_error_arcsec": 0.03526311649841851
+    },
+    {
+      "body": "mercury",
+      "at": "2024-04-08T18:00:00+00:00",
+      "longitude_error_arcsec": 0.04480563069364507,
+      "latitude_error_arcsec": 0.004708642431161536
+    },
+    {
+      "body": "mercury",
+      "at": "2026-09-17T00:00:00+00:00",
+      "longitude_error_arcsec": 0.0467822146333674,
+      "latitude_error_arcsec": 0.014500191396227139
+    },
+    {
+      "body": "venus",
+      "at": "1986-01-01T00:00:00+00:00",
+      "longitude_error_arcsec": 0.04748831047436397,
+      "latitude_error_arcsec": 0.03762354164635884
+    },
+    {
+      "body": "venus",
+      "at": "2000-01-01T12:00:00+00:00",
+      "longitude_error_arcsec": 0.049341633064159396,
+      "latitude_error_arcsec": 0.020936133115156963
+    },
+    {
+      "body": "venus",
+      "at": "2016-07-01T03:00:00+00:00",
+      "longitude_error_arcsec": 0.046805859437881736,
+      "latitude_error_arcsec": 0.03892559190457057
+    },
+    {
+      "body": "venus",
+      "at": "2024-04-08T18:00:00+00:00",
+      "longitude_error_arcsec": 0.04737974549016144,
+      "latitude_error_arcsec": 0.01828173568689806
+    },
+    {
+      "body": "venus",
+      "at": "2026-09-17T00:00:00+00:00",
+      "longitude_error_arcsec": 0.042957585878866666,
+      "latitude_error_arcsec": 0.0016647540338254885
+    },
+    {
+      "body": "mars",
+      "at": "1986-01-01T00:00:00+00:00",
+      "longitude_error_arcsec": 0.04827960439115486,
+      "latitude_error_arcsec": 0.007397903454631205
+    },
+    {
+      "body": "mars",
+      "at": "2000-01-01T12:00:00+00:00",
+      "longitude_error_arcsec": 0.04850424011237919,
+      "latitude_error_arcsec": 0.03642874941540697
+    },
+    {
+      "body": "mars",
+      "at": "2016-07-01T03:00:00+00:00",
+      "longitude_error_arcsec": 0.04538609160817941,
+      "latitude_error_arcsec": 0.014749157479343467
+    },
+    {
+      "body": "mars",
+      "at": "2024-04-08T18:00:00+00:00",
+      "longitude_error_arcsec": 0.047233792020051624,
+      "latitude_error_arcsec": 0.03010107026435449
+    },
+    {
+      "body": "mars",
+      "at": "2026-09-17T00:00:00+00:00",
+      "longitude_error_arcsec": 0.04681136804265407,
+      "latitude_error_arcsec": 0.03934726075480732
+    },
+    {
+      "body": "jupiter",
+      "at": "1986-01-01T00:00:00+00:00",
+      "longitude_error_arcsec": 0.04768686540046474,
+      "latitude_error_arcsec": 0.039519078556793374
+    },
+    {
+      "body": "jupiter",
+      "at": "2000-01-01T12:00:00+00:00",
+      "longitude_error_arcsec": 0.04897811313639977,
+      "latitude_error_arcsec": 0.0038583072193176804
+    },
+    {
+      "body": "jupiter",
+      "at": "2016-07-01T03:00:00+00:00",
+      "longitude_error_arcsec": 0.04779320527177333,
+      "latitude_error_arcsec": 0.02802993987796043
+    },
+    {
+      "body": "jupiter",
+      "at": "2024-04-08T18:00:00+00:00",
+      "longitude_error_arcsec": 0.04714767533187114,
+      "latitude_error_arcsec": 0.011899692285144425
+    },
+    {
+      "body": "jupiter",
+      "at": "2026-09-17T00:00:00+00:00",
+      "longitude_error_arcsec": 0.047036882676820824,
+      "latitude_error_arcsec": 0.03847763748261457
+    },
+    {
+      "body": "saturn",
+      "at": "1986-01-01T00:00:00+00:00",
+      "longitude_error_arcsec": 0.04859934657588383,
+      "latitude_error_arcsec": 0.023781794188337813
+    },
+    {
+      "body": "saturn",
+      "at": "2000-01-01T12:00:00+00:00",
+      "longitude_error_arcsec": 0.04996663041083593,
+      "latitude_error_arcsec": 0.006688649308017602
+    },
+    {
+      "body": "saturn",
+      "at": "2016-07-01T03:00:00+00:00",
+      "longitude_error_arcsec": 0.048066575845950865,
+      "latitude_error_arcsec": 0.02577401891192821
+    },
+    {
+      "body": "saturn",
+      "at": "2024-04-08T18:00:00+00:00",
+      "longitude_error_arcsec": 0.047590500935257296,
+      "latitude_error_arcsec": 0.029382766539853833
+    },
+    {
+      "body": "saturn",
+      "at": "2026-09-17T00:00:00+00:00",
+      "longitude_error_arcsec": 0.04852660512142393,
+      "latitude_error_arcsec": 0.01279608715147873
+    },
+    {
+      "body": "uranus",
+      "at": "1986-01-01T00:00:00+00:00",
+      "longitude_error_arcsec": 0.04738527793506364,
+      "latitude_error_arcsec": 0.03145141359126025
+    },
+    {
+      "body": "uranus",
+      "at": "2000-01-01T12:00:00+00:00",
+      "longitude_error_arcsec": 0.04826036540634959,
+      "latitude_error_arcsec": 0.03980866340449474
+    },
+    {
+      "body": "uranus",
+      "at": "2016-07-01T03:00:00+00:00",
+      "longitude_error_arcsec": 0.0477040962891806,
+      "latitude_error_arcsec": 0.0049361266574177165
+    },
+    {
+      "body": "uranus",
+      "at": "2024-04-08T18:00:00+00:00",
+      "longitude_error_arcsec": 0.04687456126930556,
+      "latitude_error_arcsec": 0.013532729040766078
+    },
+    {
+      "body": "uranus",
+      "at": "2026-09-17T00:00:00+00:00",
+      "longitude_error_arcsec": 0.04680272850237088,
+      "latitude_error_arcsec": 0.022327545864575526
+    },
+    {
+      "body": "neptune",
+      "at": "1986-01-01T00:00:00+00:00",
+      "longitude_error_arcsec": 0.04787349985235778,
+      "latitude_error_arcsec": 0.03690823420088307
+    },
+    {
+      "body": "neptune",
+      "at": "2000-01-01T12:00:00+00:00",
+      "longitude_error_arcsec": 0.0481511575571858,
+      "latitude_error_arcsec": 0.04088224742747615
+    },
+    {
+      "body": "neptune",
+      "at": "2016-07-01T03:00:00+00:00",
+      "longitude_error_arcsec": 0.04737595081678592,
+      "latitude_error_arcsec": 0.03057036130158508
+    },
+    {
+      "body": "neptune",
+      "at": "2024-04-08T18:00:00+00:00",
+      "longitude_error_arcsec": 0.04726972144908359,
+      "latitude_error_arcsec": 0.0220270667825595
+    },
+    {
+      "body": "neptune",
+      "at": "2026-09-17T00:00:00+00:00",
+      "longitude_error_arcsec": 0.047547984570428525,
+      "latitude_error_arcsec": 0.019118821612273962
+    },
+    {
+      "body": "pluto",
+      "at": "1986-01-01T00:00:00+00:00",
+      "longitude_error_arcsec": 0.05980903304134699,
+      "latitude_error_arcsec": 0.004672356440948988
+    },
+    {
+      "body": "pluto",
+      "at": "2000-01-01T12:00:00+00:00",
+      "longitude_error_arcsec": 0.0542368459264253,
+      "latitude_error_arcsec": 0.026548779968038616
+    },
+    {
+      "body": "pluto",
+      "at": "2016-07-01T03:00:00+00:00",
+      "longitude_error_arcsec": 0.04753530479320034,
+      "latitude_error_arcsec": 0.03883299738891566
+    },
+    {
+      "body": "pluto",
+      "at": "2024-04-08T18:00:00+00:00",
+      "longitude_error_arcsec": 0.0464885714563934,
+      "latitude_error_arcsec": 0.039796956156124
+    },
+    {
+      "body": "pluto",
+      "at": "2026-09-17T00:00:00+00:00",
+      "longitude_error_arcsec": 0.04693408352522965,
+      "latitude_error_arcsec": 0.039741118488834104
+    }
+  ]
+}

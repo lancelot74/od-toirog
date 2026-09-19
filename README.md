@@ -1,6 +1,6 @@
 # ОД ТОЙРОГ
 
-Mongolian-first astrology web application. Next.js static frontend + authenticated FastAPI backend + Supabase/PostgreSQL.
+Mongolian-first astrology web application. Next.js static frontend + authenticated FastAPI backend + Supabase/PostgreSQL. Calculation methods: Skyfield/JPL DE440s v0.1 (default), and Swiss Ephemeris/Placidus.
 
 ## Run locally
 
@@ -10,6 +10,7 @@ Node 22+, pnpm 10.15.1, Python 3.12.
 corepack pnpm install
 python3 -m venv .venv
 .venv/bin/pip install -r apps/api/requirements.txt
+.venv/bin/python scripts/fetch_jpl_ephemeris.py
 ```
 
 Create `.env.local` using `.env.example`. Follow **[docs/SETUP.md](docs/SETUP.md)** to configure Supabase, Google OAuth, and the backend.
@@ -39,6 +40,7 @@ corepack pnpm lint
 corepack pnpm build
 corepack pnpm typecheck
 .venv/bin/python -m pytest tests -q
+.venv/bin/python -m pytest vendor/od-toirog-engine/tests -q
 node --test tests/rls.test.mjs
 corepack pnpm exec playwright test
 ```
@@ -52,3 +54,5 @@ Run type checking **after**, not concurrently with, a build because Next regener
 - This project uses static export. `pnpm start` serves the built `out/` locally using Python on port 3001; use Pages or another HTTPS static host for production.
 
 See [docs/PRD_STATUS.md](docs/PRD_STATUS.md) for implementation coverage and external launch gates. Tests do not substitute for live Google OAuth, RLS, language, and astronomical reference validation.
+
+**New method:** [docs/CALCULATION_METHOD.md](docs/CALCULATION_METHOD.md) explains the formulas, center conventions, timezone rules, 15-minute daily scan, validation and limits. Public guide: `/learn/calculations/`. Apply migration `004_calculation_methods.sql` to keep calculation caches separate.

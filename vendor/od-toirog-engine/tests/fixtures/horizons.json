@@ -1,0 +1,338 @@
+{
+  "retrieved_at": "2026-09-17T13:57:21.908652+00:00",
+  "source": "NASA/JPL Horizons API; observer table, quantity 31; geocenter 500@399",
+  "frame": "apparent IAU76/80 ecliptic and equinox of date; no refraction",
+  "comparison_tolerance_arcsec": 2.0,
+  "records": [
+    {
+      "body": "sun",
+      "target_id": 10,
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%2710%27&OBJ_DATA=%27NO%27&MAKE_EPHEM=%27YES%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27500%40399%27&TLIST=%271986-01-01+00%3A00%3A00%27%2C%272000-01-01+12%3A00%3A00%27%2C%272016-07-01+03%3A00%3A00%27%2C%272024-04-08+18%3A00%3A00%27%2C%272026-09-17+00%3A00%3A00%27&TLIST_TYPE=%27CAL%27&QUANTITIES=%2731%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&TIME_TYPE=%27UT%27&CAL_TYPE=%27GREGORIAN%27&APPARENT=%27AIRLESS%27",
+      "values": [
+        {
+          "at": "1986-01-01T00:00:00+00:00",
+          "longitude_deg": 280.2661281,
+          "latitude_deg": 0.0001522
+        },
+        {
+          "at": "2000-01-01T12:00:00+00:00",
+          "longitude_deg": 280.3689092,
+          "latitude_deg": 0.0002381
+        },
+        {
+          "at": "2016-07-01T03:00:00+00:00",
+          "longitude_deg": 99.7123403,
+          "latitude_deg": -0.0001089
+        },
+        {
+          "at": "2024-04-08T18:00:00+00:00",
+          "longitude_deg": 19.3861885,
+          "latitude_deg": -5.35e-05
+        },
+        {
+          "at": "2026-09-17T00:00:00+00:00",
+          "longitude_deg": 174.1358052,
+          "latitude_deg": -0.0001362
+        }
+      ],
+      "source_header": "\n\n*******************************************************************************\nEphemeris / API_USER Thu Sep 17 06:54:52 2026 Pasadena, USA      / Horizons    \n*******************************************************************************\nTarget body name: Sun (10)                        {source: DE441}\nCenter body name: Earth (399)                     {source: DE441}\nCenter-site name: GEOCENTRIC\n*******************************************************************************\nStart time      : A.D. 1986-Jan-01 00:00:00.0000 UT      \nStop  time      : A.D. 2026-Sep-17 00:00:00.0000 UT      \nStep-size       : 0 steps\n*******************************************************************************\nTarget pole/equ : IAU_SUN                         {East-longitude positive}\nTarget radii    : 695700.0, 695700.0, 695700.0 km {Equator_a, b, pole_c}       \nCenter geodetic : 0.0, 0.0, -6378.137             {E-lon(deg),Lat(deg),Alt(km)}\nCenter cylindric: 0.0, 0.0, 0.0                   {E-lon(deg),Dxy(km),Dz(km)}\nCenter pole/equ : ITRF93                          {East-longitude positive}\nCenter radii    : 6378.137, 6378.137, 6356.752 km {Equator_a, b, pole_c}       \nTarget primary  : Sun\nVis. interferer : MOON (R_eq= 1737.400) km        {source: DE441}\nRel. light bend : Sun                             {source: DE441}\nRel. lght bnd GM: 1.3271E+11 km^3/s^2                                          \nAtmos refraction: NO (AIRLESS)\nRA format       : HMS\nTime format     : CAL \nCalendar mode   : Gregorian\nEOP file        : eop.260916.p261213                                           \nEOP coverage    : DATA-BASED 1962-JAN-20 TO 2026-SEP-16. PREDICTS-> 2026-DEC-12\nUnits conversion: 1 au= 149597870.700 km, c= 299792.458 km/s, 1 day= 86400.0 s \nTable cut-offs 1: Elevation (-90.0deg=NO ),Airmass (>38.000=NO), Daylight (NO )\nTable cut-offs 2: Solar elongation (  0.0,180.0=NO ),Local Hour Angle( 0.0=NO )\nTable cut-offs 3: RA/DEC angular rate (     0.0=NO )                           \nTable format    : Comma Separated Values (spreadsheet)\n*******************************************************************************\n Date__(UT)__HR:MN:SC.fff, , ,    ObsEcLon,   ObsEcLat,\n*******************************************************\n"
+    },
+    {
+      "body": "moon",
+      "target_id": 301,
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27301%27&OBJ_DATA=%27NO%27&MAKE_EPHEM=%27YES%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27500%40399%27&TLIST=%271986-01-01+00%3A00%3A00%27%2C%272000-01-01+12%3A00%3A00%27%2C%272016-07-01+03%3A00%3A00%27%2C%272024-04-08+18%3A00%3A00%27%2C%272026-09-17+00%3A00%3A00%27&TLIST_TYPE=%27CAL%27&QUANTITIES=%2731%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&TIME_TYPE=%27UT%27&CAL_TYPE=%27GREGORIAN%27&APPARENT=%27AIRLESS%27",
+      "values": [
+        {
+          "at": "1986-01-01T00:00:00+00:00",
+          "longitude_deg": 155.0732119,
+          "latitude_deg": 4.4651791
+        },
+        {
+          "at": "2000-01-01T12:00:00+00:00",
+          "longitude_deg": 223.323786,
+          "latitude_deg": 5.1707422
+        },
+        {
+          "at": "2016-07-01T03:00:00+00:00",
+          "longitude_deg": 54.6942832,
+          "latitude_deg": -4.7450969
+        },
+        {
+          "at": "2024-04-08T18:00:00+00:00",
+          "longitude_deg": 19.1832147,
+          "latitude_deg": 0.3292439
+        },
+        {
+          "at": "2026-09-17T00:00:00+00:00",
+          "longitude_deg": 243.6866773,
+          "latitude_deg": -5.218765
+        }
+      ],
+      "source_header": "\n\n*******************************************************************************\nEphemeris / API_USER Thu Sep 17 06:55:07 2026 Pasadena, USA      / Horizons    \n*******************************************************************************\nTarget body name: Moon (301)                      {source: DE441}\nCenter body name: Earth (399)                     {source: DE441}\nCenter-site name: GEOCENTRIC\n*******************************************************************************\nStart time      : A.D. 1986-Jan-01 00:00:00.0000 UT      \nStop  time      : A.D. 2026-Sep-17 00:00:00.0000 UT      \nStep-size       : 0 steps\n*******************************************************************************\nTarget pole/equ : MOON_ME                         {East-longitude positive}\nTarget radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       \nCenter geodetic : 0.0, 0.0, -6378.137             {E-lon(deg),Lat(deg),Alt(km)}\nCenter cylindric: 0.0, 0.0, 0.0                   {E-lon(deg),Dxy(km),Dz(km)}\nCenter pole/equ : ITRF93                          {East-longitude positive}\nCenter radii    : 6378.137, 6378.137, 6356.752 km {Equator_a, b, pole_c}       \nTarget primary  : Earth\nVis. interferer : MOON (R_eq= 1737.400) km        {source: DE441}\nRel. light bend : Sun                             {source: DE441}\nRel. lght bnd GM: 1.3271E+11 km^3/s^2                                          \nAtmos refraction: NO (AIRLESS)\nRA format       : HMS\nTime format     : CAL \nCalendar mode   : Gregorian\nEOP file        : eop.260916.p261213                                           \nEOP coverage    : DATA-BASED 1962-JAN-20 TO 2026-SEP-16. PREDICTS-> 2026-DEC-12\nUnits conversion: 1 au= 149597870.700 km, c= 299792.458 km/s, 1 day= 86400.0 s \nTable cut-offs 1: Elevation (-90.0deg=NO ),Airmass (>38.000=NO), Daylight (NO )\nTable cut-offs 2: Solar elongation (  0.0,180.0=NO ),Local Hour Angle( 0.0=NO )\nTable cut-offs 3: RA/DEC angular rate (     0.0=NO )                           \nTable format    : Comma Separated Values (spreadsheet)\n*******************************************************************************\n Date__(UT)__HR:MN:SC.fff, , ,    ObsEcLon,   ObsEcLat,\n*******************************************************\n"
+    },
+    {
+      "body": "mercury",
+      "target_id": 199,
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27199%27&OBJ_DATA=%27NO%27&MAKE_EPHEM=%27YES%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27500%40399%27&TLIST=%271986-01-01+00%3A00%3A00%27%2C%272000-01-01+12%3A00%3A00%27%2C%272016-07-01+03%3A00%3A00%27%2C%272024-04-08+18%3A00%3A00%27%2C%272026-09-17+00%3A00%3A00%27&TLIST_TYPE=%27CAL%27&QUANTITIES=%2731%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&TIME_TYPE=%27UT%27&CAL_TYPE=%27GREGORIAN%27&APPARENT=%27AIRLESS%27",
+      "values": [
+        {
+          "at": "1986-01-01T00:00:00+00:00",
+          "longitude_deg": 262.8804466,
+          "latitude_deg": 0.2829467
+        },
+        {
+          "at": "2000-01-01T12:00:00+00:00",
+          "longitude_deg": 271.8892699,
+          "latitude_deg": -0.994819
+        },
+        {
+          "at": "2016-07-01T03:00:00+00:00",
+          "longitude_deg": 92.4364762,
+          "latitude_deg": 0.5536397
+        },
+        {
+          "at": "2024-04-08T18:00:00+00:00",
+          "longitude_deg": 24.8070865,
+          "latitude_deg": 2.8363272
+        },
+        {
+          "at": "2026-09-17T00:00:00+00:00",
+          "longitude_deg": 190.3215353,
+          "latitude_deg": -0.0004046
+        }
+      ],
+      "source_header": "\n\n*******************************************************************************\nEphemeris / API_USER Thu Sep 17 06:55:28 2026 Pasadena, USA      / Horizons    \n*******************************************************************************\nTarget body name: Mercury (199)                   {source: DE441}\nCenter body name: Earth (399)                     {source: DE441}\nCenter-site name: GEOCENTRIC\n*******************************************************************************\nStart time      : A.D. 1986-Jan-01 00:00:00.0000 UT      \nStop  time      : A.D. 2026-Sep-17 00:00:00.0000 UT      \nStep-size       : 0 steps\n*******************************************************************************\nTarget pole/equ : IAU_MERCURY                     {West-longitude positive}\nTarget radii    : 2440.53, 2440.53, 2438.26 km    {Equator_a, b, pole_c}       \nCenter geodetic : 0.0, 0.0, -6378.137             {E-lon(deg),Lat(deg),Alt(km)}\nCenter cylindric: 0.0, 0.0, 0.0                   {E-lon(deg),Dxy(km),Dz(km)}\nCenter pole/equ : ITRF93                          {East-longitude positive}\nCenter radii    : 6378.137, 6378.137, 6356.752 km {Equator_a, b, pole_c}       \nTarget primary  : Sun\nVis. interferer : MOON (R_eq= 1737.400) km        {source: DE441}\nRel. light bend : Sun                             {source: DE441}\nRel. lght bnd GM: 1.3271E+11 km^3/s^2                                          \nAtmos refraction: NO (AIRLESS)\nRA format       : HMS\nTime format     : CAL \nCalendar mode   : Gregorian\nEOP file        : eop.260916.p261213                                           \nEOP coverage    : DATA-BASED 1962-JAN-20 TO 2026-SEP-16. PREDICTS-> 2026-DEC-12\nUnits conversion: 1 au= 149597870.700 km, c= 299792.458 km/s, 1 day= 86400.0 s \nTable cut-offs 1: Elevation (-90.0deg=NO ),Airmass (>38.000=NO), Daylight (NO )\nTable cut-offs 2: Solar elongation (  0.0,180.0=NO ),Local Hour Angle( 0.0=NO )\nTable cut-offs 3: RA/DEC angular rate (     0.0=NO )                           \nTable format    : Comma Separated Values (spreadsheet)\n*******************************************************************************\n Date__(UT)__HR:MN:SC.fff, , ,    ObsEcLon,   ObsEcLat,\n*******************************************************\n"
+    },
+    {
+      "body": "venus",
+      "target_id": 299,
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%27299%27&OBJ_DATA=%27NO%27&MAKE_EPHEM=%27YES%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27500%40399%27&TLIST=%271986-01-01+00%3A00%3A00%27%2C%272000-01-01+12%3A00%3A00%27%2C%272016-07-01+03%3A00%3A00%27%2C%272024-04-08+18%3A00%3A00%27%2C%272026-09-17+00%3A00%3A00%27&TLIST_TYPE=%27CAL%27&QUANTITIES=%2731%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&TIME_TYPE=%27UT%27&CAL_TYPE=%27GREGORIAN%27&APPARENT=%27AIRLESS%27",
+      "values": [
+        {
+          "at": "1986-01-01T00:00:00+00:00",
+          "longitude_deg": 275.8045736,
+          "latitude_deg": -0.3316126
+        },
+        {
+          "at": "2000-01-01T12:00:00+00:00",
+          "longitude_deg": 241.5657794,
+          "latitude_deg": 2.0663548
+        },
+        {
+          "at": "2016-07-01T03:00:00+00:00",
+          "longitude_deg": 106.34833,
+          "latitude_deg": 0.8926432
+        },
+        {
+          "at": "2024-04-08T18:00:00+00:00",
+          "longitude_deg": 4.427195,
+          "latitude_deg": -1.4965152
+        },
+        {
+          "at": "2026-09-17T00:00:00+00:00",
+          "longitude_deg": 213.929599,
+          "latitude_deg": -5.469005
+        }
+      ],
+      "source_header": "\n\n*******************************************************************************\nEphemeris / API_USER Thu Sep 17 06:55:46 2026 Pasadena, USA      / Horizons    \n*******************************************************************************\nTarget body name: Venus (299)                     {source: DE441}\nCenter body name: Earth (399)                     {source: DE441}\nCenter-site name: GEOCENTRIC\n*******************************************************************************\nStart time      : A.D. 1986-Jan-01 00:00:00.0000 UT      \nStop  time      : A.D. 2026-Sep-17 00:00:00.0000 UT      \nStep-size       : 0 steps\n*******************************************************************************\nTarget pole/equ : IAU_VENUS                       {East-longitude positive}\nTarget radii    : 6051.8, 6051.8, 6051.8 km       {Equator_a, b, pole_c}       \nCenter geodetic : 0.0, 0.0, -6378.137             {E-lon(deg),Lat(deg),Alt(km)}\nCenter cylindric: 0.0, 0.0, 0.0                   {E-lon(deg),Dxy(km),Dz(km)}\nCenter pole/equ : ITRF93                          {East-longitude positive}\nCenter radii    : 6378.137, 6378.137, 6356.752 km {Equator_a, b, pole_c}       \nTarget primary  : Sun\nVis. interferer : MOON (R_eq= 1737.400) km        {source: DE441}\nRel. light bend : Sun                             {source: DE441}\nRel. lght bnd GM: 1.3271E+11 km^3/s^2                                          \nAtmos refraction: NO (AIRLESS)\nRA format       : HMS\nTime format     : CAL \nCalendar mode   : Gregorian\nEOP file        : eop.260916.p261213                                           \nEOP coverage    : DATA-BASED 1962-JAN-20 TO 2026-SEP-16. PREDICTS-> 2026-DEC-12\nUnits conversion: 1 au= 149597870.700 km, c= 299792.458 km/s, 1 day= 86400.0 s \nTable cut-offs 1: Elevation (-90.0deg=NO ),Airmass (>38.000=NO), Daylight (NO )\nTable cut-offs 2: Solar elongation (  0.0,180.0=NO ),Local Hour Angle( 0.0=NO )\nTable cut-offs 3: RA/DEC angular rate (     0.0=NO )                           \nTable format    : Comma Separated Values (spreadsheet)\n*******************************************************************************\n Date__(UT)__HR:MN:SC.fff, , ,    ObsEcLon,   ObsEcLat,\n*******************************************************\n"
+    },
+    {
+      "body": "mars",
+      "target_id": 4,
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%274%27&OBJ_DATA=%27NO%27&MAKE_EPHEM=%27YES%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27500%40399%27&TLIST=%271986-01-01+00%3A00%3A00%27%2C%272000-01-01+12%3A00%3A00%27%2C%272016-07-01+03%3A00%3A00%27%2C%272024-04-08+18%3A00%3A00%27%2C%272026-09-17+00%3A00%3A00%27&TLIST_TYPE=%27CAL%27&QUANTITIES=%2731%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&TIME_TYPE=%27UT%27&CAL_TYPE=%27GREGORIAN%27&APPARENT=%27AIRLESS%27",
+      "values": [
+        {
+          "at": "1986-01-01T00:00:00+00:00",
+          "longitude_deg": 220.5707743,
+          "latitude_deg": 1.0291029
+        },
+        {
+          "at": "2000-01-01T12:00:00+00:00",
+          "longitude_deg": 327.9632921,
+          "latitude_deg": -1.0677752
+        },
+        {
+          "at": "2016-07-01T03:00:00+00:00",
+          "longitude_deg": 233.0668392,
+          "latitude_deg": -2.6241226
+        },
+        {
+          "at": "2024-04-08T18:00:00+00:00",
+          "longitude_deg": 343.0401557,
+          "latitude_deg": -1.2446853
+        },
+        {
+          "at": "2026-09-17T00:00:00+00:00",
+          "longitude_deg": 113.3445737,
+          "latitude_deg": 0.782796
+        }
+      ],
+      "source_header": "\n\n*******************************************************************************\nEphemeris / API_USER Thu Sep 17 06:56:08 2026 Pasadena, USA      / Horizons    \n*******************************************************************************\nTarget body name: Mars Barycenter (4)             {source: DE441}\nCenter body name: Earth (399)                     {source: DE441}\nCenter-site name: GEOCENTRIC\n*******************************************************************************\nStart time      : A.D. 1986-Jan-01 00:00:00.0000 UT      \nStop  time      : A.D. 2026-Sep-17 00:00:00.0000 UT      \nStep-size       : 0 steps\n*******************************************************************************\nTarget pole/equ : undefined\nTarget radii    : undefined                                                    \nCenter geodetic : 0.0, 0.0, -6378.137             {E-lon(deg),Lat(deg),Alt(km)}\nCenter cylindric: 0.0, 0.0, 0.0                   {E-lon(deg),Dxy(km),Dz(km)}\nCenter pole/equ : ITRF93                          {East-longitude positive}\nCenter radii    : 6378.137, 6378.137, 6356.752 km {Equator_a, b, pole_c}       \nTarget primary  : Sun\nVis. interferer : MOON (R_eq= 1737.400) km        {source: DE441}\nRel. light bend : Sun                             {source: DE441}\nRel. lght bnd GM: 1.3271E+11 km^3/s^2                                          \nAtmos refraction: NO (AIRLESS)\nRA format       : HMS\nTime format     : CAL \nCalendar mode   : Gregorian\nEOP file        : eop.260916.p261213                                           \nEOP coverage    : DATA-BASED 1962-JAN-20 TO 2026-SEP-16. PREDICTS-> 2026-DEC-12\nUnits conversion: 1 au= 149597870.700 km, c= 299792.458 km/s, 1 day= 86400.0 s \nTable cut-offs 1: Elevation (-90.0deg=NO ),Airmass (>38.000=NO), Daylight (NO )\nTable cut-offs 2: Solar elongation (  0.0,180.0=NO ),Local Hour Angle( 0.0=NO )\nTable cut-offs 3: RA/DEC angular rate (     0.0=NO )                           \nTable format    : Comma Separated Values (spreadsheet)\n*******************************************************************************\n Date__(UT)__HR:MN:SC.fff, , ,    ObsEcLon,   ObsEcLat,\n*******************************************************\n"
+    },
+    {
+      "body": "jupiter",
+      "target_id": 5,
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%275%27&OBJ_DATA=%27NO%27&MAKE_EPHEM=%27YES%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27500%40399%27&TLIST=%271986-01-01+00%3A00%3A00%27%2C%272000-01-01+12%3A00%3A00%27%2C%272016-07-01+03%3A00%3A00%27%2C%272024-04-08+18%3A00%3A00%27%2C%272026-09-17+00%3A00%3A00%27&TLIST_TYPE=%27CAL%27&QUANTITIES=%2731%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&TIME_TYPE=%27UT%27&CAL_TYPE=%27GREGORIAN%27&APPARENT=%27AIRLESS%27",
+      "values": [
+        {
+          "at": "1986-01-01T00:00:00+00:00",
+          "longitude_deg": 318.2545183,
+          "latitude_deg": -0.8023843
+        },
+        {
+          "at": "2000-01-01T12:00:00+00:00",
+          "longitude_deg": 25.2530736,
+          "latitude_deg": -1.2621868
+        },
+        {
+          "at": "2016-07-01T03:00:00+00:00",
+          "longitude_deg": 167.0905689,
+          "latitude_deg": 1.1984053
+        },
+        {
+          "at": "2024-04-08T18:00:00+00:00",
+          "longitude_deg": 49.0425373,
+          "latitude_deg": -0.8016823
+        },
+        {
+          "at": "2026-09-17T00:00:00+00:00",
+          "longitude_deg": 136.9588349,
+          "latitude_deg": 0.5628921
+        }
+      ],
+      "source_header": "\n\n*******************************************************************************\nEphemeris / API_USER Thu Sep 17 06:56:22 2026 Pasadena, USA      / Horizons    \n*******************************************************************************\nTarget body name: Jupiter Barycenter (5)          {source: DE441}\nCenter body name: Earth (399)                     {source: DE441}\nCenter-site name: GEOCENTRIC\n*******************************************************************************\nStart time      : A.D. 1986-Jan-01 00:00:00.0000 UT      \nStop  time      : A.D. 2026-Sep-17 00:00:00.0000 UT      \nStep-size       : 0 steps\n*******************************************************************************\nTarget pole/equ : undefined\nTarget radii    : undefined                                                    \nCenter geodetic : 0.0, 0.0, -6378.137             {E-lon(deg),Lat(deg),Alt(km)}\nCenter cylindric: 0.0, 0.0, 0.0                   {E-lon(deg),Dxy(km),Dz(km)}\nCenter pole/equ : ITRF93                          {East-longitude positive}\nCenter radii    : 6378.137, 6378.137, 6356.752 km {Equator_a, b, pole_c}       \nTarget primary  : Sun\nVis. interferer : MOON (R_eq= 1737.400) km        {source: DE441}\nRel. light bend : Sun                             {source: DE441}\nRel. lght bnd GM: 1.3271E+11 km^3/s^2                                          \nAtmos refraction: NO (AIRLESS)\nRA format       : HMS\nTime format     : CAL \nCalendar mode   : Gregorian\nEOP file        : eop.260916.p261213                                           \nEOP coverage    : DATA-BASED 1962-JAN-20 TO 2026-SEP-16. PREDICTS-> 2026-DEC-12\nUnits conversion: 1 au= 149597870.700 km, c= 299792.458 km/s, 1 day= 86400.0 s \nTable cut-offs 1: Elevation (-90.0deg=NO ),Airmass (>38.000=NO), Daylight (NO )\nTable cut-offs 2: Solar elongation (  0.0,180.0=NO ),Local Hour Angle( 0.0=NO )\nTable cut-offs 3: RA/DEC angular rate (     0.0=NO )                           \nTable format    : Comma Separated Values (spreadsheet)\n*******************************************************************************\n Date__(UT)__HR:MN:SC.fff, , ,    ObsEcLon,   ObsEcLat,\n*******************************************************\n"
+    },
+    {
+      "body": "saturn",
+      "target_id": 6,
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%276%27&OBJ_DATA=%27NO%27&MAKE_EPHEM=%27YES%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27500%40399%27&TLIST=%271986-01-01+00%3A00%3A00%27%2C%272000-01-01+12%3A00%3A00%27%2C%272016-07-01+03%3A00%3A00%27%2C%272024-04-08+18%3A00%3A00%27%2C%272026-09-17+00%3A00%3A00%27&TLIST_TYPE=%27CAL%27&QUANTITIES=%2731%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&TIME_TYPE=%27UT%27&CAL_TYPE=%27GREGORIAN%27&APPARENT=%27AIRLESS%27",
+      "values": [
+        {
+          "at": "1986-01-01T00:00:00+00:00",
+          "longitude_deg": 245.1600036,
+          "latitude_deg": 1.8064855
+        },
+        {
+          "at": "2000-01-01T12:00:00+00:00",
+          "longitude_deg": 40.3956492,
+          "latitude_deg": -2.4448565
+        },
+        {
+          "at": "2016-07-01T03:00:00+00:00",
+          "longitude_deg": 251.1844918,
+          "latitude_deg": 1.7505401
+        },
+        {
+          "at": "2024-04-08T18:00:00+00:00",
+          "longitude_deg": 344.4536758,
+          "latitude_deg": -1.6844059
+        },
+        {
+          "at": "2026-09-17T00:00:00+00:00",
+          "longitude_deg": 12.641468,
+          "latitude_deg": -2.6936803
+        }
+      ],
+      "source_header": "\n\n*******************************************************************************\nEphemeris / API_USER Thu Sep 17 06:56:38 2026 Pasadena, USA      / Horizons    \n*******************************************************************************\nTarget body name: Saturn Barycenter (6)           {source: DE441}\nCenter body name: Earth (399)                     {source: DE441}\nCenter-site name: GEOCENTRIC\n*******************************************************************************\nStart time      : A.D. 1986-Jan-01 00:00:00.0000 UT      \nStop  time      : A.D. 2026-Sep-17 00:00:00.0000 UT      \nStep-size       : 0 steps\n*******************************************************************************\nTarget pole/equ : undefined\nTarget radii    : undefined                                                    \nCenter geodetic : 0.0, 0.0, -6378.137             {E-lon(deg),Lat(deg),Alt(km)}\nCenter cylindric: 0.0, 0.0, 0.0                   {E-lon(deg),Dxy(km),Dz(km)}\nCenter pole/equ : ITRF93                          {East-longitude positive}\nCenter radii    : 6378.137, 6378.137, 6356.752 km {Equator_a, b, pole_c}       \nTarget primary  : Sun\nVis. interferer : MOON (R_eq= 1737.400) km        {source: DE441}\nRel. light bend : Sun                             {source: DE441}\nRel. lght bnd GM: 1.3271E+11 km^3/s^2                                          \nAtmos refraction: NO (AIRLESS)\nRA format       : HMS\nTime format     : CAL \nCalendar mode   : Gregorian\nEOP file        : eop.260916.p261213                                           \nEOP coverage    : DATA-BASED 1962-JAN-20 TO 2026-SEP-16. PREDICTS-> 2026-DEC-12\nUnits conversion: 1 au= 149597870.700 km, c= 299792.458 km/s, 1 day= 86400.0 s \nTable cut-offs 1: Elevation (-90.0deg=NO ),Airmass (>38.000=NO), Daylight (NO )\nTable cut-offs 2: Solar elongation (  0.0,180.0=NO ),Local Hour Angle( 0.0=NO )\nTable cut-offs 3: RA/DEC angular rate (     0.0=NO )                           \nTable format    : Comma Separated Values (spreadsheet)\n*******************************************************************************\n Date__(UT)__HR:MN:SC.fff, , ,    ObsEcLon,   ObsEcLat,\n*******************************************************\n"
+    },
+    {
+      "body": "uranus",
+      "target_id": 7,
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%277%27&OBJ_DATA=%27NO%27&MAKE_EPHEM=%27YES%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27500%40399%27&TLIST=%271986-01-01+00%3A00%3A00%27%2C%272000-01-01+12%3A00%3A00%27%2C%272016-07-01+03%3A00%3A00%27%2C%272024-04-08+18%3A00%3A00%27%2C%272026-09-17+00%3A00%3A00%27&TLIST_TYPE=%27CAL%27&QUANTITIES=%2731%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&TIME_TYPE=%27UT%27&CAL_TYPE=%27GREGORIAN%27&APPARENT=%27AIRLESS%27",
+      "values": [
+        {
+          "at": "1986-01-01T00:00:00+00:00",
+          "longitude_deg": 259.5002235,
+          "latitude_deg": -0.0575864
+        },
+        {
+          "at": "2000-01-01T12:00:00+00:00",
+          "longitude_deg": 314.8091744,
+          "latitude_deg": -0.6583238
+        },
+        {
+          "at": "2016-07-01T03:00:00+00:00",
+          "longitude_deg": 24.1750603,
+          "latitude_deg": -0.6073773
+        },
+        {
+          "at": "2024-04-08T18:00:00+00:00",
+          "longitude_deg": 51.1703728,
+          "latitude_deg": -0.270591
+        },
+        {
+          "at": "2026-09-17T00:00:00+00:00",
+          "longitude_deg": 65.6804889,
+          "latitude_deg": -0.153864
+        }
+      ],
+      "source_header": "\n\n*******************************************************************************\nEphemeris / API_USER Thu Sep 17 06:56:52 2026 Pasadena, USA      / Horizons    \n*******************************************************************************\nTarget body name: Uranus Barycenter (7)           {source: DE441}\nCenter body name: Earth (399)                     {source: DE441}\nCenter-site name: GEOCENTRIC\n*******************************************************************************\nStart time      : A.D. 1986-Jan-01 00:00:00.0000 UT      \nStop  time      : A.D. 2026-Sep-17 00:00:00.0000 UT      \nStep-size       : 0 steps\n*******************************************************************************\nTarget pole/equ : undefined\nTarget radii    : undefined                                                    \nCenter geodetic : 0.0, 0.0, -6378.137             {E-lon(deg),Lat(deg),Alt(km)}\nCenter cylindric: 0.0, 0.0, 0.0                   {E-lon(deg),Dxy(km),Dz(km)}\nCenter pole/equ : ITRF93                          {East-longitude positive}\nCenter radii    : 6378.137, 6378.137, 6356.752 km {Equator_a, b, pole_c}       \nTarget primary  : Sun\nVis. interferer : MOON (R_eq= 1737.400) km        {source: DE441}\nRel. light bend : Sun                             {source: DE441}\nRel. lght bnd GM: 1.3271E+11 km^3/s^2                                          \nAtmos refraction: NO (AIRLESS)\nRA format       : HMS\nTime format     : CAL \nCalendar mode   : Gregorian\nEOP file        : eop.260916.p261213                                           \nEOP coverage    : DATA-BASED 1962-JAN-20 TO 2026-SEP-16. PREDICTS-> 2026-DEC-12\nUnits conversion: 1 au= 149597870.700 km, c= 299792.458 km/s, 1 day= 86400.0 s \nTable cut-offs 1: Elevation (-90.0deg=NO ),Airmass (>38.000=NO), Daylight (NO )\nTable cut-offs 2: Solar elongation (  0.0,180.0=NO ),Local Hour Angle( 0.0=NO )\nTable cut-offs 3: RA/DEC angular rate (     0.0=NO )                           \nTable format    : Comma Separated Values (spreadsheet)\n*******************************************************************************\n Date__(UT)__HR:MN:SC.fff, , ,    ObsEcLon,   ObsEcLat,\n*******************************************************\n"
+    },
+    {
+      "body": "neptune",
+      "target_id": 8,
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%278%27&OBJ_DATA=%27NO%27&MAKE_EPHEM=%27YES%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27500%40399%27&TLIST=%271986-01-01+00%3A00%3A00%27%2C%272000-01-01+12%3A00%3A00%27%2C%272016-07-01+03%3A00%3A00%27%2C%272024-04-08+18%3A00%3A00%27%2C%272026-09-17+00%3A00%3A00%27&TLIST_TYPE=%27CAL%27&QUANTITIES=%2731%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&TIME_TYPE=%27UT%27&CAL_TYPE=%27GREGORIAN%27&APPARENT=%27AIRLESS%27",
+      "values": [
+        {
+          "at": "1986-01-01T00:00:00+00:00",
+          "longitude_deg": 273.5864517,
+          "latitude_deg": 1.0624808
+        },
+        {
+          "at": "2000-01-01T12:00:00+00:00",
+          "longitude_deg": 303.1929999,
+          "latitude_deg": 0.2350032
+        },
+        {
+          "at": "2016-07-01T03:00:00+00:00",
+          "longitude_deg": 341.9611645,
+          "latitude_deg": -0.8517043
+        },
+        {
+          "at": "2024-04-08T18:00:00+00:00",
+          "longitude_deg": 358.1896168,
+          "latitude_deg": -1.2219125
+        },
+        {
+          "at": "2026-09-17T00:00:00+00:00",
+          "longitude_deg": 3.2488579,
+          "latitude_deg": -1.4181778
+        }
+      ],
+      "source_header": "\n\n*******************************************************************************\nEphemeris / API_USER Thu Sep 17 06:57:07 2026 Pasadena, USA      / Horizons    \n*******************************************************************************\nTarget body name: Neptune Barycenter (8)          {source: DE441}\nCenter body name: Earth (399)                     {source: DE441}\nCenter-site name: GEOCENTRIC\n*******************************************************************************\nStart time      : A.D. 1986-Jan-01 00:00:00.0000 UT      \nStop  time      : A.D. 2026-Sep-17 00:00:00.0000 UT      \nStep-size       : 0 steps\n*******************************************************************************\nTarget pole/equ : undefined\nTarget radii    : undefined                                                    \nCenter geodetic : 0.0, 0.0, -6378.137             {E-lon(deg),Lat(deg),Alt(km)}\nCenter cylindric: 0.0, 0.0, 0.0                   {E-lon(deg),Dxy(km),Dz(km)}\nCenter pole/equ : ITRF93                          {East-longitude positive}\nCenter radii    : 6378.137, 6378.137, 6356.752 km {Equator_a, b, pole_c}       \nTarget primary  : Sun\nVis. interferer : MOON (R_eq= 1737.400) km        {source: DE441}\nRel. light bend : Sun                             {source: DE441}\nRel. lght bnd GM: 1.3271E+11 km^3/s^2                                          \nAtmos refraction: NO (AIRLESS)\nRA format       : HMS\nTime format     : CAL \nCalendar mode   : Gregorian\nEOP file        : eop.260916.p261213                                           \nEOP coverage    : DATA-BASED 1962-JAN-20 TO 2026-SEP-16. PREDICTS-> 2026-DEC-12\nUnits conversion: 1 au= 149597870.700 km, c= 299792.458 km/s, 1 day= 86400.0 s \nTable cut-offs 1: Elevation (-90.0deg=NO ),Airmass (>38.000=NO), Daylight (NO )\nTable cut-offs 2: Solar elongation (  0.0,180.0=NO ),Local Hour Angle( 0.0=NO )\nTable cut-offs 3: RA/DEC angular rate (     0.0=NO )                           \nTable format    : Comma Separated Values (spreadsheet)\n*******************************************************************************\n Date__(UT)__HR:MN:SC.fff, , ,    ObsEcLon,   ObsEcLat,\n*******************************************************\n"
+    },
+    {
+      "body": "pluto",
+      "target_id": 9,
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=json&COMMAND=%279%27&OBJ_DATA=%27NO%27&MAKE_EPHEM=%27YES%27&EPHEM_TYPE=%27OBSERVER%27&CENTER=%27500%40399%27&TLIST=%271986-01-01+00%3A00%3A00%27%2C%272000-01-01+12%3A00%3A00%27%2C%272016-07-01+03%3A00%3A00%27%2C%272024-04-08+18%3A00%3A00%27%2C%272026-09-17+00%3A00%3A00%27&TLIST_TYPE=%27CAL%27&QUANTITIES=%2731%27&CSV_FORMAT=%27YES%27&EXTRA_PREC=%27YES%27&TIME_TYPE=%27UT%27&CAL_TYPE=%27GREGORIAN%27&APPARENT=%27AIRLESS%27",
+      "values": [
+        {
+          "at": "1986-01-01T00:00:00+00:00",
+          "longitude_deg": 216.9123363,
+          "latitude_deg": 16.3534767
+        },
+        {
+          "at": "2000-01-01T12:00:00+00:00",
+          "longitude_deg": 251.4547643,
+          "latitude_deg": 10.855239
+        },
+        {
+          "at": "2016-07-01T03:00:00+00:00",
+          "longitude_deg": 286.3757107,
+          "latitude_deg": 1.3824194
+        },
+        {
+          "at": "2024-04-08T18:00:00+00:00",
+          "longitude_deg": 301.9674912,
+          "latitude_deg": -2.9641288
+        },
+        {
+          "at": "2026-09-17T00:00:00+00:00",
+          "longitude_deg": 303.2618839,
+          "latitude_deg": -4.2988122
+        }
+      ],
+      "source_header": "\n\n*******************************************************************************\nEphemeris / API_USER Thu Sep 17 06:57:21 2026 Pasadena, USA      / Horizons    \n*******************************************************************************\nTarget body name: Pluto Barycenter (9)            {source: DE441}\nCenter body name: Earth (399)                     {source: DE441}\nCenter-site name: GEOCENTRIC\n*******************************************************************************\nStart time      : A.D. 1986-Jan-01 00:00:00.0000 UT      \nStop  time      : A.D. 2026-Sep-17 00:00:00.0000 UT      \nStep-size       : 0 steps\n*******************************************************************************\nTarget pole/equ : undefined\nTarget radii    : undefined                                                    \nCenter geodetic : 0.0, 0.0, -6378.137             {E-lon(deg),Lat(deg),Alt(km)}\nCenter cylindric: 0.0, 0.0, 0.0                   {E-lon(deg),Dxy(km),Dz(km)}\nCenter pole/equ : ITRF93                          {East-longitude positive}\nCenter radii    : 6378.137, 6378.137, 6356.752 km {Equator_a, b, pole_c}       \nTarget primary  : Sun\nVis. interferer : MOON (R_eq= 1737.400) km        {source: DE441}\nRel. light bend : Sun                             {source: DE441}\nRel. lght bnd GM: 1.3271E+11 km^3/s^2                                          \nAtmos refraction: NO (AIRLESS)\nRA format       : HMS\nTime format     : CAL \nCalendar mode   : Gregorian\nEOP file        : eop.260916.p261213                                           \nEOP coverage    : DATA-BASED 1962-JAN-20 TO 2026-SEP-16. PREDICTS-> 2026-DEC-12\nUnits conversion: 1 au= 149597870.700 km, c= 299792.458 km/s, 1 day= 86400.0 s \nTable cut-offs 1: Elevation (-90.0deg=NO ),Airmass (>38.000=NO), Daylight (NO )\nTable cut-offs 2: Solar elongation (  0.0,180.0=NO ),Local Hour Angle( 0.0=NO )\nTable cut-offs 3: RA/DEC angular rate (     0.0=NO )                           \nTable format    : Comma Separated Values (spreadsheet)\n*******************************************************************************\n Date__(UT)__HR:MN:SC.fff, , ,    ObsEcLon,   ObsEcLat,\n*******************************************************\n"
+    }
+  ]
+}

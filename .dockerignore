@@ -1,0 +1,13 @@
+.git
+.env*
+.venv
+node_modules
+.next
+out
+test-results
+playwright-report
+**/__pycache__
+**/*.egg-info
+vendor/od-toirog-engine/build
+vendor/od-toirog-engine/data
+ephemeris

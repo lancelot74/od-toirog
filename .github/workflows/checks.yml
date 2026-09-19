@@ -22,7 +22,13 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install -r apps/api/requirements.txt
+      - uses: actions/cache@v4
+        with:
+          path: vendor/od-toirog-engine/data/de440s.bsp
+          key: jpl-de440s-c1c7feeab882263f
+      - run: python scripts/fetch_jpl_ephemeris.py
       - run: python -m pytest tests -q
+      - run: python -m pytest vendor/od-toirog-engine/tests -q
       - run: node --test tests/rls.test.mjs
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm exec playwright test

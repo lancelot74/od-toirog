@@ -1,0 +1,41 @@
+{
+  "version": "od-toirog-editorial-0.1.0",
+  "description": "Editable editorial choices, not empirically calibrated relationship statistics.",
+  "aspects": [
+    {"name": "conjunction", "angle": 0, "natal_orb": 6, "synastry_orb": 6, "transit_orb": 2},
+    {"name": "sextile", "angle": 60, "natal_orb": 4, "synastry_orb": 4, "transit_orb": 2},
+    {"name": "square", "angle": 90, "natal_orb": 6, "synastry_orb": 6, "transit_orb": 2},
+    {"name": "trine", "angle": 120, "natal_orb": 6, "synastry_orb": 6, "transit_orb": 2},
+    {"name": "opposition", "angle": 180, "natal_orb": 6, "synastry_orb": 6, "transit_orb": 2}
+  ],
+  "transiting_moon_orb": 1,
+  "stationary_speed_deg_per_day": 0.0001,
+  "daily_sample_minutes": 15,
+  "reading_card_limit": 5,
+  "body_themes": {
+    "sun": "identity and self-expression",
+    "moon": "comfort and emotional needs",
+    "mercury": "communication and learning",
+    "venus": "affection and shared values",
+    "mars": "initiative and conflict",
+    "jupiter": "growth and opportunity",
+    "saturn": "commitment and boundaries",
+    "uranus": "independence and change",
+    "neptune": "imagination and ideals",
+    "pluto": "intensity and transformation"
+  },
+  "synastry_prompts": {
+    "conjunction": "Discuss where your priorities overlap and where each person needs room.",
+    "sextile": "Look for a small shared activity that helps you support each other.",
+    "square": "Compare expectations openly and choose one practical compromise.",
+    "trine": "Notice what feels easy between you, and make time to appreciate it.",
+    "opposition": "Name both perspectives before deciding how to balance them."
+  },
+  "transit_prompts": {
+    "conjunction": "Choose one intention and give it your attention.",
+    "sextile": "Consider a small constructive step you can take today.",
+    "square": "Pause before reacting and check what you actually need.",
+    "trine": "Make room for an activity that already feels natural to you.",
+    "opposition": "Balance your own priorities with another point of view."
+  }
+}

@@ -7,6 +7,7 @@ async function pagesPath(page:Page){
 }
 const profile={id:'00000000-0000-0000-0000-000000000001',user_id:'00000000-0000-0000-0000-000000000010',name:'Тест',birth_date:'2000-01-01',birth_time:'12:00:00',birth_time_known:true,birth_city:'Ulaanbaatar',birth_country:'Mongolia',latitude:47.92,longitude:106.92,timezone:'Asia/Ulaanbaatar',utc_birth_datetime:'2000-01-01T04:00:00Z',is_primary:true,time_fold:0};
 const chart={planets:[{id:0,name:'Нар',longitude:280.03,degree:10.03,sign:9,house:10,retrograde:false,uncertain:false},{id:1,name:'Сар',longitude:219,degree:9,sign:7,house:8,retrograde:false,uncertain:false}],houses:Array.from({length:12},(_,i)=>i*30),ascendant:0,midheaven:270,aspects:[],utc:'2000-01-01T04:00:00Z',ephemeris:'Swiss',house_system:'Placidus',notice:'',readings:[{key:'planet_0_sign_9',headline:'Нар — Матар',summary:'Тооцоолсон байрлал.',strengths:[],challenges:[],relationships:[],source:'calculation',status:'facts'}]};
+const jplChart={...chart,planets:chart.planets.map(p=>({...p,house:null})),houses:[],ascendant:null,midheaven:null,ephemeris:'JPL DE440s',house_system:'unavailable',notice:'JPL v0.1 нь ордон, Асцендент, Midheaven тооцоолдоггүй.',calculation:{id:'jpl-v0.1',name:'JPL DE440s · v0.1',houses_supported:false,unknown_time_supported:false}};
 async function signedIn(page:Page,hasProfile=true){
   await pagesPath(page);
   await page.addInitScript(({user_id})=>{
@@ -22,7 +23,7 @@ async function signedIn(page:Page,hasProfile=true){
   });
   await page.route('https://api.od-test.invalid/**',route=>{
     const url=route.request().url();
-    if(url.includes('/charts/'))return route.fulfill({json:chart});
+    if(url.includes('/charts/'))return route.fulfill({json:new URL(url).searchParams.get('method')==='jpl-v0.1'?jplChart:chart});
     if(url.includes('/today/'))return route.fulfill({json:{date:'2026-09-10',chart,transits:[],readings:[],areas:{'Хайр':[],'Ажил':[],'Сэтгэл':[],'Харилцаа':[]},model_version:'facts',prompt_version:'none',knowledge_version:'none'}});
     if(url.includes('/locations?'))return route.fulfill({json:[{name:'Ulaanbaatar',country:'Mongolia',latitude:47.92,longitude:106.92,timezone:'Asia/Ulaanbaatar'}]});
     if(url.endsWith('/profiles'))return route.fulfill({json:profile});
@@ -129,7 +130,9 @@ test('network failure offers a retry and anonymous access does not fetch charts'
   await expect(page.getByRole('link',{name:'Нэвтрэх',exact:true})).toBeVisible();
   await signedIn(page);
   await page.route('https://api.od-test.invalid/charts/**',route=>route.abort());
+  const attempted=page.waitForRequest(r=>r.url().startsWith('https://api.od-test.invalid/charts/'));
   await page.reload();
+  await attempted;
   await expect(page.getByRole('button',{name:'Дахин оролдох'})).toBeVisible();
 });
 
@@ -154,7 +157,67 @@ test('two saved profiles reach a deterministic compatibility result',async({page
   await page.route('https://od-test.supabase.co/rest/v1/birth_profiles**',route=>route.fulfill({json:[profile,other]}));
   await page.route('https://api.od-test.invalid/compatibility',route=>route.fulfill({json:{first_name:profile.name,second_name:other.name,first_chart:chart,second_chart:chart,aspects:[],readings:[],meaning:'Харилцааны амжилтын хувь биш.',categories:{'Сэтгэл':{prominence:0,aspects:[]}}}}));
   await page.goto('/od-toirog/compatibility/');
+  await page.getByLabel('Тооцооллын арга',{exact:true}).selectOption('swiss-v1');
   await page.getByRole('button',{name:'Харьцуулах',exact:true}).click();
   await expect(page.getByRole('heading',{name:'Тест + Хоёр дахь'})).toBeVisible();
   await expect(page.getByText('Холбоосын идэвх: 0/100')).toBeVisible();
+});
+
+test('JPL and Placidus selection changes requests and unavailable-house messaging',async({page})=>{
+  await signedIn(page);
+  await page.goto('/od-toirog/chart/');
+  await expect(page.getByLabel('Тооцооллын арга',{exact:true})).toHaveValue('jpl-v0.1');
+  await expect(page.getByText('Энэ аргад тооцохгүй',{exact:true}).first()).toBeVisible();
+  await page.getByRole('tab',{name:'Ордон',exact:true}).click();
+  await expect(page.getByText('JPL v0.1 нь ордны тооцоогүй. Swiss / Placidus аргыг сонгоно уу.')).toBeVisible();
+  const request=page.waitForRequest(r=>r.url().includes('/charts/')&&r.url().includes('method=swiss-v1'));
+  await page.getByLabel('Тооцооллын арга',{exact:true}).selectOption('swiss-v1');
+  await request;
+  await page.getByRole('tab',{name:'Ордон',exact:true}).click();
+  await expect(page.getByText('1-р ордон · Хонь 0.00°',{exact:true})).toBeVisible();
+});
+
+test('JPL daily scan displays local-day duration, crossings and sample limitations',async({page})=>{
+  await signedIn(page);
+  const evidence={a:0,b:1,kind:'trine',angle:120,separation:null,orb:.25,allowed_orb:2,strength:.765625,evidence_id:'daily:sun:moon:trine',closest_sample_local:'2024-11-03T01:30:00-04:00',first_in_orb_sample_utc:'2024-11-03T04:00:00+00:00',last_in_orb_sample_utc:'2024-11-04T04:59:59.999999+00:00',in_orb_sample_count:101,exact_crossings_local:['2024-11-03T01:35:00-04:00'],exact_crossings_utc:['2024-11-03T05:35:00+00:00']};
+  await page.route('https://api.od-test.invalid/today/**',route=>route.fulfill({json:{date:'2024-11-03',timezone:'America/New_York',chart:jplChart,calculation:jplChart.calculation,transits:[evidence],readings:[],areas:{},reflection_cards:[],day_scan:{start_utc:'2024-11-03T04:00:00Z',end_utc_exclusive:'2024-11-04T05:00:00Z',duration_hours:25,sample_step_minutes:15,sampling_status:'sampled_with_refined_crossings',continuous_window_boundaries_supported:false}}}));
+  await page.goto('/od-toirog/today/');
+  await expect(page.getByText(/25 цагийн өдөр/)).toBeVisible();
+  await page.getByText('Яагаад?',{exact:true}).click();
+  await expect(page.getByText('2024-11-03T01:35:00-04:00',{exact:true})).toBeVisible();
+  await page.getByText('Түүврийн хамрах хүрээ',{exact:true}).click();
+  await expect(page.getByText(/орб руу орох, гарах яг хугацаа биш/)).toBeVisible();
+  await page.getByLabel('Унших өдрийн цагийн бүс').fill('Asia/Ulaanbaatar');
+  await page.getByLabel('Огноо · хоосон бол өнөөдөр').fill('2024-11-03');
+  const request=page.waitForRequest(r=>r.url().includes('/today/')&&new URL(r.url()).searchParams.get('timezone')==='Asia/Ulaanbaatar');
+  await page.getByRole('button',{name:'Өдрийг харах'}).click();
+  await request;
+});
+
+test('JPL compatibility does not display a fabricated match score',async({page})=>{
+  await signedIn(page);
+  const other={...profile,id:'00000000-0000-0000-0000-000000000002',name:'Хоёр дахь'};
+  await page.route('https://od-test.supabase.co/rest/v1/birth_profiles**',route=>route.fulfill({json:[profile,other]}));
+  await page.route('https://api.od-test.invalid/compatibility',route=>{
+    expect(route.request().postDataJSON().method).toBe('jpl-v0.1');
+    return route.fulfill({json:{first_name:profile.name,second_name:other.name,first_chart:jplChart,second_chart:jplChart,calculation:jplChart.calculation,compatibility_score:null,aspects:[],readings:[],meaning:'Тохирлын хувь тооцоолохгүй.',categories:{'Сэтгэл':{prominence:null,aspects:[]}}}});
+  });
+  await page.goto('/od-toirog/compatibility/');
+  await page.getByRole('button',{name:'Харьцуулах',exact:true}).click();
+  await expect(page.getByText('Тохирлын хувь тооцоолохгүй.',{exact:true})).toBeVisible();
+  await expect(page.getByText(/Холбоосын идэвх:/)).toHaveCount(0);
+});
+
+test('calculation guide exposes real JPL example and reproducibility metadata',async({page})=>{
+  await pagesPath(page);
+  await page.goto('/od-toirog/learn/calculations/',{waitUntil:'domcontentloaded'});
+  await expect(page.getByRole('heading',{level:1})).toContainText('Тэнгэрийн байрлалаас');
+  await expect(page.locator('.public-chart .real-chart use[href*="planet.svg"]')).toHaveCount(10);
+  await page.locator('.public-chart .calculation-details summary').click();
+  await expect(page.locator('.public-chart .calculation-details')).toContainText('skyfield 1.54');
+  await expect(page.locator('.public-chart .calculation-details')).toContainText('c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2');
+  for(const width of [320,768,1440]){
+    await page.setViewportSize({width,height:900});
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+  }
 });

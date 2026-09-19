@@ -15,6 +15,7 @@ for(const sign of zodiacGuides){
     const image=page.locator('.zodiac-hero img');
     await expect(image).toHaveAttribute('src',`/od-toirog/assets/zodiac/${sign.slug}.webp`);
     await image.evaluate(el=>(el as HTMLImageElement).decode());
+    await page.evaluate(()=>document.fonts.ready);
     await expect(page.locator('meta[property="og:image"]').first()).toHaveAttribute('content',new RegExp(`${sign.slug}\\.webp$`));
     await expect(page.locator('use[href*="zodiac.svg"]')).toHaveCount(0);
     for(const width of [320,768,1440]){

@@ -1,0 +1,995 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Од Тойрог calculation API",
+    "description": "Tropical geocentric positions, aspects, synastry, and sampled daily transits. Birth time required. Houses and rising signs are not implemented in v0.1.",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/config": {
+      "get": {
+        "summary": "Config",
+        "operationId": "config_v1_config_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/natal": {
+      "post": {
+        "summary": "Natal",
+        "operationId": "natal_v1_natal_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NatalRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NatalResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/synastry": {
+      "post": {
+        "summary": "Synastry",
+        "operationId": "synastry_v1_synastry_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SynastryRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SynastryResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/transits": {
+      "post": {
+        "summary": "Transits",
+        "operationId": "transits_v1_transits_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransitRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/daily": {
+      "post": {
+        "summary": "Daily",
+        "operationId": "daily_v1_daily_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DailyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DailyResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Aspect": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "left_body": {
+            "type": "string",
+            "title": "Left Body"
+          },
+          "right_body": {
+            "type": "string",
+            "title": "Right Body"
+          },
+          "aspect": {
+            "type": "string",
+            "title": "Aspect"
+          },
+          "angle_deg": {
+            "type": "number",
+            "title": "Angle Deg"
+          },
+          "separation_deg": {
+            "type": "number",
+            "title": "Separation Deg"
+          },
+          "orb_deg": {
+            "type": "number",
+            "title": "Orb Deg"
+          },
+          "allowed_orb_deg": {
+            "type": "number",
+            "title": "Allowed Orb Deg"
+          },
+          "geometric_strength": {
+            "type": "number",
+            "title": "Geometric Strength",
+            "description": "Orb proximity, not a probability or match score."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "left_body",
+          "right_body",
+          "aspect",
+          "angle_deg",
+          "separation_deg",
+          "orb_deg",
+          "allowed_orb_deg",
+          "geometric_strength"
+        ],
+        "title": "Aspect"
+      },
+      "BirthInput": {
+        "properties": {
+          "local_date": {
+            "type": "string",
+            "format": "date",
+            "title": "Local Date"
+          },
+          "local_time": {
+            "type": "string",
+            "format": "time",
+            "title": "Local Time",
+            "description": "Recorded local birth time; never substitute noon."
+          },
+          "timezone": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Timezone",
+            "examples": [
+              "Asia/Ulaanbaatar"
+            ]
+          },
+          "fold": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "enum": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fold",
+            "description": "For a repeated clock time: 0 = earlier, 1 = later."
+          },
+          "latitude": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 90.0,
+                "minimum": -90.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latitude"
+          },
+          "longitude": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 180.0,
+                "minimum": -180.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Longitude"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "local_date",
+          "local_time",
+          "timezone"
+        ],
+        "title": "BirthInput"
+      },
+      "Chart": {
+        "properties": {
+          "birth": {
+            "$ref": "#/components/schemas/BirthInput"
+          },
+          "utc": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Utc"
+          },
+          "utc_offset_seconds": {
+            "type": "integer",
+            "title": "Utc Offset Seconds"
+          },
+          "positions": {
+            "items": {
+              "$ref": "#/components/schemas/Position"
+            },
+            "type": "array",
+            "title": "Positions"
+          },
+          "aspects": {
+            "items": {
+              "$ref": "#/components/schemas/Aspect"
+            },
+            "type": "array",
+            "title": "Aspects"
+          },
+          "houses": {
+            "type": "null",
+            "title": "Houses"
+          },
+          "ascendant": {
+            "type": "null",
+            "title": "Ascendant"
+          },
+          "midheaven": {
+            "type": "null",
+            "title": "Midheaven"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "birth",
+          "utc",
+          "utc_offset_seconds",
+          "positions",
+          "aspects"
+        ],
+        "title": "Chart"
+      },
+      "DailyAspect": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "transiting_body": {
+            "type": "string",
+            "title": "Transiting Body"
+          },
+          "natal_body": {
+            "type": "string",
+            "title": "Natal Body"
+          },
+          "aspect": {
+            "type": "string",
+            "title": "Aspect"
+          },
+          "angle_deg": {
+            "type": "number",
+            "title": "Angle Deg"
+          },
+          "allowed_orb_deg": {
+            "type": "number",
+            "title": "Allowed Orb Deg"
+          },
+          "closest_sample_utc": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Closest Sample Utc"
+          },
+          "closest_sample_local": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Closest Sample Local"
+          },
+          "closest_sample_orb_deg": {
+            "type": "number",
+            "title": "Closest Sample Orb Deg"
+          },
+          "geometric_strength_at_sample": {
+            "type": "number",
+            "title": "Geometric Strength At Sample"
+          },
+          "first_in_orb_sample_utc": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "First In Orb Sample Utc"
+          },
+          "last_in_orb_sample_utc": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last In Orb Sample Utc"
+          },
+          "in_orb_sample_count": {
+            "type": "integer",
+            "title": "In Orb Sample Count"
+          },
+          "exact_crossings_utc": {
+            "items": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "type": "array",
+            "title": "Exact Crossings Utc"
+          },
+          "exact_crossings_local": {
+            "items": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "type": "array",
+            "title": "Exact Crossings Local"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "transiting_body",
+          "natal_body",
+          "aspect",
+          "angle_deg",
+          "allowed_orb_deg",
+          "closest_sample_utc",
+          "closest_sample_local",
+          "closest_sample_orb_deg",
+          "geometric_strength_at_sample",
+          "first_in_orb_sample_utc",
+          "last_in_orb_sample_utc",
+          "in_orb_sample_count",
+          "exact_crossings_utc",
+          "exact_crossings_local"
+        ],
+        "title": "DailyAspect"
+      },
+      "DailyRequest": {
+        "properties": {
+          "birth": {
+            "$ref": "#/components/schemas/BirthInput"
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "title": "Date"
+          },
+          "timezone": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Timezone",
+            "description": "Timezone of the day being read; can differ from the birth timezone."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "birth",
+          "date",
+          "timezone"
+        ],
+        "title": "DailyRequest"
+      },
+      "DailyResponse": {
+        "properties": {
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          },
+          "natal": {
+            "$ref": "#/components/schemas/Chart"
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "title": "Date"
+          },
+          "timezone": {
+            "type": "string",
+            "title": "Timezone"
+          },
+          "start_utc": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Start Utc"
+          },
+          "end_utc_exclusive": {
+            "type": "string",
+            "format": "date-time",
+            "title": "End Utc Exclusive"
+          },
+          "duration_hours": {
+            "type": "number",
+            "title": "Duration Hours"
+          },
+          "sample_step_minutes": {
+            "type": "integer",
+            "title": "Sample Step Minutes"
+          },
+          "sampling_status": {
+            "type": "string",
+            "const": "sampled_with_refined_crossings",
+            "title": "Sampling Status",
+            "default": "sampled_with_refined_crossings"
+          },
+          "continuous_window_boundaries_supported": {
+            "type": "boolean",
+            "const": false,
+            "title": "Continuous Window Boundaries Supported",
+            "default": false
+          },
+          "aspects": {
+            "items": {
+              "$ref": "#/components/schemas/DailyAspect"
+            },
+            "type": "array",
+            "title": "Aspects"
+          },
+          "reading": {
+            "items": {
+              "$ref": "#/components/schemas/ReadingCard"
+            },
+            "type": "array",
+            "title": "Reading"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "provenance",
+          "natal",
+          "date",
+          "timezone",
+          "start_utc",
+          "end_utc_exclusive",
+          "duration_hours",
+          "sample_step_minutes",
+          "aspects",
+          "reading"
+        ],
+        "title": "DailyResponse"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "NatalRequest": {
+        "properties": {
+          "birth": {
+            "$ref": "#/components/schemas/BirthInput"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "birth"
+        ],
+        "title": "NatalRequest"
+      },
+      "NatalResponse": {
+        "properties": {
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          },
+          "chart": {
+            "$ref": "#/components/schemas/Chart"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "provenance",
+          "chart"
+        ],
+        "title": "NatalResponse"
+      },
+      "Position": {
+        "properties": {
+          "body": {
+            "type": "string",
+            "title": "Body"
+          },
+          "target_id": {
+            "type": "integer",
+            "title": "Target Id"
+          },
+          "target_kind": {
+            "type": "string",
+            "enum": [
+              "body_center",
+              "system_barycenter"
+            ],
+            "title": "Target Kind"
+          },
+          "longitude_deg": {
+            "type": "number",
+            "title": "Longitude Deg"
+          },
+          "latitude_deg": {
+            "type": "number",
+            "title": "Latitude Deg"
+          },
+          "distance_au": {
+            "type": "number",
+            "title": "Distance Au"
+          },
+          "sign": {
+            "type": "string",
+            "title": "Sign"
+          },
+          "degree_in_sign": {
+            "type": "number",
+            "title": "Degree In Sign"
+          },
+          "speed_deg_per_day": {
+            "type": "number",
+            "title": "Speed Deg Per Day"
+          },
+          "retrograde": {
+            "type": "boolean",
+            "title": "Retrograde"
+          },
+          "motion": {
+            "type": "string",
+            "enum": [
+              "direct",
+              "retrograde",
+              "stationary"
+            ],
+            "title": "Motion"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "body",
+          "target_id",
+          "target_kind",
+          "longitude_deg",
+          "latitude_deg",
+          "distance_au",
+          "sign",
+          "degree_in_sign",
+          "speed_deg_per_day",
+          "retrograde",
+          "motion"
+        ],
+        "title": "Position"
+      },
+      "Provenance": {
+        "properties": {
+          "engine_version": {
+            "type": "string",
+            "title": "Engine Version"
+          },
+          "astronomy_library": {
+            "type": "string",
+            "title": "Astronomy Library"
+          },
+          "ephemeris": {
+            "type": "string",
+            "title": "Ephemeris"
+          },
+          "ephemeris_sha256": {
+            "type": "string",
+            "title": "Ephemeris Sha256"
+          },
+          "time_data_sha256": {
+            "type": "string",
+            "title": "Time Data Sha256"
+          },
+          "timezone_database": {
+            "type": "string",
+            "title": "Timezone Database"
+          },
+          "coordinate_system": {
+            "type": "string",
+            "title": "Coordinate System"
+          },
+          "observer": {
+            "type": "string",
+            "const": "earth_center",
+            "title": "Observer",
+            "default": "earth_center"
+          },
+          "zodiac": {
+            "type": "string",
+            "const": "tropical",
+            "title": "Zodiac",
+            "default": "tropical"
+          },
+          "calendar": {
+            "type": "string",
+            "const": "proleptic_gregorian",
+            "title": "Calendar",
+            "default": "proleptic_gregorian"
+          },
+          "speed_method": {
+            "type": "string",
+            "title": "Speed Method"
+          },
+          "rules_version": {
+            "type": "string",
+            "title": "Rules Version"
+          },
+          "rules_sha256": {
+            "type": "string",
+            "title": "Rules Sha256"
+          },
+          "supported_utc_start": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Supported Utc Start"
+          },
+          "supported_utc_end_exclusive": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Supported Utc End Exclusive"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "engine_version",
+          "astronomy_library",
+          "ephemeris",
+          "ephemeris_sha256",
+          "time_data_sha256",
+          "timezone_database",
+          "coordinate_system",
+          "speed_method",
+          "rules_version",
+          "rules_sha256",
+          "supported_utc_start",
+          "supported_utc_end_exclusive"
+        ],
+        "title": "Provenance"
+      },
+      "ReadingCard": {
+        "properties": {
+          "evidence_id": {
+            "type": "string",
+            "title": "Evidence Id"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "evidence_id",
+          "title",
+          "text"
+        ],
+        "title": "ReadingCard"
+      },
+      "SynastryRequest": {
+        "properties": {
+          "person_a": {
+            "$ref": "#/components/schemas/BirthInput"
+          },
+          "person_b": {
+            "$ref": "#/components/schemas/BirthInput"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "person_a",
+          "person_b"
+        ],
+        "title": "SynastryRequest"
+      },
+      "SynastryResponse": {
+        "properties": {
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          },
+          "person_a": {
+            "$ref": "#/components/schemas/Chart"
+          },
+          "person_b": {
+            "$ref": "#/components/schemas/Chart"
+          },
+          "aspects": {
+            "items": {
+              "$ref": "#/components/schemas/Aspect"
+            },
+            "type": "array",
+            "title": "Aspects"
+          },
+          "reading": {
+            "items": {
+              "$ref": "#/components/schemas/ReadingCard"
+            },
+            "type": "array",
+            "title": "Reading"
+          },
+          "interpretation_status": {
+            "type": "string",
+            "const": "editorial_rules_v1",
+            "title": "Interpretation Status",
+            "default": "editorial_rules_v1"
+          },
+          "compatibility_score": {
+            "type": "null",
+            "title": "Compatibility Score",
+            "description": "No validated numeric score."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "provenance",
+          "person_a",
+          "person_b",
+          "aspects",
+          "reading"
+        ],
+        "title": "SynastryResponse"
+      },
+      "TransitRequest": {
+        "properties": {
+          "birth": {
+            "$ref": "#/components/schemas/BirthInput"
+          },
+          "at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "At",
+            "description": "ISO instant including Z or an explicit UTC offset."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "birth",
+          "at"
+        ],
+        "title": "TransitRequest"
+      },
+      "TransitResponse": {
+        "properties": {
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          },
+          "natal": {
+            "$ref": "#/components/schemas/Chart"
+          },
+          "at_utc": {
+            "type": "string",
+            "format": "date-time",
+            "title": "At Utc"
+          },
+          "transiting_positions": {
+            "items": {
+              "$ref": "#/components/schemas/Position"
+            },
+            "type": "array",
+            "title": "Transiting Positions"
+          },
+          "aspects": {
+            "items": {
+              "$ref": "#/components/schemas/Aspect"
+            },
+            "type": "array",
+            "title": "Aspects"
+          },
+          "reading": {
+            "items": {
+              "$ref": "#/components/schemas/ReadingCard"
+            },
+            "type": "array",
+            "title": "Reading"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "provenance",
+          "natal",
+          "at_utc",
+          "transiting_positions",
+          "aspects",
+          "reading"
+        ],
+        "title": "TransitResponse"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

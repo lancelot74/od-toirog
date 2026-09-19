@@ -15,7 +15,7 @@ test('PostgreSQL policies isolate two owners and deletion cascades',async()=>{
       grant execute on function auth.uid() to authenticated;
       insert into auth.users values ('00000000-0000-0000-0000-000000000001'),('00000000-0000-0000-0000-000000000002');
     `);
-    for(const file of ['001_foundation.sql','002_knowledge_seed.sql','003_admin_history.sql'])await db.exec(await readFile(new URL(`../supabase/migrations/${file}`,import.meta.url),'utf8'));
+    for(const file of ['001_foundation.sql','002_knowledge_seed.sql','003_admin_history.sql','004_calculation_methods.sql'])await db.exec(await readFile(new URL(`../supabase/migrations/${file}`,import.meta.url),'utf8'));
     await db.exec(`insert into public.birth_profiles(user_id,name,birth_date,birth_time,birth_time_known,birth_city,birth_country,latitude,longitude,timezone,utc_birth_datetime)
       values ('00000000-0000-0000-0000-000000000001','First','2000-01-01','12:00',true,'Ulaanbaatar','Mongolia',47,106,'Asia/Ulaanbaatar','2000-01-01T04:00:00Z'),
       ('00000000-0000-0000-0000-000000000002','Second','2000-01-01','12:00',true,'Ulaanbaatar','Mongolia',47,106,'Asia/Ulaanbaatar','2000-01-01T04:00:00Z');
@@ -40,5 +40,12 @@ test('PostgreSQL policies isolate two owners and deletion cascades',async()=>{
     assert.equal((await db.query('select * from public.knowledge_versions')).rows.length,2);
     assert.equal((await db.query('select version from public.runtime_config')).rows[0].version,2);
     assert.equal((await db.query('select * from public.prompt_versions')).rows.length,2);
+    await db.exec(`insert into public.natal_charts(profile_id,user_id,chart_json,profile_version,calculation_version,calculation_key)
+      select id,user_id,'{"method":"jpl"}',now(),'jpl-v0.1','jpl-checksum' from public.birth_profiles;`);
+    assert.equal((await db.query('select * from public.natal_charts')).rows.length,2);
+    await db.exec(`insert into public.daily_readings(user_id,profile_id,date,profile_version,reading_json,model_version,prompt_version,knowledge_version,calculation_key,display_timezone)
+      select user_id,id,'2024-03-10','2026-01-01','{}','v1','v1','v1',variant.method,variant.zone from public.birth_profiles
+      cross join (values ('legacy-swiss-v1','UTC'),('jpl-checksum','UTC'),('jpl-checksum','America/New_York')) as variant(method,zone);`);
+    assert.equal((await db.query('select * from public.daily_readings')).rows.length,3);
   }finally{await db.close();}
 });

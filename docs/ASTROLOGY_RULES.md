@@ -1,4 +1,6 @@
-# Calculation and interpretation rules
+# Calculation and interpretation rules — Swiss alternative
+
+The website now defaults to the imported **JPL DE440s v0.1** method. Its separate formulas, target conventions, pinned timezones, full-day scan, validation and limitations are documented in [CALCULATION_METHOD.md](CALCULATION_METHOD.md). The rules below apply only when `swiss-v1` is selected. They are never silently applied to JPL evidence.
 
 The authoritative aspect geometry is in `services/astrology/engine.py`; validated orb/weight defaults are in `services/astrology/rules.py` with versioned admin overrides. The frontend only converts longitudes to SVG coordinates; it never calculates astrology. Shared Mongolian terminology is in `packages/localization/terms.json` and is consumed by both runtimes.
 

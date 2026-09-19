@@ -1,0 +1,16 @@
+{
+  "person_a": {
+    "local_date": "2000-01-01",
+    "local_time": "12:00:00",
+    "timezone": "Asia/Ulaanbaatar",
+    "latitude": 47.9189,
+    "longitude": 106.9176
+  },
+  "person_b": {
+    "local_date": "1998-06-15",
+    "local_time": "09:30:00",
+    "timezone": "Asia/Ulaanbaatar",
+    "latitude": 49.4867,
+    "longitude": 105.9228
+  }
+}

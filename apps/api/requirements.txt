@@ -3,8 +3,13 @@ uvicorn[standard]==0.34.2
 httpx==0.28.1
 pyswisseph==2.10.3.2
 timezonefinder==6.5.9
-tzdata==2025.2
+tzdata==2026.4
 pydantic==2.11.5
 pytest==8.3.5
 python-dotenv==1.1.0
 sentry-sdk[fastapi]==2.29.1
+skyfield==1.54
+jplephem==2.24
+sgp4==2.27
+numpy==2.5.3
+./vendor/od-toirog-engine
