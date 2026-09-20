@@ -39,6 +39,7 @@ Without Supabase configuration, public pages work and private screens explain th
 corepack pnpm lint
 corepack pnpm build
 corepack pnpm typecheck
+corepack pnpm check:library
 .venv/bin/python -m pytest tests -q
 .venv/bin/python -m pytest vendor/od-toirog-engine/tests -q
 node --test tests/rls.test.mjs
@@ -56,3 +57,5 @@ Run type checking **after**, not concurrently with, a build because Next regener
 See [docs/PRD_STATUS.md](docs/PRD_STATUS.md) for implementation coverage and external launch gates. Tests do not substitute for live Google OAuth, RLS, language, and astronomical reference validation.
 
 **New method:** [docs/CALCULATION_METHOD.md](docs/CALCULATION_METHOD.md) explains the formulas, center conventions, timezone rules, 15-minute daily scan, validation and limits. Public guide: `/learn/calculations/`. Apply migration `004_calculation_methods.sql` to keep calculation caches separate.
+
+**Research library:** `/library/` contains all 518 research entries in six sections, with eleven collections and 117 source pages. See [docs/RESEARCH_LIBRARY.md](docs/RESEARCH_LIBRARY.md) for the content map, import fidelity and page structure. It is public static reference content and requires no new database migration.

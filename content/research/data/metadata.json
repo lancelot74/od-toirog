@@ -1,0 +1,25 @@
+{
+  "title": "Od Toirog Esoteric Research Library",
+  "version": "1.0",
+  "researched_at": "2026-09-19",
+  "entry_count": 518,
+  "counts": {
+    "tarot": 78,
+    "term": 118,
+    "tradition": 24,
+    "symbol": 40,
+    "taboo": 28,
+    "vocabulary": 96,
+    "copy": 48,
+    "spread": 25,
+    "method": 18,
+    "example": 6,
+    "translation": 37
+  },
+  "source_pages": 117,
+  "grouped_source_works": 33,
+  "scope": "Western esotericism and RWS tarot, with limited comparative and Mongolian context; original editorial resources are separately labeled.",
+  "source_policy": "Source citations support the scope recorded per reference, not supernatural efficacy or all original interpretations.",
+  "localization_status": "37 working Mongolian candidates; native editorial review required",
+  "content_words": 27815
+}

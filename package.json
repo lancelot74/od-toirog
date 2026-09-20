@@ -7,7 +7,8 @@
     "build": "next build --webpack",
     "start": "python3 -m http.server 3001 --bind 0.0.0.0 --directory out",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check:library": "python3 scripts/check_research_export.py"
   },
   "dependencies": {
     "@fontsource/manrope": "^5.2.6",
@@ -15,7 +16,9 @@
     "@supabase/supabase-js": "^2.57.4",
     "next": "^16.0.0",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@electric-sql/pglite": "^0.5.8",

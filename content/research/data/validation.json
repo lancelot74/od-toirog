@@ -1,0 +1,31 @@
+{
+  "data_integrity": "passed",
+  "entry_ids_unique": true,
+  "source_references_resolve": true,
+  "tarot_count": 78,
+  "major_sequence": "0 through 21",
+  "minor_suits": "Four suits, 14 ranks each",
+  "spread_positions_valid": true,
+  "example_card_references_valid": true,
+  "sqlite_integrity": "ok",
+  "sqlite_foreign_keys": "ok",
+  "fts_examples": {
+    "lantern": 6,
+    "\"Сар\"": 1,
+    "\"reversed\"": 9
+  },
+  "counts": {
+    "tarot": 78,
+    "term": 118,
+    "tradition": 24,
+    "symbol": 40,
+    "taboo": 28,
+    "vocabulary": 96,
+    "copy": 48,
+    "spread": 25,
+    "method": 18,
+    "example": 6,
+    "translation": 37
+  },
+  "source_access_note": "Pages were reviewed during research; this build checks citation structure, not live external availability."
+}

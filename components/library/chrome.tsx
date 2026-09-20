@@ -1,0 +1,8 @@
+import Link from 'next/link';
+import { collections,evidenceLabels,useLabels } from '@/lib/library/config';
+import type { EntrySummary } from '@/lib/library/types';
+
+export function LibraryNav(){return <nav className="library-nav" aria-label="Номын сангийн цэс"><Link href="/library">Номын сан</Link><Link href="/library/search">Хайх</Link><Link href="/library/sources">Эх сурвалж</Link><Link href="/library/about">Судалгааны тухай</Link></nav>;}
+export function LibraryBreadcrumb({items}:{items:{href?:string;label:string}[]}){return <nav className="library-breadcrumb" aria-label="Хуудасны зам"><Link href="/library">Номын сан</Link>{items.map((item,i)=><span key={i}><span aria-hidden="true"> / </span>{item.href?<Link href={item.href}>{item.label}</Link>:<span aria-current="page">{item.label}</span>}</span>)}</nav>;}
+export function EntryBadges({entry}:{entry:EntrySummary}){return <div className="library-badges"><span>{collections[entry.category].title}</span><span className={entry.product_use==='review_required'?'draft-badge':''}>{useLabels[entry.product_use]}</span><span>{entry.locale==='mn-draft'?'MN · Ноорог':'EN · Эх бичвэр'}</span></div>;}
+export function EntryLink({entry}:{entry:EntrySummary}){return <article className="library-entry-link"><EntryBadges entry={entry}/><h3><Link href={`/library/entries/${entry.id}`} lang="en">{entry.title}<span aria-hidden="true"> ↗</span></Link></h3><p lang={entry.locale==='mn-draft'?'mn':'en'}>{entry.summary.length>220?`${entry.summary.slice(0,217)}…`:entry.summary}</p><small>{evidenceLabels[entry.evidence_status]||entry.evidence_status}</small></article>;}

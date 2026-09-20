@@ -1,0 +1,109 @@
+{
+  "archive": "od-toirog-research-library-v1.zip",
+  "archive_sha256": "5c6801724e19475794e2ba67eca3a25e9bcc867ec8fb6a0bf4a8ed089c6c2247",
+  "manifest_files_verified": 40,
+  "entries": 518,
+  "sources": 117,
+  "works": 33,
+  "counts": {
+    "tarot": 78,
+    "term": 118,
+    "tradition": 24,
+    "symbol": 40,
+    "taboo": 28,
+    "vocabulary": 96,
+    "copy": 48,
+    "spread": 25,
+    "method": 18,
+    "example": 6,
+    "translation": 37
+  },
+  "checks": [
+    "manifest",
+    "json_subsets",
+    "jsonl",
+    "csv",
+    "sqlite",
+    "citations",
+    "deck_coverage",
+    "spreads",
+    "examples",
+    "drafts"
+  ],
+  "detail_fields": {
+    "tarot": [
+      "arcana",
+      "attribution",
+      "deck_system",
+      "editorial_boundary",
+      "historical_note",
+      "imagery",
+      "number",
+      "original_interpretation",
+      "reversal_policy",
+      "suit"
+    ],
+    "term": [
+      "definition_status",
+      "original_example",
+      "plain_meaning",
+      "usage_note"
+    ],
+    "tradition": [
+      "coverage",
+      "important_distinction",
+      "website_application"
+    ],
+    "symbol": [
+      "design_direction",
+      "original_associations",
+      "reference_card",
+      "usage_note"
+    ],
+    "taboo": [
+      "avoid",
+      "scope",
+      "website_application"
+    ],
+    "vocabulary": [
+      "attribution_note",
+      "mood",
+      "original_example",
+      "suitable_for",
+      "usage_note",
+      "working_meaning"
+    ],
+    "copy": [
+      "placement",
+      "text"
+    ],
+    "spread": [
+      "card_count",
+      "opening_question",
+      "origin",
+      "positions",
+      "significator",
+      "synthesis_method"
+    ],
+    "method": [
+      "implementation_note"
+    ],
+    "example": [
+      "card_ids",
+      "orientation",
+      "provenance",
+      "spread_title",
+      "synthetic_context",
+      "text"
+    ],
+    "translation": [
+      "editor_note",
+      "english",
+      "meaning_note",
+      "mongolian_candidate",
+      "review_status",
+      "scope",
+      "script"
+    ]
+  }
+}

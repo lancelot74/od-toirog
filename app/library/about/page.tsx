@@ -1,0 +1,9 @@
+import Link from 'next/link';
+import { Workspace } from '@/components/workspace';
+import { LibraryNav,LibraryBreadcrumb } from '@/components/library/chrome';
+import { LibraryMarkdown } from '@/components/library/markdown';
+import { documentText,importMetadata } from '@/lib/library/server';
+import { asset } from '@/lib/paths';
+
+export const metadata={title:'Судалгааны сангийн тухай | Од Тойрог'};
+export default function About(){return <Workspace privatePage={false}><LibraryNav/><LibraryBreadcrumb items={[{label:'Судалгааны тухай'}]}/><header className="library-heading"><p className="eyebrow">ХУВИЛБАР 1.0 · ЭХИЙН БҮРЭН БҮТЭН БАЙДАЛ</p><h1>Эх, тайлбар,<br/>шинээр бичсэн санаа.</h1><p>Сангийн үндсэн чиглэл нь өрнийн эзотерик уламжлал ба RWS таро. Өргөн хүрээний шашны нэвтэрхий толь, зурхайн тооцооллын хөдөлгүүр эсвэл сургагдсан загвар биш.</p><p>518 бичлэгийг 11 цуглуулга, зургаан үндсэн хэсгээр зохион байгуулсан. Эх текст, эшлэлийн хүрээ, ноорог төлөв нь хадгалагдсан.</p></header><nav className="library-collection-nav" aria-label="Судалгааны баримтууд"><Link href="/library/documents/integration">Интеграцын заавар</Link><Link href="/library/documents/validation">Эх багцын шалгалт</Link><Link href="/library/documents/readme">Багцын танилцуулга</Link><a href={asset('/downloads/od-toirog-research-library-v1.zip')} download>Эх ZIP багцыг татах ↓</a></nav><details className="library-context"><summary>Импортын баталгаажуулалт</summary><p>{importMetadata.manifest_files_verified} файлын manifest checksum таарсан. JSON, JSONL, CSV, SQLite хувилбаруудын агуулга ижил.</p><code>{importMetadata.archive_sha256}</code><p>Checksum нь файлын бүрэн бүтэн байдлыг шалгана; агуулгын түүхэн эсвэл шинжлэх ухааны үнэн зөвийг өөрөө батлахгүй.</p></details><LibraryMarkdown text={documentText('research')}/></Workspace>;}
