@@ -70,7 +70,7 @@ test('Google authorization uses the deployment-prefixed callback',async({page})=
   expect(new URL(page.url()).searchParams.get('code_challenge')).toBeTruthy();
 });
 
-test('supplied wheel animation starts and can be paused',async({page})=>{
+test('supplied wheel animation runs without a control button and respects reduced motion',async({page})=>{
   await pagesPath(page);
   await page.setViewportSize({width:1440,height:900});
   await page.emulateMedia({reducedMotion:'no-preference'});
@@ -78,7 +78,8 @@ test('supplied wheel animation starts and can be paused',async({page})=>{
   const frame=page.frameLocator('.landscape-art iframe');
   await expect(frame.locator('.artwork.ready')).toBeVisible();
   await expect(frame.locator('#error')).toBeHidden();
-  await page.getByRole('button',{name:'Хөдөлгөөнийг зогсоох'}).click();
+  await expect(page.locator('.landscape-art button')).toHaveCount(0);
+  await page.emulateMedia({reducedMotion:'reduce'});
   await expect(page.locator('.landscape-art iframe')).toHaveCount(0);
 });
 

@@ -16,7 +16,7 @@
   .landscape-picture{position:static;height:auto}
   .landscape-picture>img{position:static;width:100%;height:auto;object-fit:contain}
   .landscape-art::after{display:none}
-  .landscape-art iframe,.landscape-art .motion-toggle{display:none}
+  .landscape-art iframe{display:none}
   .hero.landscape-hero .hero-copy{grid-area:1/1;align-self:start;width:100%;max-width:none;margin:0;padding:64px clamp(20px,6cqw,40px) 0;z-index:1}
   .hero-copy>.eyebrow,.hero-intro-desktop,.hero-copy .hero-actions>.text-link,.hero-copy .hero-note{display:none}
   .hero-intro-mobile{display:inline}

@@ -3,7 +3,7 @@
 ## Integrated
 
 - Supplied hero, compatibility and loading PNGs optimized to WebP.
-- Supplied eight-second Canvas animation, with its original masks/layers externalized. Only selected printed wheel strokes move. Desktop pointer devices can pause/play; mobile uses its dedicated static portrait, and reduced-motion users start with a still image.
+- Supplied eight-second Canvas animation, with its original masks/layers externalized. Only selected printed wheel strokes move. Desktop pointer devices animate automatically without a visible motion-control button; mobile and reduced-motion users see a still image.
 - Original approved emblem retained; simple geometric navbar mark and favicon added.
 - A social/Open Graph composition assembled from the supplied artwork.
 - Product chart previews use real Swiss Ephemeris reference data and the actual SVG component.
