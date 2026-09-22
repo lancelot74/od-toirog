@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { mn } from '@/lib/mn';
-import { zodiacSlugs, zodiacArt } from '@/lib/astro-assets';
+import { zodiacSlugs } from '@/lib/astro-assets';
+import { ZodiacArtwork } from './zodiac-artwork';
 
 export function ZodiacLink({index}:{index:number}){
   if(!zodiacSlugs[index])return null;
@@ -9,5 +9,5 @@ export function ZodiacLink({index}:{index:number}){
 }
 export function ZodiacPortrait({index}:{index:number}){
   if(!zodiacSlugs[index])return null;
-  return <Link className="zodiac-portrait" href={`/zodiac/${zodiacSlugs[index]}`}><Image src={zodiacArt(index,true)} width={640} height={400} alt={`${mn.signs[index]} ордын алтан сийлбэр`} sizes="(max-width: 900px) 90vw, 400px"/><span>{mn.signs[index]} ордыг судлах <span aria-hidden="true">→</span></span></Link>;
+  return <Link className="zodiac-portrait" href={`/zodiac/${zodiacSlugs[index]}`}><ZodiacArtwork index={index} preview alt={`${mn.signs[index]} ордын алтан сийлбэр`} mobileSizes="(max-width: 900px) 90vw, 400px"/><span>{mn.signs[index]} ордыг судлах <span aria-hidden="true">→</span></span></Link>;
 }

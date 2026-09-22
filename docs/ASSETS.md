@@ -3,14 +3,26 @@
 ## Integrated
 
 - Supplied hero, compatibility and loading PNGs optimized to WebP.
-- Supplied eight-second Canvas animation, with its original masks/layers externalized. Only selected printed wheel strokes move. Desktop can pause; mobile and reduced-motion users start with the static hero.
+- Supplied eight-second Canvas animation, with its original masks/layers externalized. Only selected printed wheel strokes move. Desktop pointer devices can pause/play; mobile uses its dedicated static portrait, and reduced-motion users start with a still image.
 - Original approved emblem retained; simple geometric navbar mark and favicon added.
 - A social/Open Graph composition assembled from the supplied artwork.
 - Product chart previews use real Swiss Ephemeris reference data and the actual SVG component.
 - All twelve supplied 2560×1600 zodiac scenes are imported as optimized 1600px WebP paintings and 640px thumbnails. `scripts/prepare_zodiac_assets.py` reproduces the import.
 - The supplied planet SVGs appear in the natal wheel, reading headers, Big Three and placement/aspect tables. Zodiac signs use written Mongolian names in ivory to distinguish them from the gold planet icons. The supplied zodiac sprite remains in the asset library.
-- Individual zodiac guides display the full original 8:5 painting without cropping or a dark overlay. The title scales with the artwork and sits over its intentionally empty left side.
+- Desktop zodiac guides display the full 8:5 painting without cropping or a dark overlay, with text over its empty left side. Mobile guides use the separate portrait composition described below.
 - `/zodiac` and `/zodiac/[slug]` provide illustrated Mongolian guides, linked from the landing page, education index and personal chart.
+
+## Mobile portrait art direction
+
+Imported `mobile-zodiacs-all-12.zip` and `mobile-hero.png` from the supplied Downloads assets. Reproduce with `python3 scripts/prepare_mobile_art.py` (Pillow required). Source hashes, dimensions, and output sizes are recorded in `public/assets/mobile/manifest.json`.
+
+- The twelve zodiac portraits are **1024×1536 (2:3)**. Optimized variants are 384, 768, and 1024 pixels wide.
+- The homepage portrait is **1440×2560 (9:16)**. Optimized variants are 450, 900, and 1440 pixels wide.
+- A native `<picture>` selects portrait sources at widths up to **900px**, using the image's real proportions. Desktop scenes remain the wider sources. Only the selected source downloads on initial mobile load.
+- Zodiac headings stay within the **upper 32%**. Full subjects and their 8–10% side margins remain visible. Gallery names and chart-preview labels use the same quiet upper zone.
+- Homepage logo, headline, short introduction, and primary CTA stay within the **upper 35%**. The moon/wheel, mountains, traveler, and winding path retain their original lower placement. Secondary text follows the image instead of covering its scene.
+- No portrait is cropped, stretched to a viewport height, shaded with an overlay, or centered like a poster. Natural dark lower transitions meet the page background.
+- Mobile top navigation keeps the brand, education, and library links; the existing bottom bar provides Today, Chart, Compatibility, and Profile without repeating those links above the artwork.
 
 `scripts/prepare_assets.py` reproduces the conversion from the named Windows Downloads files. Do not regenerate those approved scenes independently.
 

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Workspace } from '@/components/workspace';
@@ -8,6 +7,7 @@ import { ZodiacGallery } from '@/components/zodiac-gallery';
 import { zodiacGuide,zodiacGuides } from '@/lib/zodiac';
 import { zodiacArt } from '@/lib/astro-assets';
 import { mn } from '@/lib/mn';
+import { ZodiacArtwork } from '@/components/zodiac-artwork';
 
 export const dynamicParams=false;
 export function generateStaticParams(){return zodiacGuides.map(({slug})=>({slug}));}
@@ -25,7 +25,7 @@ export default async function ZodiacPage({params}:{params:Promise<{slug:string}>
     <nav className="zodiac-breadcrumb" aria-label="Хуудасны зам"><Link href="/learn">Мэдлэг</Link><span aria-hidden="true">/</span><Link href="/zodiac">Арван хоёр орд</Link><span aria-hidden="true">/</span><span aria-current="page">{sign.name}</span></nav>
     <article>
       <header className="zodiac-hero">
-        <Image src={zodiacArt(sign.index)} alt={sign.alt} width={1600} height={1000} priority sizes="(max-width: 900px) 100vw, 1100px"/>
+        <ZodiacArtwork index={sign.index} alt={sign.alt} priority/>
         <div className="zodiac-hero-copy"><p className="eyebrow">{String(sign.index+1).padStart(2,'0')} / 12 · ОРД</p><h1>{sign.name}</h1><p>{sign.subtitle}</p></div>
       </header>
       <dl className="zodiac-facts"><div><dt>Элемент</dt><dd>{sign.element}</dd></div><div><dt>Хэмнэл</dt><dd>{sign.modality}</dd></div><div><dt>Удирдагч гариг</dt><dd>{sign.rulers.map(id=><span className="symbol-label" key={id}><AstroSymbol kind="planet" index={id} size={26}/>{mn.planets[id]}</span>)}</dd></div><div><dt>Нарны орд · ойролцоогоор</dt><dd>{sign.dates}</dd></div></dl>

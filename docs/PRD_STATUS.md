@@ -1,6 +1,6 @@
 # PRD implementation audit
 
-Updated 2026-09-21. **This is not a public-launch approval.** Code implementation, local verification, deployed integration, and human editorial/art approval are different states.
+Updated 2026-09-22. **This is not a public-launch approval.** Code implementation, local verification, deployed integration, and human editorial/art approval are different states.
 
 The supplied `od-toirog-engine-v0.1.zip` is now integrated as the labeled default **JPL DE440s v0.1** method. The earlier Swiss/Placidus method is selectable. JPL deliberately omits houses/Ascendant/MC, requires a known birth time and does not produce a compatibility percentage; those boundaries are visible in the UI. See `CALCULATION_METHOD.md` and `/learn/calculations`.
 
@@ -40,6 +40,8 @@ The supplied research library is available at `/library`: **518 reference entrie
 Calculation integration: **26 application Python tests + the imported engine's 37 tests pass**. The PostgreSQL test verifies RLS, history, and method/timezone cache separation. Browser coverage adds method switching, local-day evidence, null compatibility scores, and the public calculation guide to the existing 21 checks. Full numerical comparison results are in `JPL_VALIDATION.json`.
 
 Research-library update: **31 browser tests pass**. The export checker verifies all 518 articles, all 117 source pages and 17,047 local links, including full visible content rather than hidden serialized JSON.
+
+Mobile-art update: **33 browser checks pass**, including all twelve dedicated portrait zodiac assets, the portrait homepage hero, native aspect-ratio preservation, text confined to the reserved top zones, mobile-only source selection, static mobile artwork, and compact navigation. See `ASSETS.md` for original dimensions and the import manifest.
 
 - Production static export, lint and TypeScript checks.
 - Python tests for reference positions, historical timezones, DST gap/fold, houses, unknown-time handling, aspect orbs, transit/synastry rules, unapproved/invalid knowledge, invalid model JSON/evidence, access denial, ownership filters and deletion identity.

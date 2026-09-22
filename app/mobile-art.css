@@ -1,0 +1,56 @@
+/* The browser chooses one art-directed source before hydration. */
+.landscape-picture{display:block;position:absolute;inset:0;width:100%;height:100%}
+.landscape-picture>img{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.landscape-art iframe{position:absolute;inset:0}
+.hero-intro-mobile,.mobile-hero-followup{display:none}
+
+@media(max-width:900px){
+  /* Use the portrait's full 9:16 frame. Brand + copy occupy its top 35%. */
+  .home-page{position:relative}
+  .home-page>.site-header{position:absolute;inset:0 0 auto;height:60px;padding:0 20px;border:0;background:transparent}
+  .home-page>.site-header .button{min-height:44px;padding-inline:14px;font-size:10px}
+  .home-page>.site-header .brand{gap:9px}
+  .home-page>.site-header .brand b{font-size:15px}
+  .hero.landscape-hero{display:grid;grid-template-columns:minmax(0,1fr);padding:0;min-height:0;container-type:inline-size;text-align:left}
+  .hero.landscape-hero .landscape-art{position:relative;inset:auto;grid-area:1/1;align-self:start;z-index:0}
+  .landscape-picture{position:static;height:auto}
+  .landscape-picture>img{position:static;width:100%;height:auto;object-fit:contain}
+  .landscape-art::after{display:none}
+  .landscape-art iframe,.landscape-art .motion-toggle{display:none}
+  .hero.landscape-hero .hero-copy{grid-area:1/1;align-self:start;width:100%;max-width:none;margin:0;padding:64px clamp(20px,6cqw,40px) 0;z-index:1}
+  .hero-copy>.eyebrow,.hero-intro-desktop,.hero-copy .hero-actions>.text-link,.hero-copy .hero-note{display:none}
+  .hero-intro-mobile{display:inline}
+  .hero.landscape-hero h1{font-size:clamp(22px,6.4cqw,40px);line-height:1.2;margin:0 0 6px;letter-spacing:-.025em}
+  .hero.landscape-hero .lead{font-size:clamp(12px,3.2cqw,15px);line-height:1.5;margin:0;max-width:none;color:var(--soft)}
+  .hero.landscape-hero .hero-actions{display:flex;flex-direction:row;align-items:start;justify-content:start;gap:0;margin:8px 0 0}
+  .hero.landscape-hero .hero-actions>.button{min-height:44px;font-size:11px;padding-inline:18px;letter-spacing:.05em}
+  .mobile-hero-followup{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:8px 24px 35px;background:var(--night)}
+  .mobile-hero-followup .text-link{display:inline-flex;align-items:center;min-height:44px;font-size:11px;flex-shrink:0}
+  .mobile-hero-followup p{font-size:11px;line-height:1.8;color:var(--muted);margin:0}
+
+  /* Portrait zodiac art has a 2:3 frame and a reserved top 32% text zone. */
+  .workspace:has(>.zodiac-breadcrumb){padding-top:24px}
+  .zodiac-breadcrumb{margin-bottom:18px}
+  .zodiac-hero{margin-inline:-28px;border:0}
+  .zodiac-hero-copy{inset:0 0 auto;width:100%;height:32%;padding:clamp(14px,5cqw,32px) 8%;justify-content:center;align-items:start}
+  .zodiac-hero-copy .eyebrow{font-size:clamp(9px,2.6cqw,11px);line-height:1.4;margin:0 0 6px;letter-spacing:.16em}
+  .zodiac-hero-copy h1{font-size:clamp(30px,11cqw,58px);line-height:1.15;margin:0 0 8px}
+  .zodiac-hero-copy>p:last-child{font-size:clamp(12px,3.7cqw,18px);line-height:1.45;max-width:32ch}
+  .zodiac-tile-art .zodiac-tile-title{position:absolute;top:7%;left:8%;right:8%;margin:0}
+  .zodiac-tile-art .zodiac-tile-title h3{font-size:clamp(17px,4.8vw,24px);line-height:1.4;color:var(--ivory)}
+  .zodiac-tile-art .zodiac-tile-title>span{display:none}
+  .zodiac-tile:hover .zodiac-tile-art img{filter:none}
+  .zodiac-portrait>span{position:absolute;top:7%;left:8%;right:8%;padding:0;background:none;font-size:16px;line-height:1.6;color:var(--ivory)}
+}
+@media(max-width:600px){
+  .workspace-frame .workspace-nav{padding:8px 16px;flex-wrap:nowrap;gap:16px}
+  .workspace-frame .workspace-nav .brand{flex-basis:auto;margin:0 auto 0 0;font-size:14px}
+  .workspace-frame .workspace-nav>a{font-size:11px;display:inline-flex;align-items:center}
+  .workspace-frame .workspace-nav [data-mobile-bottom-link]{display:none}
+}
+@media(max-width:360px){
+  .home-page>.site-header{padding-inline:16px}
+  .home-page>.site-header .brand{gap:6px}
+  .home-page>.site-header .brand small{font-size:7px}
+  .mobile-hero-followup{flex-direction:column;align-items:start;gap:10px}
+}

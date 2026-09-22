@@ -42,10 +42,11 @@ test('public pages, artwork, and narrow layouts work without console errors',asy
     await page.setViewportSize({width,height:900});
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
   }
-  // Scroll lazy-loaded gallery paintings into view before checking their pixels.
+  await expect(page.locator('.public-chart .real-chart')).toBeVisible();
+  // After resizing, wait for the selected desktop source as well as lazy loading.
   for(const image of await page.locator('img').all()){
     await image.scrollIntoViewIfNeeded();
-    await image.evaluate(el=>el instanceof HTMLImageElement?el.decode():Promise.resolve());
+    await expect.poll(()=>image.evaluate(el=>el instanceof HTMLImageElement&&el.complete&&el.naturalWidth>0&&el.currentSrc===el.src)).toBe(true);
   }
   const images=await page.locator('img').evaluateAll(images=>images.every(img=>img instanceof HTMLImageElement&&img.complete&&img.naturalWidth>0));
   expect(images).toBeTruthy();

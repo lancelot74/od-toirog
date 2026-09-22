@@ -1,0 +1,330 @@
+{
+  "zip_sha256": "b921f2582a545d0fe3696eb59f9e370867b3ef084894cbbc8716baabd6980df7",
+  "zodiac": {
+    "aries": {
+      "source_sha256": "a4942eb90dc1c0bb685b19ad27d9b50e80369dfb2c3cf1a6579d1766c868e57f",
+      "width": 1024,
+      "height": 1536,
+      "variants": [
+        {
+          "path": "/assets/zodiac/mobile/aries-384.webp",
+          "width": 384,
+          "height": 576,
+          "bytes": 31382
+        },
+        {
+          "path": "/assets/zodiac/mobile/aries-768.webp",
+          "width": 768,
+          "height": 1152,
+          "bytes": 129696
+        },
+        {
+          "path": "/assets/zodiac/mobile/aries-1024.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 228778
+        }
+      ]
+    },
+    "taurus": {
+      "source_sha256": "857f860002813306d798bab74acaf17fda186329c1d66573ebcd4c4b2668bee7",
+      "width": 1024,
+      "height": 1536,
+      "variants": [
+        {
+          "path": "/assets/zodiac/mobile/taurus-384.webp",
+          "width": 384,
+          "height": 576,
+          "bytes": 32808
+        },
+        {
+          "path": "/assets/zodiac/mobile/taurus-768.webp",
+          "width": 768,
+          "height": 1152,
+          "bytes": 138034
+        },
+        {
+          "path": "/assets/zodiac/mobile/taurus-1024.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 238866
+        }
+      ]
+    },
+    "gemini": {
+      "source_sha256": "1a5c3a88d15e15d165b40b2d336be9b7f09fde739ba98b5b5d483e2a81cdb606",
+      "width": 1024,
+      "height": 1536,
+      "variants": [
+        {
+          "path": "/assets/zodiac/mobile/gemini-384.webp",
+          "width": 384,
+          "height": 576,
+          "bytes": 30524
+        },
+        {
+          "path": "/assets/zodiac/mobile/gemini-768.webp",
+          "width": 768,
+          "height": 1152,
+          "bytes": 124002
+        },
+        {
+          "path": "/assets/zodiac/mobile/gemini-1024.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 221350
+        }
+      ]
+    },
+    "cancer": {
+      "source_sha256": "7381b49e7dd7de6dd004c2d2ea85372eae0c01af49db93161170a7f789d20429",
+      "width": 1024,
+      "height": 1536,
+      "variants": [
+        {
+          "path": "/assets/zodiac/mobile/cancer-384.webp",
+          "width": 384,
+          "height": 576,
+          "bytes": 37662
+        },
+        {
+          "path": "/assets/zodiac/mobile/cancer-768.webp",
+          "width": 768,
+          "height": 1152,
+          "bytes": 159698
+        },
+        {
+          "path": "/assets/zodiac/mobile/cancer-1024.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 282238
+        }
+      ]
+    },
+    "leo": {
+      "source_sha256": "13e17cca48df45206e93ff3e24bfa7445e851b4130ddefc44e6fd9ee8aa5eeb8",
+      "width": 1024,
+      "height": 1536,
+      "variants": [
+        {
+          "path": "/assets/zodiac/mobile/leo-384.webp",
+          "width": 384,
+          "height": 576,
+          "bytes": 35488
+        },
+        {
+          "path": "/assets/zodiac/mobile/leo-768.webp",
+          "width": 768,
+          "height": 1152,
+          "bytes": 150686
+        },
+        {
+          "path": "/assets/zodiac/mobile/leo-1024.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 261850
+        }
+      ]
+    },
+    "virgo": {
+      "source_sha256": "76474edd2143f075dddb8deec85ca1073fafa6ba66bc82635278f5ddce75437c",
+      "width": 1024,
+      "height": 1536,
+      "variants": [
+        {
+          "path": "/assets/zodiac/mobile/virgo-384.webp",
+          "width": 384,
+          "height": 576,
+          "bytes": 41040
+        },
+        {
+          "path": "/assets/zodiac/mobile/virgo-768.webp",
+          "width": 768,
+          "height": 1152,
+          "bytes": 183108
+        },
+        {
+          "path": "/assets/zodiac/mobile/virgo-1024.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 330200
+        }
+      ]
+    },
+    "libra": {
+      "source_sha256": "abc48559a065af1f24c6f0cb5c7a2e6150a768e4560d824108b5203cf5d79cd7",
+      "width": 1024,
+      "height": 1536,
+      "variants": [
+        {
+          "path": "/assets/zodiac/mobile/libra-384.webp",
+          "width": 384,
+          "height": 576,
+          "bytes": 20444
+        },
+        {
+          "path": "/assets/zodiac/mobile/libra-768.webp",
+          "width": 768,
+          "height": 1152,
+          "bytes": 84830
+        },
+        {
+          "path": "/assets/zodiac/mobile/libra-1024.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 146932
+        }
+      ]
+    },
+    "scorpio": {
+      "source_sha256": "6dd003b0cfad7a388d7a4094cfece7515e6703a13ab3918e6acf0e3413ca2834",
+      "width": 1024,
+      "height": 1536,
+      "variants": [
+        {
+          "path": "/assets/zodiac/mobile/scorpio-384.webp",
+          "width": 384,
+          "height": 576,
+          "bytes": 26210
+        },
+        {
+          "path": "/assets/zodiac/mobile/scorpio-768.webp",
+          "width": 768,
+          "height": 1152,
+          "bytes": 105228
+        },
+        {
+          "path": "/assets/zodiac/mobile/scorpio-1024.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 174328
+        }
+      ]
+    },
+    "sagittarius": {
+      "source_sha256": "f42542adc55ce5865626ef19c5c8c1e737c0633999135c3c945bdf466def5aef",
+      "width": 1024,
+      "height": 1536,
+      "variants": [
+        {
+          "path": "/assets/zodiac/mobile/sagittarius-384.webp",
+          "width": 384,
+          "height": 576,
+          "bytes": 25350
+        },
+        {
+          "path": "/assets/zodiac/mobile/sagittarius-768.webp",
+          "width": 768,
+          "height": 1152,
+          "bytes": 120884
+        },
+        {
+          "path": "/assets/zodiac/mobile/sagittarius-1024.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 219208
+        }
+      ]
+    },
+    "capricorn": {
+      "source_sha256": "6047d77bccbd1b5f2d4a7541dcaf64aa37f2c4c748e9b6554b72f29398f0b46c",
+      "width": 1024,
+      "height": 1536,
+      "variants": [
+        {
+          "path": "/assets/zodiac/mobile/capricorn-384.webp",
+          "width": 384,
+          "height": 576,
+          "bytes": 31118
+        },
+        {
+          "path": "/assets/zodiac/mobile/capricorn-768.webp",
+          "width": 768,
+          "height": 1152,
+          "bytes": 129832
+        },
+        {
+          "path": "/assets/zodiac/mobile/capricorn-1024.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 222784
+        }
+      ]
+    },
+    "aquarius": {
+      "source_sha256": "911ba1e86616f6961497c4e3fabe40cd709296f1795a7f9ac4145415320ae657",
+      "width": 1024,
+      "height": 1536,
+      "variants": [
+        {
+          "path": "/assets/zodiac/mobile/aquarius-384.webp",
+          "width": 384,
+          "height": 576,
+          "bytes": 21920
+        },
+        {
+          "path": "/assets/zodiac/mobile/aquarius-768.webp",
+          "width": 768,
+          "height": 1152,
+          "bytes": 95932
+        },
+        {
+          "path": "/assets/zodiac/mobile/aquarius-1024.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 174984
+        }
+      ]
+    },
+    "pisces": {
+      "source_sha256": "05c8a26e47fbe991632554861740f3da93a2bb3ec2003f96ac5d1d534007bb07",
+      "width": 1024,
+      "height": 1536,
+      "variants": [
+        {
+          "path": "/assets/zodiac/mobile/pisces-384.webp",
+          "width": 384,
+          "height": 576,
+          "bytes": 33106
+        },
+        {
+          "path": "/assets/zodiac/mobile/pisces-768.webp",
+          "width": 768,
+          "height": 1152,
+          "bytes": 129086
+        },
+        {
+          "path": "/assets/zodiac/mobile/pisces-1024.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 219428
+        }
+      ]
+    }
+  },
+  "hero": {
+    "source_sha256": "abd5742c9eccb67f6f7fca5602411cb9e26f3883db743a5792bee975ac8c454d",
+    "width": 1440,
+    "height": 2560,
+    "variants": [
+      {
+        "path": "/assets/illustration/mobile/hero-450.webp",
+        "width": 450,
+        "height": 800,
+        "bytes": 45012
+      },
+      {
+        "path": "/assets/illustration/mobile/hero-900.webp",
+        "width": 900,
+        "height": 1600,
+        "bytes": 180788
+      },
+      {
+        "path": "/assets/illustration/mobile/hero-1440.webp",
+        "width": 1440,
+        "height": 2560,
+        "bytes": 341200
+      }
+    ]
+  }
+}
