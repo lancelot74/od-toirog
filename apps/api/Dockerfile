@@ -1,9 +1,9 @@
 FROM python:3.12-slim
 WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends build-essential && rm -rf /var/lib/apt/lists/*
-COPY apps/api/requirements.txt /app/apps/api/requirements.txt
+COPY apps/api/requirements-runtime.txt /app/apps/api/requirements-runtime.txt
 COPY vendor/od-toirog-engine /app/vendor/od-toirog-engine
-RUN pip install --no-cache-dir -r apps/api/requirements.txt
+RUN pip install --no-cache-dir -r apps/api/requirements-runtime.txt
 COPY apps/api /app/apps/api
 COPY services /app/services
 COPY packages/localization /app/packages/localization

@@ -1,8 +1,8 @@
 """Deterministic tropical/geocentric astrology. No language-model dependencies."""
-from datetime import datetime, time, timezone, timedelta
+from datetime import datetime, time, timezone
 from functools import lru_cache
 from itertools import combinations, product
-from zoneinfo import ZoneInfo
+from od_toirog.timezones import local_to_utc as pinned_local_to_utc, civil_day, require_supported
 import os
 import json
 from pathlib import Path
@@ -16,15 +16,10 @@ PLANETS = TERMS['planets']
 SIGNS = TERMS['signs']
 # One authoritative rule set for natal, transit and synastry calculations.
 ASPECTS = [('conjunction', 0), ('opposition', 180), ('trine', 120), ('square', 90), ('sextile', 60)]
-VERSION = 'tropical-placidus-v1'
+VERSION = 'tropical-placidus-v2-pinned-tz'
 
-def local_to_utc(date, clock, zone, fold=0):
-    naive = datetime.combine(date, clock or time(12))
-    local = naive.replace(tzinfo=ZoneInfo(zone), fold=fold)
-    utc = local.astimezone(timezone.utc)
-    if utc.astimezone(local.tzinfo).replace(tzinfo=None) != naive:
-        raise ValueError('Энэ орон нутгийн цаг зуны цагийн шилжилтээс шалтгаалан байхгүй. Цагаа шалгана уу.')
-    return utc
+def local_to_utc(date, clock, zone, fold=None):
+    return require_supported(pinned_local_to_utc(datetime.combine(date, clock or time(12)), zone, fold))
 
 def julian(dt):
     dt = dt.astimezone(timezone.utc)
@@ -72,7 +67,7 @@ def aspects(first, second=None, transit=False, rules=DEFAULT_RULES):
 def natal(profile, rules=DEFAULT_RULES):
     date = datetime.fromisoformat(str(profile['birth_date'])).date()
     clock = time.fromisoformat(profile['birth_time']) if profile['birth_time_known'] else None
-    utc = local_to_utc(date, clock, profile['timezone'], profile.get('time_fold',0))
+    utc = local_to_utc(date, clock, profile['timezone'], profile.get('time_fold') if profile.get('time_fold_confirmed') else None)
     bodies = [dict(p,house=None,uncertain=False) for p in positions(utc.isoformat())]
     cusps, asc, mc = [], None, None
     if clock:
@@ -86,8 +81,7 @@ def natal(profile, rules=DEFAULT_RULES):
             for p in bodies:
                 p['house']=int(swe.house_pos(angles[2],profile['latitude'],obliquity,(p['longitude'],p['latitude']),b'P'))
     else:
-        begin=local_to_utc(date,time.min,profile['timezone'])
-        end=local_to_utc(date+timedelta(days=1),time.min,profile['timezone'])
+        begin,end=civil_day(date,profile['timezone'])
         starts, ends=positions(begin.isoformat()),positions(end.isoformat())
         for p in bodies:
             p['uncertain']=p['id']==1 or starts[p['id']]['sign']!=ends[p['id']]['sign']

@@ -1,0 +1,2 @@
+# Install from the repository root so the vendored package resolves correctly.
+-r apps/api/requirements-runtime.txt

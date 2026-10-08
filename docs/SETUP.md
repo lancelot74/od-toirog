@@ -1,5 +1,8 @@
 # Supabase and deployment setup
 
+For native Vercel packaging, modern secret keys, the reviewed permission-hardening draft,
+and fresh-project migration-history reconciliation, see [BACKEND_INTEGRATION.md](BACKEND_INTEGRATION.md).
+
 ## 1. Supabase project
 
 Create a project. Run migrations in order in the SQL editor:
@@ -26,7 +29,8 @@ Backend secrets, in `.env.local` locally or the backend host's secret settings:
 ```env
 SUPABASE_URL=https://PROJECT.supabase.co
 SUPABASE_ANON_KEY=YOUR_PUBLIC_ANON_OR_PUBLISHABLE_KEY
-SUPABASE_SERVICE_ROLE_KEY=YOUR_SERVICE_ROLE_KEY
+SUPABASE_SECRET_KEY=YOUR_SERVER_SECRET_KEY
+# Legacy SUPABASE_SERVICE_ROLE_KEY remains supported.
 WEB_ORIGINS=http://localhost:3001,http://localhost:3000,https://lancelot74.github.io
 EPHEMERIS_PATH=/absolute/path/to/od-toirog/ephemeris
 ```

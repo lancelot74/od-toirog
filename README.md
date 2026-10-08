@@ -42,7 +42,7 @@ corepack pnpm typecheck
 corepack pnpm check:library
 .venv/bin/python -m pytest tests -q
 .venv/bin/python -m pytest vendor/od-toirog-engine/tests -q
-node --test tests/rls.test.mjs
+node --test tests/*.test.mjs
 corepack pnpm exec playwright test
 ```
 
@@ -51,6 +51,7 @@ Run type checking **after**, not concurrently with, a build because Next regener
 ## Deployment
 
 - GitHub Pages serves `out/` using the included workflow. Add the three public configuration values as GitHub Actions repository variables. Public asset and OAuth paths respect `/od-toirog`.
+- Native Vercel backend setup and validation gates: [docs/BACKEND_INTEGRATION.md](docs/BACKEND_INTEGRATION.md).
 - The Python backend needs a separate HTTPS host. Build its container from the repo root: `docker build -f apps/api/Dockerfile .`.
 - This project uses static export. `pnpm start` serves the built `out/` locally using Python on port 3001; use Pages or another HTTPS static host for production.
 

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "fastapi",
+  "buildCommand": "python scripts/build_backend.py",
+  "functions": {
+    "apps/api/main.py": {
+      "maxDuration": 60,
+      "includeFiles": "{services/**,packages/localization/**,vendor/od-toirog-engine/data/de440s.bsp,ephemeris/*.se1}",
+      "excludeFiles": "{.env*,.git/**,.venv/**,node_modules/**,.next/**,out/**,app/**,components/**,lib/**,public/**,content/**,tests/**,docs/**,supabase/**,test-results/**,playwright-report/**,vendor/od-toirog-engine/tests/**,vendor/od-toirog-engine/examples/**,vendor/od-toirog-engine/build/**}"
+    }
+  }
+}

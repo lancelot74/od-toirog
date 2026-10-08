@@ -223,3 +223,87 @@ test('calculation guide exposes real JPL example and reproducibility metadata',a
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
   }
 });
+
+test('method preference survives navigation and reload and an explicit URL overrides it',async({page})=>{
+  await signedIn(page);
+  await page.goto('/od-toirog/chart/');
+  await page.getByLabel('Тооцооллын арга',{exact:true}).selectOption('swiss-v1');
+  await expect(page.getByLabel('Тооцооллын арга',{exact:true})).toHaveValue('swiss-v1');
+  await page.goto('/od-toirog/today/');
+  await expect(page.getByLabel('Тооцооллын арга',{exact:true})).toHaveValue('swiss-v1');
+  await page.reload();
+  await expect(page.getByLabel('Тооцооллын арга',{exact:true})).toHaveValue('swiss-v1');
+  await page.goto('/od-toirog/compatibility/');
+  await expect(page.getByLabel('Тооцооллын арга',{exact:true})).toHaveValue('swiss-v1');
+  await page.goto('/od-toirog/chart/?method=jpl-v0.1');
+  await expect(page.getByLabel('Тооцооллын арга',{exact:true})).toHaveValue('jpl-v0.1');
+  await page.getByLabel('Тооцооллын арга',{exact:true}).selectOption('swiss-v1');
+  await expect(page).toHaveURL(/method=swiss-v1/);
+  await page.reload();
+  await expect(page.getByLabel('Тооцооллын арга',{exact:true})).toHaveValue('swiss-v1');
+});
+
+test('unknown-time onboarding method URL persists without silently changing an explicit JPL choice',async({page})=>{
+  await signedIn(page);
+  const unknown={...profile,birth_time:null,birth_time_known:false};
+  await page.route('https://od-test.supabase.co/rest/v1/birth_profiles**',route=>route.fulfill({json:[unknown]}));
+  // This is the disclosed Swiss destination produced by unknown-time onboarding.
+  await page.goto('/od-toirog/chart/?profile='+profile.id+'&method=swiss-v1');
+  await expect(page.getByLabel('Тооцооллын арга',{exact:true})).toHaveValue('swiss-v1');
+  const request=page.waitForRequest(r=>r.url().includes('/today/')&&r.url().includes('method=swiss-v1'));
+  await page.goto('/od-toirog/today/');
+  await request;
+  await page.goto('/od-toirog/chart/?method=jpl-v0.1');
+  await expect(page.getByLabel('Тооцооллын арга',{exact:true})).toHaveValue('jpl-v0.1');
+});
+
+test('obsolete compatibility responses cannot overwrite a new profile comparison',async({page})=>{
+  await signedIn(page);
+  const other={...profile,id:'00000000-0000-0000-0000-000000000002',name:'Second'};
+  const third={...profile,id:'00000000-0000-0000-0000-000000000003',name:'Third'};
+  await page.route('https://od-test.supabase.co/rest/v1/birth_profiles**',route=>route.fulfill({json:[profile,other,third]}));
+  let release!:()=>void;
+  const gate=new Promise<void>(resolve=>{release=resolve;});
+  let started!:()=>void;
+  const pending=new Promise<void>(resolve=>{started=resolve;});
+  const report=(name:string)=>({first_name:profile.name,second_name:name,first_chart:chart,second_chart:chart,aspects:[],readings:[],meaning:'Synthetic',categories:{}});
+  await page.route('https://api.od-test.invalid/compatibility',async route=>{
+    const body=route.request().postDataJSON();
+    if(body.second===other.id){started();await gate;await route.fulfill({json:report('STALE')});}
+    else await route.fulfill({json:report('Third')});
+  });
+  await page.goto('/od-toirog/compatibility/');
+  await page.getByRole('button',{name:'Харьцуулах',exact:true}).click();
+  await pending;
+  await page.getByLabel('Хоёр дахь зураг').selectOption(third.id);
+  await expect(page.getByRole('button',{name:'Харьцуулах',exact:true})).toBeEnabled();
+  await page.getByRole('button',{name:'Харьцуулах',exact:true}).click();
+  await expect(page.getByRole('heading',{name:'Тест + Third'})).toBeVisible();
+  const obsolete=page.waitForResponse(r=>r.url().endsWith('/compatibility')&&r.request().postDataJSON().second===other.id);
+  release();await obsolete;
+  await expect(page.getByRole('heading',{name:'Тест + Third'})).toBeVisible();
+  await expect(page.getByText('STALE',{exact:false})).toHaveCount(0);
+  await page.getByLabel('Миний зураг').selectOption(third.id);
+  await expect(page.getByLabel('Хоёр дахь зураг')).toHaveValue('');
+  await expect(page.getByRole('button',{name:'Харьцуулах',exact:true})).toBeDisabled();
+});
+
+test('changing calculation method invalidates a pending compatibility failure',async({page})=>{
+  await signedIn(page);
+  const other={...profile,id:'00000000-0000-0000-0000-000000000002',name:'Second'};
+  await page.route('https://od-test.supabase.co/rest/v1/birth_profiles**',route=>route.fulfill({json:[profile,other]}));
+  let release!:()=>void,started!:()=>void;
+  const gate=new Promise<void>(resolve=>{release=resolve;});
+  const pending=new Promise<void>(resolve=>{started=resolve;});
+  await page.route('https://api.od-test.invalid/compatibility',async route=>{
+    started();await gate;await route.fulfill({status:503,json:{detail:'OBSOLETE FAILURE'}});
+  });
+  await page.goto('/od-toirog/compatibility/');
+  await page.getByRole('button',{name:'Харьцуулах',exact:true}).click();
+  await pending;
+  await page.getByLabel('Тооцооллын арга',{exact:true}).selectOption('swiss-v1');
+  const obsolete=page.waitForResponse(r=>r.url().endsWith('/compatibility'));
+  release();await obsolete;
+  await expect(page.getByText('OBSOLETE FAILURE')).toHaveCount(0);
+  await expect(page.getByRole('button',{name:'Харьцуулах',exact:true})).toBeEnabled();
+});

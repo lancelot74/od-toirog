@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Workspace, Loading } from '@/components/workspace';
@@ -10,26 +10,38 @@ import { api, profiles } from '@/lib/api';
 import { asset } from '@/lib/paths';
 import { mn } from '@/lib/mn';
 import { track } from '@/lib/telemetry';
-import type { Profile, Aspect, Reading as ReadingType, Chart, CalculationMethod, CalculationInfo } from '@/lib/types';
+import type { Profile, Aspect, Reading as ReadingType, Chart, CalculationInfo } from '@/lib/types';
+import { useCalculationMethod } from '@/lib/calculation-method';
 import { MethodSelect, CalculationDetails } from '@/components/calculation-method';
 type Report={first_name:string;second_name:string;meaning:string;categories:Record<string,{prominence:number|null;aspects:Aspect[]}>;readings:ReadingType[];aspects:Aspect[];first_chart:Chart;second_chart:Chart;calculation?:CalculationInfo;compatibility_score?:null};
 
 function Comparison(){
   const [items,setItems]=useState<Profile[]>([]),[first,setFirst]=useState(''),[second,setSecond]=useState(''),[result,setResult]=useState<Report|null>(null),[busy,setBusy]=useState(false),[error,setError]=useState(''),[placement,setPlacement]=useState('');
-  const [method,setMethod]=useState<CalculationMethod>('jpl-v0.1');
+  const [method,setMethod]=useCalculationMethod();
+  const generation=useRef(0);
+  useEffect(()=>()=>{generation.current+=1;},[]);
+  function invalidate(){
+    generation.current+=1;
+    setResult(null);setError('');setBusy(false);setPlacement('');
+  }
   useEffect(()=>{profiles().then(p=>{setItems(p);setFirst(p[0]?.id||'');setSecond(p[1]?.id||'');}).catch(e=>setError(e.message));},[]);
   async function compare(){
-    setBusy(true);setError('');setResult(null);
-    try{setResult(await api<Report>('/compatibility',{first,second,method}));void track('compatibility_completed');}
-    catch(e){setError((e as Error).message);}finally{setBusy(false);}
+    if(!method)return;
+    const request=++generation.current;
+    setBusy(true);setError('');setResult(null);setPlacement('');
+    try{
+      const report=await api<Report>('/compatibility',{first,second,method});
+      if(request===generation.current){setResult(report);void track('compatibility_completed');}
+    }catch(e){if(request===generation.current)setError((e as Error).message);}
+    finally{if(request===generation.current)setBusy(false);}
   }
   const strongest=result?.aspects[0];
   return <><p className="eyebrow">ХОЁР ЗУРГИЙН УУЛЗВАР</p><h1>Хослол</h1>
-    <MethodSelect value={method} disabled={busy} onChange={value=>{setMethod(value);setResult(null);setError('');}}/>
+    <MethodSelect value={method||'jpl-v0.1'} onChange={value=>{invalidate();setMethod(value);}}/>
     <div className="data-grid"><Image src={asset('/assets/illustration/compatibility.webp')} alt="Хоёр зургийн бэлгэдлийн уулзвар" width={700} height={525}/><div><p>Хэн нэгний төрсөн мэдээллийг нэмээд та хоёрын зурлагыг харьцуулж болно.</p>
-      <label>Миний зураг<select value={first} onChange={e=>{setFirst(e.target.value);setResult(null);}}>{items.map(p=><option key={p.id} value={p.id}>{p.name}</option>)}</select></label>
-      <label>Хоёр дахь зураг<select value={second} onChange={e=>{setSecond(e.target.value);setResult(null);}}><option value="">Сонгох</option>{items.filter(p=>p.id!==first).map(p=><option key={p.id} value={p.id}>{p.name}</option>)}</select></label>
-      <div className="actions"><button className="button primary" disabled={!second||first===second||busy} onClick={compare}>Харьцуулах</button><Link className="button outline" href="/onboarding">Профайл нэмэх</Link></div>
+      <label>Миний зураг<select value={first} onChange={e=>{invalidate();setFirst(e.target.value);if(e.target.value===second)setSecond('');}}>{items.map(p=><option key={p.id} value={p.id}>{p.name}</option>)}</select></label>
+      <label>Хоёр дахь зураг<select value={second} onChange={e=>{invalidate();setSecond(e.target.value);}}><option value="">Сонгох</option>{items.filter(p=>p.id!==first).map(p=><option key={p.id} value={p.id}>{p.name}</option>)}</select></label>
+      <div className="actions"><button className="button primary" disabled={!method||!second||first===second||busy} onClick={compare}>Харьцуулах</button><Link className="button outline" href="/onboarding">Профайл нэмэх</Link></div>
     </div></div>
     {error&&<p className="error" role="alert">{error}</p>}{busy&&<Loading/>}
     {result&&<><h2>{result.first_name} + {result.second_name}</h2><p>{result.meaning}</p>

@@ -22,3 +22,6 @@ __pycache__/
 # environment files
 .env*
 !.env.example
+
+# Local Vercel project link/build output
+/.vercel

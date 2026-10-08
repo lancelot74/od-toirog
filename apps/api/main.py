@@ -93,10 +93,17 @@ async def admin(current=Depends(user)):
     if current.get('app_metadata',{}).get('role')!='admin':raise HTTPException(403,'Админ эрх шаардлагатай.')
     return current
 
-async def db(request,path,method='GET',body=None,prefer=None):
-    key=os.getenv('SUPABASE_SERVICE_ROLE_KEY')
+def service_headers():
+    # Modern secret keys are opaque API keys, not bearer JWTs.
+    key=os.getenv('SUPABASE_SECRET_KEY') or os.getenv('SUPABASE_SERVICE_ROLE_KEY')
     if not key:raise HTTPException(503,'Backend мэдээллийн сангийн тохиргоо дутуу байна.')
-    headers={'apikey':key,'Authorization':f'Bearer {key}'}
+    headers={'apikey':key}
+    if not key.startswith('sb_secret_'):
+        headers['Authorization']=f'Bearer {key}'
+    return headers
+
+async def db(request,path,method='GET',body=None,prefer=None):
+    headers=service_headers()
     if prefer:headers['Prefer']=prefer
     response=await request.app.state.http.request(method,supabase_url()+'/rest/v1/'+path,headers=headers,json=body)
     response.raise_for_status()
@@ -302,9 +309,7 @@ async def export(request:Request,current=Depends(user)):
 
 @app.delete('/account')
 async def delete(request:Request,current=Depends(user)):
-    key=os.getenv('SUPABASE_SERVICE_ROLE_KEY')
-    if not key:raise HTTPException(503,'Backend тохируулагдаагүй байна.')
-    response=await request.app.state.http.delete(supabase_url()+f"/auth/v1/admin/users/{current['id']}",headers={'apikey':key,'Authorization':f'Bearer {key}'})
+    response=await request.app.state.http.delete(supabase_url()+f"/auth/v1/admin/users/{current['id']}",headers=service_headers())
     response.raise_for_status()
     return {'deleted':True}
 
@@ -361,9 +366,7 @@ async def save_settings(body:Settings,request:Request,current=Depends(admin)):
 async def records(kind:str,request:Request,current=Depends(admin)):
     tables={'readings':'daily_readings','knowledge_versions':'knowledge_versions','prompt_versions':'prompt_versions','analytics':'generation_logs','subscriptions':'subscriptions','reports':'compatibility_reports'}
     if kind=='users':
-        key=os.getenv('SUPABASE_SERVICE_ROLE_KEY')
-        if not key:raise HTTPException(503,'Backend тохируулагдаагүй байна.')
-        response=await request.app.state.http.get(supabase_url()+'/auth/v1/admin/users?per_page=50',headers={'apikey':key,'Authorization':f'Bearer {key}'})
+        response=await request.app.state.http.get(supabase_url()+'/auth/v1/admin/users?per_page=50',headers=service_headers())
         response.raise_for_status()
         return [{k:u.get(k) for k in ('id','email','created_at','last_sign_in_at')} for u in response.json().get('users',[])]
     if kind=='failures':return await db(request,'generation_logs?event=eq.generation_failed&order=created_at.desc&limit=100')

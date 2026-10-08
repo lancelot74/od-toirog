@@ -1,0 +1,64 @@
+{
+  "measured_at": "2026-10-01",
+  "python": "3.12.3",
+  "environment": "Local WSL; synthetic inputs; three fresh processes; four threads per process",
+  "frontend_deadline_seconds": 30,
+  "exclusions": [
+    "HTTP/auth/database latency",
+    "Vercel cold start",
+    "multi-instance duplicate work"
+  ],
+  "runs": [
+    {
+      "import_seconds": 0.43189635800001724,
+      "cold_daily_seconds": 0.37973835299999337,
+      "warm_daily_seconds": [
+        0.03154864800001178,
+        0.03637386900004458,
+        0.042590544000063346
+      ],
+      "concurrent_cold_four_request_seconds": [
+        0.4310948529999905,
+        0.6589297529999385,
+        0.5729079310000316,
+        0.2687971480000897
+      ],
+      "concurrent_wall_seconds": 0.6616388549999783,
+      "worker_wall_seconds": 1.7052019479999672
+    },
+    {
+      "import_seconds": 0.2282263839999814,
+      "cold_daily_seconds": 0.278686988000004,
+      "warm_daily_seconds": [
+        0.02431474000002254,
+        0.029313229999957002,
+        0.025560236000046643
+      ],
+      "concurrent_cold_four_request_seconds": [
+        0.6283078140000953,
+        0.5178192419999732,
+        0.43058070200004295,
+        0.26967032400000335
+      ],
+      "concurrent_wall_seconds": 0.6322565650000342,
+      "worker_wall_seconds": 1.2875012879999304
+    },
+    {
+      "import_seconds": 0.2634976760000427,
+      "cold_daily_seconds": 0.2944431219999615,
+      "warm_daily_seconds": [
+        0.047331062000012025,
+        0.05074265899997954,
+        0.022081784999954834
+      ],
+      "concurrent_cold_four_request_seconds": [
+        0.5912041880000061,
+        0.7046730789999174,
+        0.910091102000024,
+        0.36447593299999426
+      ],
+      "concurrent_wall_seconds": 0.9126900190000242,
+      "worker_wall_seconds": 1.6730013879999888
+    }
+  ]
+}

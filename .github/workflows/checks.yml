@@ -30,6 +30,6 @@ jobs:
       - run: python scripts/fetch_jpl_ephemeris.py
       - run: python -m pytest tests -q
       - run: python -m pytest vendor/od-toirog-engine/tests -q
-      - run: node --test tests/rls.test.mjs
+      - run: node --test tests/*.test.mjs
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm exec playwright test
