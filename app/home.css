@@ -1,0 +1,73 @@
+/* Homepage-only matte palette, sampled against the supplied hero plates.
+   Keep shared workspace/auth/library tokens and all artwork files unchanged. */
+.home-page{
+  --home-ground:#0b0d10;
+  --home-surface:#0e1115;
+  --home-ground-rgb:11 13 16;
+  --line:rgba(212,175,55,.15);
+  background:var(--home-ground);
+}
+.home-page>.story,
+.home-page>.mobile-hero-followup{
+  background:var(--home-ground);
+}
+.home-page>.idea{
+  border-top-color:transparent;
+}
+.home-page .zodiac-portrait,
+.home-page .zodiac-portrait>span{
+  background:var(--home-surface);
+}
+
+/* Fade only the lower terrain into the page; retain the existing left shade. */
+.home-page .landscape-art::after{
+  display:block;
+  background:
+    linear-gradient(to bottom,transparent 74%,rgb(var(--home-ground-rgb) / .3) 88%,var(--home-ground) 100%),
+    linear-gradient(90deg,rgb(var(--home-ground-rgb) / .8),transparent 80%);
+}
+/* Remove the dark rectangular edge without altering the engraved illustration. */
+.home-page>.compatibility>img{
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent),linear-gradient(to bottom,transparent,#000 6%,#000 94%,transparent);
+  mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent),linear-gradient(to bottom,transparent,#000 6%,#000 94%,transparent);
+  -webkit-mask-composite:source-in;
+  mask-composite:intersect;
+}
+@media(max-width:900px){
+  /* The portrait already contains a fade; match its last 14% to the page tone. */
+  .home-page .landscape-art::after{
+    background:linear-gradient(to bottom,transparent 86%,var(--home-ground) 100%);
+  }
+}
+
+/* One approved, static Library texture, repeated vertically without crop patches. */
+.home-page{position:relative;isolation:isolate}
+.home-page>.home-sky{
+  position:absolute;inset:846px 0 0;z-index:-1;
+  pointer-events:none;
+  background-image:var(--sky-texture);
+  background-position:center top;
+  background-size:100% auto;
+  background-repeat:repeat-y;
+  opacity:.9;
+  mask-image:linear-gradient(to bottom,transparent,#000 180px);
+}
+.home-page>.story,.home-page>.mobile-hero-followup{background:transparent}
+@media(max-width:900px){
+  .home-page>.home-sky{top:calc(100vw * 16 / 9);mask-image:linear-gradient(to bottom,transparent,#000 100px)}
+}
+/* Bounded dark ground beneath copy, feathered outside the text bounds. */
+.home-page>.section :is(h2,h3,p,blockquote,.text-link),
+.home-page>.final-cta h2{position:relative;isolation:isolate}
+.home-page>.section :is(h2,h3,p,blockquote,.text-link)::before,
+.home-page>.final-cta h2::before{
+  content:"";position:absolute;inset:-28px;z-index:-1;pointer-events:none;
+  background:rgb(11 13 16 / .9);
+  mask-image:linear-gradient(to right,transparent,#000 28px,#000 calc(100% - 28px),transparent),
+    linear-gradient(to bottom,transparent,#000 28px,#000 calc(100% - 28px),transparent);
+  mask-composite:intersect;
+}
+
+/* Fit heading protection to its words instead of spanning empty column space. */
+.home-page>.section :is(h2,h3,.eyebrow){width:fit-content}
+.home-page>.final-cta h2{width:fit-content;margin-inline:auto}

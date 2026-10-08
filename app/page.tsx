@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { asset } from "@/lib/paths";
 import { HeroArt } from "@/components/hero-art";
@@ -7,6 +8,7 @@ import { ZodiacGallery } from "@/components/zodiac-gallery";
 
 export default function Home() {
   return <main className="home-page">
+    <div className="home-sky" aria-hidden="true" style={{"--sky-texture":`url("${asset('/assets/illustration/od-toirog-sky-seamless.png')}")`} as CSSProperties}/>
     <header className="site-header"><Link className="brand" href="/"><Image src={asset('/assets/brand/mark.svg')} alt="" width={44} height={44}/><span><b>ОД ТОЙРОГ</b><small>Таны төрсөн мөчийн тэнгэр.</small></span></Link><nav aria-label="Үндсэн цэс"><Link href="/chart">Натал зураг</Link><Link href="/learn">Мэдлэг</Link><a href="#story">Бидний тухай</a></nav><Link className="button outline" href="/auth">Нэвтрэх</Link></header>
     <section className="hero landscape-hero"><HeroArt/><div className="hero-copy"><p className="eyebrow">ӨӨРИЙГӨӨ УНШИХ ШИНЭ АРГА</p><h1>Таны төрсөн мөчийн<br/><em>тэнгэрийг нээнэ.</em></h1><p className="lead"><span className="hero-intro-desktop">Төрсөн огноо, цаг, газраа оруулж өөрийн натал зургаа нээнэ. Тэр мөчийн тэнгэрээс зан чанар, харилцаа, дотоод ертөнцийн холбоосыг уншина.</span><span className="hero-intro-mobile">Төрсөн огноо, цаг, газраа оруулна.</span></p><div className="hero-actions"><Link className="button primary" href="/onboarding">Натал зургаа нээх ✦</Link><a href="#idea" className="text-link">Од Тойргийг судлах ↓</a></div><div className="hero-note">Зурхай бол баттай зөгнөл биш.<br/>Өөрийгөө эргэцүүлэх нэгэн хэл.</div></div></section>
     <div className="mobile-hero-followup"><a href="#idea" className="text-link">Од Тойргийг судлах ↓</a><p>Зурхай бол баттай зөгнөл биш.<br/>Өөрийгөө эргэцүүлэх нэгэн хэл.</p></div>

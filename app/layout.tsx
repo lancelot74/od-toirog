@@ -15,6 +15,7 @@ import "./zodiac.css";
 import "./calculations.css";
 import "./library.css";
 import "./mobile-art.css";
+import "./home.css";
 
 export const metadata: Metadata = {
   title: "Од Тойрог | Таны төрсөн мөчийн тэнгэр",

@@ -1,0 +1,12 @@
+{
+  "library_file_id": "libfile_1e39dd81844881919fa68e45077825ff",
+  "file_id": "file_00000000cab481f5aa4cac4bc7424f36",
+  "version": 0,
+  "filename": "od-toirog-sky-seamless.png",
+  "sha256": "2c75d75db15b2a5498b2d687ab1f588ae3541b931d26e01b241c3f121763c470",
+  "size_bytes": 2480979,
+  "width": 1024,
+  "height": 1536,
+  "asset_path": "public/assets/illustration/od-toirog-sky-seamless.png",
+  "note": "Approved generated reference-matched texture, integrated byte-for-byte; static CSS vertical repetition. Edges are visually repeatable, not mathematically identical."
+}

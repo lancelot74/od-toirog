@@ -27,7 +27,7 @@ test('mobile hero uses one portrait source and keeps header, text and CTA above 
       return {ratio:frame.width/frame.height,sourceRatio:img.naturalWidth/img.naturalHeight,width:frame.width,viewport:innerWidth,
         content:content.map(el=>{const rect=el.getBoundingClientRect();return {label:el.textContent?.trim().slice(0,30),fits:el.scrollWidth<=el.clientWidth+1&&rect.top>=frame.top&&rect.bottom<=frame.top+frame.height*.35+1};}),
         buttonHeight:document.querySelector('.hero-actions>.button')!.getBoundingClientRect().height,
-        shade:getComputedStyle(document.querySelector('.landscape-art')!,'::after').display,
+        shade:getComputedStyle(document.querySelector('.landscape-art')!,'::after').backgroundImage,
         overflow:document.documentElement.scrollWidth>innerWidth,
         followupAfter:document.querySelector('.mobile-hero-followup')!.getBoundingClientRect().top>=frame.bottom-1};
     });
@@ -36,7 +36,8 @@ test('mobile hero uses one portrait source and keeps header, text and CTA above 
     expect(layout.width).toBeCloseTo(layout.viewport,0);
     expect(layout.content.filter(c=>!c.fits)).toEqual([]);
     expect(layout.buttonHeight).toBeGreaterThanOrEqual(44);
-    expect(layout.shade).toBe('none');
+    expect(layout.shade).toContain('86%');
+    expect(layout.shade).toContain('rgb(11, 13, 16)');
     expect(layout.followupAfter).toBe(true);
     expect(layout.overflow).toBe(false);
   }
